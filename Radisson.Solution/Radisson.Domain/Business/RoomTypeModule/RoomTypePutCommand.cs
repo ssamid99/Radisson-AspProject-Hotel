@@ -38,7 +38,7 @@ namespace Radisson.Domain.Business.RoomTypeModule
             }
             public async Task<RoomType> Handle(RoomTypePutCommand request, CancellationToken cancellationToken)
             {
-                var data = await db.RoomTypes.FirstOrDefaultAsync(rt => rt.Id == request.Id && rt.DeletedDate != null, cancellationToken);
+                var data = await db.RoomTypes.FirstOrDefaultAsync(rt => rt.Id == request.Id && rt.DeletedDate == null, cancellationToken);
                 if(data == null)
                 {
                     return null;

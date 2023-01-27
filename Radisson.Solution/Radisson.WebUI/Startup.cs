@@ -18,6 +18,7 @@ using Radisson.Domain.AppCode.Services;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities.Membership;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Radisson.WebUI
@@ -106,9 +107,9 @@ namespace Radisson.WebUI
             services.AddSingleton<EmailService>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IClaimsTransformation, AppClaimProvider>();
-            //var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("LoginApp01."));
-            //services.AddMediatR(assemblies.ToArray());
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Radisson."));
+            services.AddMediatR(assemblies.ToArray());
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
             services.AddScheduler();
             services.AddFluentValidation(r => r.RegisterValidatorsFromAssemblyContaining<Startup>());

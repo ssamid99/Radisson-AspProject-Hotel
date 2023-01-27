@@ -23,7 +23,11 @@ namespace Radisson.Domain.Business.RoomTypeModule
             }
             public async Task<List<RoomType>> Handle(RoomTypeGetAllQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.RoomTypes.Where(rt => rt.DeletedDate != null).ToListAsync(cancellationToken);
+                var data = await db.RoomTypes.Where(rt => rt.DeletedDate == null).ToListAsync(cancellationToken);
+                if (data == null)
+                {
+                    return null;
+                }
                 return data;
             }
         }

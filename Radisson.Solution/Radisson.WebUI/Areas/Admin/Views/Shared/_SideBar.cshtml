@@ -1,0 +1,111 @@
+﻿<nav class="pcoded-navbar">
+    <div class="pcoded-inner-navbar main-menu">
+        <div class="pcoded-navigatio-lavel">İdarəetmə</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li>
+                <a asp-controller="dashboard" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-home"></i>
+                    </span>
+                    <span class="pcoded-mtext">Ana səhifə</span>
+                </a>
+            </li>
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                    <span class="pcoded-mtext">Sifariş</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="brands" asp-action="index">
+                            <span class="pcoded-mtext">Gözləyən sifarişlər</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="brands" asp-action="index">
+                            <span class="pcoded-mtext">Tamamlanmış sifarişlər</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="brands" asp-action="index">
+                            <span class="pcoded-mtext">Ləğv edilmiş sifarişlər</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a asp-controller="Rooms" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-box"></i>
+                    </span>
+                    <span class="pcoded-mtext">Otaqlar</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="RoomTypes" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-box"></i>
+                    </span>
+                    <span class="pcoded-mtext">Otaqlar Növləri</span>
+                </a>
+            </li>
+
+
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="feather icon-inbox"></i></span>
+                    <span class="pcoded-mtext">Forum</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="blogposts" asp-action="index">
+                            <span class="pcoded-mtext">Paylaşımlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="blogposts" asp-action="DeletedPosts">
+                            <span class="pcoded-mtext">Silinmiş paylaşımlar</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a asp-controller="ContactPosts" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-mail"></i>
+                    </span>
+                    <span class="pcoded-mtext">Müraciətlər</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="faqs" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-help-circle"></i>
+                    </span>
+                    <span class="pcoded-mtext">Tez-tez verilən suallar</span>
+                </a>
+            </li>
+        </ul>
+        <div class="pcoded-navigatio-lavel">Parametrlər</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li>
+                <a href="#">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-users"></i>
+                    </span>
+                    <span class="pcoded-mtext">İstifadəçilər</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-sliders"></i>
+                    </span>
+                    <span class="pcoded-mtext">Rollar</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

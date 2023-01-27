@@ -19,6 +19,88 @@ namespace Radisson.Domain.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PublishedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPostComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("BlogPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("BlogPostComments");
+                });
+
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Membership.RadissonRole", b =>
                 {
                     b.Property<int>("Id")
@@ -335,6 +417,9 @@ namespace Radisson.Domain.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MaxNumberofPeople")
                         .HasColumnType("int");
 
@@ -352,6 +437,9 @@ namespace Radisson.Domain.Migrations
                     b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
@@ -359,6 +447,38 @@ namespace Radisson.Domain.Migrations
                     b.HasIndex("ReservationId");
 
                     b.ToTable("RoomTypes");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPost", b =>
+                {
+                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId");
+
+                    b.Navigation("CreatedByUser");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPostComment", b =>
+                {
+                    b.HasOne("Radisson.Domain.Models.Entities.BlogPost", "BlogPost")
+                        .WithMany()
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId");
+
+                    b.HasOne("Radisson.Domain.Models.Entities.BlogPostComment", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("BlogPost");
+
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Membership.RadissonRoleClaim", b =>
@@ -455,6 +575,11 @@ namespace Radisson.Domain.Migrations
                         .HasForeignKey("ReservationId");
 
                     b.Navigation("CreatedByUser");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPostComment", b =>
+                {
+                    b.Navigation("Children");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>

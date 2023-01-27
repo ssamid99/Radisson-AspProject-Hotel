@@ -24,7 +24,11 @@ namespace Radisson.Domain.Business.RoomModule
             }
             public async Task<Room> Handle(RoomGetSingleQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.Rooms.FirstOrDefaultAsync(r =>r.Id == request.Id && r.DeletedDate != null, cancellationToken);
+                var data = await db.Rooms.FirstOrDefaultAsync(r =>r.Id == request.Id && r.DeletedDate == null, cancellationToken);
+                if(data == null)
+                {
+                    return null;
+                }
                 return data;
             }
         }
