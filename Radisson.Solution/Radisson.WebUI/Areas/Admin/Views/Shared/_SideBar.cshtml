@@ -12,24 +12,24 @@
             </li>
             <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                 <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                    <span class="pcoded-mtext">Sifariş</span>
+                    <span class="pcoded-micon"><i class="feather icon-book"></i></span>
+                    <span class="pcoded-mtext">Rezervasiyalar</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li>
-                        <a asp-controller="brands" asp-action="index">
-                            <span class="pcoded-mtext">Gözləyən sifarişlər</span>
+                        <a asp-controller="reservations" asp-action="index">
+                            <span class="pcoded-mtext">Aktiv rezervasiyalar</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="brands" asp-action="index">
-                            <span class="pcoded-mtext">Tamamlanmış sifarişlər</span>
+                        <a asp-controller="reservations" asp-action="index">
+                            <span class="pcoded-mtext">Kecmiş rezervasiyalar</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="brands" asp-action="index">
-                            <span class="pcoded-mtext">Ləğv edilmiş sifarişlər</span>
+                        <a asp-controller="reservations" asp-action="index">
+                            <span class="pcoded-mtext">Silinmiş rezervasiyalar</span>
                         </a>
                     </li>
                 </ul>
@@ -50,7 +50,14 @@
                     <span class="pcoded-mtext">Otaqlar Növləri</span>
                 </a>
             </li>
-
+            <li>
+                <a asp-controller="People" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-users"></i>
+                    </span>
+                    <span class="pcoded-mtext">Əlavə Qonaq Növləri</span>
+                </a>
+            </li>
 
             <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                 <a href="javascript:void(0)">

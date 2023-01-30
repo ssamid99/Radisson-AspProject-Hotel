@@ -345,3 +345,7 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\BlogPosts\Index.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\BlogPosts\DeletedPosts.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\BlogPosts\DeletedPostDetails.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Create.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Details.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Edit.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Index.cshtml.g.cs

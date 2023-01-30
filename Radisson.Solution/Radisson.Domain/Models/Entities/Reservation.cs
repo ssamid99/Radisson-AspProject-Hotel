@@ -18,9 +18,7 @@ namespace Radisson.Domain.Models.Entities
         public DateTime CheckIn { get; set; }
         [Required]
         public DateTime CheckOut { get; set; }
-        [Required]
-        public int NumberofPeople { get; set; }
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
         public ICollection<Room> Rooms { get; set; }
         [Required]
         public int RoomTypeId { get; set; }

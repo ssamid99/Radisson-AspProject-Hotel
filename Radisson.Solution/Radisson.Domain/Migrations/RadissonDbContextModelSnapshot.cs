@@ -306,6 +306,69 @@ namespace Radisson.Domain.Migrations
                     b.ToTable("UserTokens", "Membership");
                 });
 
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.People", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("PeopleinReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("PeopleinReservationId");
+
+                    b.ToTable("Peoples");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.PeopleinReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PeoplesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("PeopleinReservations");
+                });
+
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -336,13 +399,13 @@ namespace Radisson.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumberofPeople")
+                    b.Property<int?>("PeopleinReservationId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int?>("RoomId")
                         .HasColumnType("int");
 
                     b.Property<int>("RoomTypeId")
@@ -355,6 +418,8 @@ namespace Radisson.Domain.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("PeopleinReservationId");
 
                     b.ToTable("Reservations");
                 });
@@ -461,7 +526,7 @@ namespace Radisson.Domain.Migrations
             modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPostComment", b =>
                 {
                     b.HasOne("Radisson.Domain.Models.Entities.BlogPost", "BlogPost")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("BlogPostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -532,11 +597,37 @@ namespace Radisson.Domain.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.People", b =>
+                {
+                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId");
+
+                    b.HasOne("Radisson.Domain.Models.Entities.PeopleinReservation", null)
+                        .WithMany("Peoples")
+                        .HasForeignKey("PeopleinReservationId");
+
+                    b.Navigation("CreatedByUser");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.PeopleinReservation", b =>
+                {
+                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId");
+
+                    b.Navigation("CreatedByUser");
+                });
+
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
                 {
                     b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
+
+                    b.HasOne("Radisson.Domain.Models.Entities.PeopleinReservation", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("PeopleinReservationId");
 
                     b.Navigation("CreatedByUser");
                 });
@@ -577,9 +668,21 @@ namespace Radisson.Domain.Migrations
                     b.Navigation("CreatedByUser");
                 });
 
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPost", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
             modelBuilder.Entity("Radisson.Domain.Models.Entities.BlogPostComment", b =>
                 {
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.PeopleinReservation", b =>
+                {
+                    b.Navigation("Peoples");
+
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
