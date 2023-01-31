@@ -349,3 +349,7 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Details.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Edit.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\People\Index.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\Create.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\Details.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\Edit.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\Index.cshtml.g.cs

@@ -9,7 +9,7 @@ namespace Radisson.Domain.Models.Entities
         [Required]
         public int Number { get; set; }
         [DefaultValue(true)]
-        public bool Aviable { get; set; }
+        public bool Aviable { get; set; } = true;
         public int? ReservationId { get; set; }
         public Reservation Resevation { get; set; }
         [Required]

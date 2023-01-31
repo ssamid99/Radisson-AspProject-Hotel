@@ -24,5 +24,6 @@ namespace Radisson.Domain.Models.Entities
         public int RoomTypeId { get; set; }
         public ICollection<RoomType> RoomTypes { get; set; }
         public int Price { get; set; }
+        public virtual ICollection<PeopleinReservation> PeopleCloud { get; set; }
     }
 }

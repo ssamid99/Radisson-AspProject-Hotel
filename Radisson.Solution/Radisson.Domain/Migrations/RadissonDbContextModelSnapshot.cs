@@ -322,9 +322,6 @@ namespace Radisson.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PeopleinReservationId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -334,8 +331,6 @@ namespace Radisson.Domain.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("PeopleinReservationId");
 
                     b.ToTable("Peoples");
                 });
@@ -356,7 +351,7 @@ namespace Radisson.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PeoplesId")
+                    b.Property<int>("PeopleId")
                         .HasColumnType("int");
 
                     b.Property<int>("ReservationId")
@@ -366,7 +361,11 @@ namespace Radisson.Domain.Migrations
 
                     b.HasIndex("CreatedByUserId");
 
-                    b.ToTable("PeopleinReservations");
+                    b.HasIndex("PeopleId");
+
+                    b.HasIndex("ReservationId");
+
+                    b.ToTable("ReservePeopleCloud");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
@@ -399,9 +398,6 @@ namespace Radisson.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PeopleinReservationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -418,8 +414,6 @@ namespace Radisson.Domain.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("PeopleinReservationId");
 
                     b.ToTable("Reservations");
                 });
@@ -603,10 +597,6 @@ namespace Radisson.Domain.Migrations
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
 
-                    b.HasOne("Radisson.Domain.Models.Entities.PeopleinReservation", null)
-                        .WithMany("Peoples")
-                        .HasForeignKey("PeopleinReservationId");
-
                     b.Navigation("CreatedByUser");
                 });
 
@@ -616,7 +606,23 @@ namespace Radisson.Domain.Migrations
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
 
+                    b.HasOne("Radisson.Domain.Models.Entities.People", "People")
+                        .WithMany("PeopleCloud")
+                        .HasForeignKey("PeopleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Radisson.Domain.Models.Entities.Reservation", "Reservation")
+                        .WithMany("PeopleCloud")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CreatedByUser");
+
+                    b.Navigation("People");
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
@@ -624,10 +630,6 @@ namespace Radisson.Domain.Migrations
                     b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
-
-                    b.HasOne("Radisson.Domain.Models.Entities.PeopleinReservation", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("PeopleinReservationId");
 
                     b.Navigation("CreatedByUser");
                 });
@@ -678,15 +680,15 @@ namespace Radisson.Domain.Migrations
                     b.Navigation("Children");
                 });
 
-            modelBuilder.Entity("Radisson.Domain.Models.Entities.PeopleinReservation", b =>
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.People", b =>
                 {
-                    b.Navigation("Peoples");
-
-                    b.Navigation("Reservations");
+                    b.Navigation("PeopleCloud");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
                 {
+                    b.Navigation("PeopleCloud");
+
                     b.Navigation("Rooms");
 
                     b.Navigation("RoomTypes");

@@ -11,5 +11,6 @@ namespace Radisson.Domain.Models.Entities
     {
         public string Text { get; set; }
         public double Price { get; set; }
+        public virtual ICollection<PeopleinReservation> PeopleCloud { get; set; }
     }
 }

@@ -9,9 +9,9 @@ namespace Radisson.Domain.Models.Entities
 {
     public class PeopleinReservation : BaseEntity
     {
+        public int PeopleId { get; set; }
+        public People People { get; set; }
         public int ReservationId { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
-        public int PeoplesId { get; set; }
-        public ICollection<People> Peoples { get; set; }
+        public Reservation Reservation { get; set; }
     }
 }

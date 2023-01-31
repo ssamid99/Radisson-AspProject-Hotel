@@ -63,13 +63,20 @@ using Radisson.Domain.Business.PeopleModule;
 #nullable disable
 #nullable restore
 #line 9 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.ReservationModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
 using Radisson.Domain.Business.BlogPostModule;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b6f804e23643dabf5cb9823a5aac3a7999b03e29", @"/Areas/Admin/Views/People/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c06b708104d5b9ea3894cbfc3fba6691947eef79", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e446939a6565489e763027dfd06d6be6a88d6cee", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_People_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<People>>
     #nullable disable
@@ -121,7 +128,7 @@ using Radisson.Domain.Business.BlogPostModule;
             WriteLiteral("\r\n<h1>Rooms</h1>\r\n\r\n");
             DefineSection("addcss", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b6f804e23643dabf5cb9823a5aac3a7999b03e298480", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b6f804e23643dabf5cb9823a5aac3a7999b03e298712", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -159,7 +166,7 @@ using Radisson.Domain.Business.BlogPostModule;
                         <ul class=""breadcrumb-title"">
                             <li class=""breadcrumb-item"" style=""float: left;"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2910600", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2910832", async() => {
                 WriteLiteral(" <i class=\"feather icon-home\"></i> ");
             }
             );
@@ -233,7 +240,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                                    </th>\r\n\r\n                                    <th class=\"operations\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2914721", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2914953", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fa fa-plus\"></i>\r\n                                        ");
             }
             );
@@ -289,7 +296,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                                        \r\n                                    </td>\r\n\r\n                                    <td class=\"operations table-imaged\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2918152", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2918384", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-pencil\"></i>");
             }
             );
@@ -321,7 +328,7 @@ using Radisson.Domain.Business.BlogPostModule;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2920499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f804e23643dabf5cb9823a5aac3a7999b03e2920731", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-eye\"></i>");
             }
             );
