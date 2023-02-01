@@ -6,6 +6,7 @@ using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -51,19 +52,19 @@ namespace Radisson.Domain.Business.ReservationModule
                         data.PeopleCloud.Add(peoplein);
                     }
                 }
-                var rooms = await db.Rooms.Where(r => r.RoomTypeId == request.RoomTypeId && r.Aviable == true).ToListAsync();
-                if (rooms == null)
-                {
-                    return new JsonResponse
-                    {
-                        Error = true,
-                        Message = "Təəssüf ki seçilən növdə boş otaq yoxdur"
+                //var rooms = await db.Rooms.Where(r => r.RoomTypeId == request.RoomTypeId && r.Aviable == true).ToListAsync();
+                //if (rooms == null)
+                //{
+                //    return new JsonResponse
+                //    {
+                //        Error = true,
+                //        Message = "Təəssüf ki seçilən növdə boş otaq yoxdur"
 
-                    };
+                //    };
 
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     await db.Reservations.AddAsync(data, cancellationToken);
                     await db.SaveChangesAsync(cancellationToken);
                     return new JsonResponse
@@ -72,7 +73,7 @@ namespace Radisson.Domain.Business.ReservationModule
                         Message = "Success"
                     };
 
-                }
+                //}
             }
         }
     }

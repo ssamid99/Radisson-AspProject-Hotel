@@ -1,147 +1,84 @@
-﻿@model Reservation
+﻿@model Radisson.Domain.Models.Entities.Reservation
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Edit</h1>
+<h2>Details</h2>
 
-<h4>Rezervasiya Detallı Görünüşü</h4>
-<hr />
-
-<div class="page-wrapper">
-    <div class="page-header">
-        <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <div class="d-inline">
-                        <h4>Bootstrap Border Sizes</h4>
-                        <span>
-                            lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="page-header-breadcrumb">
-                    <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
-                        </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">Rezervasiyalar</a>
-                        </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <span>Detallı</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="page-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Basic Form Inputs</h5>
-                        <span>
-                            Add class of <code>.form-control</code> with
-                            <code>&lt;input&gt;</code> tag
-                        </span>
-
-
-                        <div class="card-header-right">
-                            <i class="icofont icofont-spinner-alt-5"></i>
-                        </div>
-
-                    </div>
-                    <div class="card-block">
-                        <h4 class="sub-title">Basic Inputs</h4>
-
-                        <div>
-                            <div class="form-group row ">
-                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-                                <p class="fix-row">
-                                    @Model.Name
-                                </p>
-                            </div>
-                            
-                            <div class="form-group row ">
-                                <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.Surname)
-                                </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label asp-for="Email" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.Email)
-                                </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label asp-for="CheckIn" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.CheckIn)
-                                </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.CheckOut)
-                                </div>
-                            </div>
-                            @if(Model.RoomId != null){
-                                <div class="form-group row ">
-                                    <label asp-for="RoomId" class="col-sm-2 col-form-label"></label>
-                                    <div class="fix-row">
-                                        @Html.Raw(Model.RoomId)
-                                    </div>
-                                </div>
-                            }
-                            <div class="form-group row ">
-                                <label asp-for="RoomTypeId" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.RoomTypeId)
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Qonaqlar</label>
-                                <div>
-                                    <ul>
-                                        @foreach (var item in Model.PeopleCloud.Select(tc => tc.People))
-                                        {
-                                            <li>@item.Text</li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label asp-for="Price" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    @Html.Raw(Model.Price)
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckOut)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoomId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypeId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByUser.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedDate)
+        </dd>
+    </dl>
 </div>
-
-
-
-    @section addjs{
-    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
-    <script src="~/lib/toastr.js/toastr.min.js"></script>
-    <script src="~/lib/toastr.js/toastr.customize.js"></script>
-}
-
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

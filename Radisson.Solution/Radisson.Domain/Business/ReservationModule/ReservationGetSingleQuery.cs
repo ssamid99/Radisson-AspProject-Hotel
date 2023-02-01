@@ -24,11 +24,12 @@ namespace Radisson.Domain.Business.ReservationModule
             }
             public async Task<Reservation> Handle(ReservationGetSingleQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.Reservations
-                    .Include(bp => bp.PeopleCloud)
-                    .ThenInclude(bp => bp.People)
-                    .FirstOrDefaultAsync(re => re.Id == request.Id && re.DeletedDate == null, cancellationToken);
-                return data;
+                var query = db.Reservations
+                    .Include(re => re.PeopleCloud)
+                    .ThenInclude(re => re.People)
+                    .AsQueryable();
+                return await query.FirstOrDefaultAsync(re => re.Id == request.Id && re.DeletedDate == null, cancellationToken);
+                
             }
         }
     }

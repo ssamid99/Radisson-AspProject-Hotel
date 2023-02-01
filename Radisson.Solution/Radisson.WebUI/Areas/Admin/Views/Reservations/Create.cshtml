@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CheckIn" class="control-label"></label>
-                <input name="CheckIn" class="form-control form_datetime"
+                <input name="CheckIn" class="form-control"
                        size="16"
                        type="date"
                        value=""
@@ -62,6 +62,7 @@
             <div class="form-group">
                 <label asp-for="RoomTypeId" class="control-label"></label>
                 <select name="RoomTypeId" class="form-control select2">
+                    <option selected disable>---Seçin---</option>
                     @foreach (var roomType in ViewBag.RoomTypes)
                     {
                         <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
@@ -72,7 +73,6 @@
             <div class="form-group">
                 <label>Select People</label>
                 <select name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
-                    <option  disabled>---Secin---</option>
                     @foreach (var people in ViewBag.People)
                     {
                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price</option>
@@ -80,46 +80,40 @@
                 </select>
             </div>
             <div class="form-group">
-                <span id="displayhalfPrice"></span>
+                <label>Toplam Qiymət:</label>
                 <span id="displayPrice"></span>
                 <input name="Price" class="form-control" type="hidden"/>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
            
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary fix-btn" />
+                <a asp-action="index" class="btn btn-info">Cancel</a>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 
 @section addjs{
     <script class="removeable" src="~/lib/select2/js/select2.full.min.js"></script>
 
     <script>
         $(document).ready(function () {
+            $("input[name='CheckIn']").change(function () {
+            $("input[name='CheckOut']").attr("min", $(this).val());
+        });
             $("select[name='RoomTypeId'], select[name='peopleIds']").change(function () {
                 var checkIn = new Date($("input[name='CheckIn']").val());
                 var checkOut = new Date($("input[name='CheckOut']").val());
                 var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
                 var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
                 var multipliedPrice = diffDays * selectedPrice;
-                var pricedaysforroom = multipliedPrice
                 var additionalPerson1 = $("option:selected", $("select[name='peopleIds']")).data("price");
                 var totalPrice = multipliedPrice + parseInt(additionalPerson1);
-                //if(additionalPerson1 == null){
-                //    $("#displayhalfPrice").text("Toplam Qiymət: $" + pricedaysforroom);
-                //    $('input[name="Price"]').val(pricedaysforroom);
-                //}
-                //else{
-                    $("#displayPrice").text("Toplam Qiymət: $" + totalPrice);
+                
+                    $("#displayPrice").text(totalPrice + "AZN");
                     $('input[name="Price"]').val(totalPrice);
-                //}
+               
             });
         });
     </script>

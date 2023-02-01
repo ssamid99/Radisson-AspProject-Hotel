@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.AppCode.Extensions;
+using Radisson.Domain.AppCode.Infrastructure;
 using Radisson.Domain.Business.ReservationModule;
 using Radisson.Domain.Models.DbContexts;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,9 +28,10 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index(ReservationGetAllQuery query)
         {
             var response = await mediator.Send(query);
+            ViewBag.GetRTName = new Func<int, string>(GetRTName);
             return View(response);
         }
-
+        [HttpGet]
         // GET: Admin/Reservations/Details/5
         public async Task<IActionResult> Details(ReservationGetSingleQuery query)
         {
@@ -39,7 +42,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             }
             return View(response);
         }
-
+        public async Task<IActionResult> Detail()
+        {
+            //var response = await mediator.Send(query);
+            //if (response == null)
+            //{
+            //    return NotFound();
+            //}
+            return View();
+        }
         // GET: Admin/Reservations/Create
         public IActionResult Create()
         {
@@ -72,6 +83,12 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var response = await mediator.Send(command);
+                //var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
+                //if (rooms.Count == 0)
+                //{
+                //    ModelState.AddModelError("RoomTypeId", "Error");
+                //    return View(command);
+                //}
                 if (response.Error == false)
                 {
                     return RedirectToAction(nameof(Index));
@@ -236,16 +253,11 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        public JsonResult RoomType()
+        public string GetRTName(int id)
         {
-            var rt = db.RoomTypes.ToList();
-            return new JsonResult(rt);
-        }
-
-        public JsonResult Room(int id)
-        {
-            var rm = db.Rooms.Where(e => e.RoomTypes.Id == id && e.Aviable == true).ToList();
-            return new JsonResult(rm);
+            var data = db.RoomTypes.FirstOrDefault(rt => rt.Id == id);
+            var name = data.Name;
+            return name;
         }
     }
 }

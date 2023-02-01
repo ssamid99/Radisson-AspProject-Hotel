@@ -94,16 +94,16 @@
                                     <td class="ellipse">
                                         @item.CheckIn
                                     </td>
-                                    <td>
+                                    <td class="ellipse">
                                         @item.CheckOut
                                     </td>
                                     <td class="ellipse">
-                                        @item.RoomTypeId
+                                        @ViewBag.GetRTName(item.RoomTypeId)
                                     </td>
                                     <td class="operations table-imaged">
                                         @if (item.RoomId == null)
                                         {
-                                            <a asp-action="Confirm" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Confirm</a>
+                                            <a asp-action="Confirm" asp-route-id="@item.Id" class="btn btn-sm btn-primary"><i class="fa-solid fa-house-circle-check"></i></a>
                                         }
                                         else
                                         {
