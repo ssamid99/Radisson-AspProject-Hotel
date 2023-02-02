@@ -9,11 +9,11 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form method="post" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" value="@ViewBag.Name"/>
+                <input asp-for="Name" class="form-control" value="@ViewBag.Name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,7 +58,7 @@
                        data-date-min-date="1" />
                 <span asp-validation-for="CheckOut" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="RoomTypeId" class="control-label"></label>
                 <select name="RoomTypeId" class="form-control select2">
@@ -66,54 +66,75 @@
                     @foreach (var roomType in ViewBag.RoomTypes)
                     {
                         <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+                        
                     }
                 </select>
                 <span asp-validation-for="RoomTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Select People</label>
-                <select name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
+                <select id="p1" name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
                     @foreach (var people in ViewBag.People)
                     {
-                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price</option>
+                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select People</label>
+                <select id="p2" name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
+                    
+                    @foreach (var people in ViewBag.People)
+                    {
+                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select People</label>
+                <select id="p3" name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
+                    @foreach (var people in ViewBag.People)
+                    {
+                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
                     }
                 </select>
             </div>
             <div class="form-group">
                 <label>Toplam Qiymət:</label>
-                <span id="displayPrice"></span>
-                <input name="Price" class="form-control" type="hidden"/>
+                <input name="Price" class="form-control" type="hidden" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary fix-btn" />
                 <a asp-action="index" class="btn btn-info">Cancel</a>
             </div>
         </form>
+       
     </div>
 </div>
 
 @section addjs{
     <script class="removeable" src="~/lib/select2/js/select2.full.min.js"></script>
-
-    <script>
+    <script >
         $(document).ready(function () {
             $("input[name='CheckIn']").change(function () {
-            $("input[name='CheckOut']").attr("min", $(this).val());
-        });
+                $("input[name='CheckOut']").attr("min", $(this).val());
+            });
             $("select[name='RoomTypeId'], select[name='peopleIds']").change(function () {
                 var checkIn = new Date($("input[name='CheckIn']").val());
                 var checkOut = new Date($("input[name='CheckOut']").val());
                 var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
                 var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
                 var multipliedPrice = diffDays * selectedPrice;
-                var additionalPerson1 = $("option:selected", $("select[name='peopleIds']")).data("price");
-                var totalPrice = multipliedPrice + parseInt(additionalPerson1);
-                
-                    $("#displayPrice").text(totalPrice + "AZN");
-                    $('input[name="Price"]').val(totalPrice);
-               
+                var additionalPerson1 = $("option:selected", $("select[id='p1']")).data("price");
+                var additionalPerson2 = $("option:selected", $("select[id='p2']")).data("price");
+                var additionalPerson3 = $("option:selected", $("select[id='p3']")).data("price");
+                var totalPrice = multipliedPrice + parseInt(additionalPerson1) + parseInt(additionalPerson2) + parseInt(additionalPerson3);
+
+                $("#displayPrice").text(totalPrice + "AZN");
+                $('input[name="Price"]').val(totalPrice);
+
             });
         });
     </script>

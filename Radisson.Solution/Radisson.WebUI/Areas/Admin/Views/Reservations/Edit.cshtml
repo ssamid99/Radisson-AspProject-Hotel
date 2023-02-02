@@ -1,4 +1,5 @@
-﻿@model Radisson.Domain.Models.Entities.Reservation
+﻿@model ReservationPutCommand
+
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,76 +7,223 @@
 
 <h1>Edit</h1>
 
-<h4>Reservation</h4>
+<h4>Rezervasiyalar</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <div class="d-inline">
+                        <h4>Bootstrap Border Sizes</h4>
+                        <span>
+                            lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-action="index">Rezervasiyalar</a>
+                        </li>
+                        <li class="breadcrumb-item" style="float: left;">
+                            <span>Edit</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Basic Form Inputs</h5>
+                        <span>
+                            Add class of <code>.form-control</code> with
+                            <code>&lt;input&gt;</code> tag
+                        </span>
+
+
+                        <div class="card-header-right">
+                            <i class="icofont icofont-spinner-alt-5"></i>
+                        </div>
+
+                    </div>
+                    <div class="card-block">
+                        <h4 class="sub-title">Basic Inputs</h4>
+
+                        <form method="post" autocomplete="off" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Surname" class="form-control" />
+                                    <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CheckIn" class="col-sm-2 col-form-label"></label>
+                                <input id="chin" asp-for="CheckIn" class="form-control"
+                                       size="16"
+                                       type="date"
+                                       placeholder="Giriş tarixi"
+                                       data-date-format="yyyy.mm.dd"
+                                       data-date-start-date="0d"
+                                       data-date-end-date="2023.09.15"
+                                       data-date-week-start="1"
+                                       data-date-autoclose="true"
+                                       data-date-today-highlight="true"
+                                       data-date-min-date="1" />
+                                <span asp-validation-for="CheckIn" class="text-danger"></span>
+                              
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
+                                <input id="chout" asp-for="CheckOut" class="form-control"
+                                       size="16"
+                                       type="date"
+                                       placeholder="Çıxış tarixi"
+                                       data-date-format="yyyy.mm.dd"
+                                       xdata-date-start-date="0d"
+                                       data-date-end-date="2024.09.15"
+                                       data-date-week-start="1"
+                                       data-date-autoclose="true"
+                                       data-date-today-highlight="true"
+                                       data-date-min-date="1" />
+                                <span asp-validation-for="CheckOut" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RoomTypeId" class="control-label"></label>
+                                <select id="rt" asp-for="RoomTypeId" class="form-control select2">
+                                    @foreach (var roomType in ViewBag.RoomTypes)
+                                    {
+                                        <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+
+                                    }
+                                </select>
+                                <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Select People</label>
+                                <select id="p1" name="peopleIds" class="form-control select2" >
+                                    @foreach (var people in ViewBag.People)
+                                    {
+                                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select People</label>
+                                <select id="p2" name="peopleIds" class="form-control select2" >
+                                    
+                                    @foreach (var people in ViewBag.People)
+                                    {
+                                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select People</label>
+                                <select id="p3" name="peopleIds" class="select2 " >
+                                    @foreach (var people in ViewBag.People)
+                                    {
+                                        <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label  class="col-sm-2 col-form-label">Seçili olan əlavə qonaqlar </label>
+                                <div class="fix-row">
+                                    <ul style="margin-top:1px">
+                                        @foreach (var item in ViewBag.ReservedPeople)
+                                        {
+                                            <li class="fix-row">@ViewBag.GetPText(Convert.ToInt32(item.Text))</li>
+                                            
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Price" class="form-control" readonly/>
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button class="btn btn-primary mr-2 fix-btn">Save</button>
+                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CheckIn" class="control-label"></label>
-                <input asp-for="CheckIn" class="form-control" />
-                <span asp-validation-for="CheckIn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CheckOut" class="control-label"></label>
-                <input asp-for="CheckOut" class="form-control" />
-                <span asp-validation-for="CheckOut" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoomId" class="control-label"></label>
-                <input asp-for="RoomId" class="form-control" />
-                <span asp-validation-for="RoomId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoomTypeId" class="control-label"></label>
-                <input asp-for="RoomTypeId" class="form-control" />
-                <span asp-validation-for="RoomTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreatedByUserId" class="control-label"></label>
-                <select asp-for="CreatedByUserId" class="form-control" asp-items="ViewBag.CreatedByUserId"></select>
-                <span asp-validation-for="CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletedDate" class="control-label"></label>
-                <input asp-for="DeletedDate" class="form-control" />
-                <span asp-validation-for="DeletedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section addjs {
+    <script class="removeable" src="~/lib/select2/js/select2.full.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $("input[id='chin']").change(function () {
+                $("input[id='chout']").attr("min", $(this).val());
+            });
+            $("select[id='rt'], select[name='peopleIds']").change(function () {
+                var checkIn = new Date($("input[id='chin']").val());
+                var checkOut = new Date($("input[id='chout']").val());
+                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                var selectedPrice = $("option:selected", $("select[id='rt']")).data("price");
+                var multipliedPrice = diffDays * selectedPrice;
+                var additionalPerson1 = $("option:selected", $("select[id='p1']")).data("price");
+                var additionalPerson2 = $("option:selected", $("select[id='p2']")).data("price");
+                var additionalPerson3 = $("option:selected", $("select[id='p3']")).data("price");
+                var totalPrice = multipliedPrice + parseInt(additionalPerson1) + parseInt(additionalPerson2) + parseInt(additionalPerson3);
+
+                
+                $('input[name="Price"]').val(totalPrice);
+
+            });
+        });
+    </script>
+
+    <script>
+        $('.select2').select2();
+        $('select[selected-value]').each((index, item) => {
+            let values = $(item).attr('selected-value');
+            console.log(values);
+            if (values.length == 0) return;
+
+            $(item).val(JSON.parse(values));
+            $(item).trigger('change');
+        });
+    </script>
+}
+    @section addcss{
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
+}

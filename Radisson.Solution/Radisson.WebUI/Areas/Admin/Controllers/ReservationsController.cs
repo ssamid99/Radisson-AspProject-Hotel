@@ -6,6 +6,7 @@ using Radisson.Domain.AppCode.Extensions;
 using Radisson.Domain.AppCode.Infrastructure;
 using Radisson.Domain.Business.ReservationModule;
 using Radisson.Domain.Models.DbContexts;
+using Radisson.Domain.Models.Entities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,6 +41,8 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewBag.GetRTName = new Func<int, string>(GetRTName);
+            ViewBag.GetRNumber = new Func<int, int>(GetRNumber);
             return View(response);
         }
         public async Task<IActionResult> Detail()
@@ -131,6 +134,8 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             }
             ViewBag.RoomTypes = db.RoomTypes.ToList();
             ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
+            ViewBag.ReservedPeople = new SelectList(db.ReservePeopleCloud.Where(p => p.ReservationId == id && p.DeletedDate == null).ToList(),"Id","PeopleId");
+            ViewBag.GetPText = new Func<int, string>(GetPText);
             var editCommand = new ReservationPutCommand();
             editCommand.Id = reservation.Id;
             editCommand.Name = reservation.Name;
@@ -141,7 +146,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             editCommand.RoomTypeId = reservation.RoomTypeId;
             editCommand.Price = reservation.Price;
             editCommand.peopleIds = reservation.PeopleCloud.Select(tc => tc.Id).ToArray();
-            return View(reservation);
+            return View(editCommand);
         }
 
         // POST: Admin/Reservations/Edit/5
@@ -258,6 +263,18 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var data = db.RoomTypes.FirstOrDefault(rt => rt.Id == id);
             var name = data.Name;
             return name;
+        }
+        public string GetPText(int id)
+        {
+            var data = db.Peoples.FirstOrDefault(p => p.Id == id);
+            var text = data.Text;
+            return text;
+        }
+        public int GetRNumber(int id)
+        {
+            var data = db.Rooms.FirstOrDefault(rt => rt.Id == id);
+            var number = data.Number;
+            return number;
         }
     }
 }

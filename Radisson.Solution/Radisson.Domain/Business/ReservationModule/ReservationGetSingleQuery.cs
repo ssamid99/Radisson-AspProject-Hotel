@@ -13,7 +13,7 @@ namespace Radisson.Domain.Business.ReservationModule
 {
     public class ReservationGetSingleQuery : IRequest<Reservation>
     {
-        public int Id;
+        public int Id { get; set; }
         public class ReservationGetSingleQueryHandler : IRequestHandler<ReservationGetSingleQuery, Reservation>
         {
             private readonly RadissonDbContext db;
