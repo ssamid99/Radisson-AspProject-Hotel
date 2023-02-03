@@ -19,7 +19,6 @@ namespace Radisson.Domain.Business.RoomTypeModule
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int MaxNumberofPeople { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
         public string PriceInclude { get; set; }
@@ -44,7 +43,6 @@ namespace Radisson.Domain.Business.RoomTypeModule
                     return null;
                 }
                 data.Name = request.Name;
-                data.MaxNumberofPeople = request.MaxNumberofPeople;
                 data.Price = request.Price;
                 data.Description = request.Description;
                 data.PriceInclude = request.PriceInclude;

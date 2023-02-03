@@ -79,7 +79,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var editCommand = new RoomTypePutCommand();
             editCommand.Id = roomType.Id;
             editCommand.Name = roomType.Name;
-            editCommand.MaxNumberofPeople = roomType.MaxNumberofPeople;
             editCommand.Price = roomType.Price;
             editCommand.Description = roomType.Description;
             editCommand.PriceInclude = roomType.PriceInclude;

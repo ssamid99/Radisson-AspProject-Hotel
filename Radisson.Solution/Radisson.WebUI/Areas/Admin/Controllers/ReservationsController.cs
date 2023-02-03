@@ -45,15 +45,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             ViewBag.GetRNumber = new Func<int, int>(GetRNumber);
             return View(response);
         }
-        public async Task<IActionResult> Detail()
-        {
-            //var response = await mediator.Send(query);
-            //if (response == null)
-            //{
-            //    return NotFound();
-            //}
-            return View();
-        }
         // GET: Admin/Reservations/Create
         public IActionResult Create()
         {
@@ -185,6 +176,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             }
             ViewBag.RoomTypes = new SelectList(db.RoomTypes.Where(rt => rt.DeletedDate == null).ToList(), "Id", "Name");
             ViewBag.Rooms = new SelectList(db.Rooms.Where(r => r.Aviable == true && r.RoomTypeId == reservation.RoomTypeId).ToList(), "Id", "Number");
+            ViewBag.GetRTName = new Func<int, string>(GetRTName);
             return View(reservation);
         }
         [HttpPost]
@@ -206,7 +198,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> RoomChange(int? id)
+        public async Task<IActionResult> ChangeRoom(int? id)
         {
             if (id == null)
             {
@@ -275,6 +267,17 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var data = db.Rooms.FirstOrDefault(rt => rt.Id == id);
             var number = data.Number;
             return number;
+        }
+        public JsonResult RoomType()
+        {
+            var rt = db.RoomTypes.ToList();
+            return new JsonResult(rt);
+        }
+
+        public JsonResult Room(int id)
+        {
+            var rm = db.Rooms.Where(e => e.RoomTypes.Id == id && e.Aviable == true).ToList();
+            return new JsonResult(rm);
         }
     }
 }

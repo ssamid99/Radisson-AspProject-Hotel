@@ -18,7 +18,6 @@ namespace Radisson.Domain.Business.RoomTypeModule
     public class RoomTypePostCommand : IRequest<RoomType>
     {
         public string Name { get; set; }
-        public int MaxNumberofPeople { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
         public string PriceInclude { get; set; }
@@ -39,7 +38,6 @@ namespace Radisson.Domain.Business.RoomTypeModule
             {
                 var data = new RoomType();
                 data.Name = request.Name;
-                data.MaxNumberofPeople = request.MaxNumberofPeople;
                 data.Price = request.Price;
                 data.Description = request.Description;
                 data.PriceInclude = request.PriceInclude;

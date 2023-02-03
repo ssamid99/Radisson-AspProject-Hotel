@@ -97,7 +97,7 @@
                                 <div class="form-group row ">
                                 <label asp-for="RoomId" class="col-sm-2 col-form-label"></label>
                                 <div class="fix-row">
-                                    Nömrə @ViewBag.GetRNumber(Model.RoomId)
+                                    Nömrə @ViewBag.GetRNumber(Convert.ToInt32(Model.RoomId))
                                 </div>
                             </div>
                             }

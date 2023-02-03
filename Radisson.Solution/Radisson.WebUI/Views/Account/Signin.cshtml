@@ -73,14 +73,16 @@
 
 
 </html>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section addjs{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#username').val('samidms@code.edu.az');
-        $('#password').val('123')
-    })
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#username').val('samidms@code.edu.az');
+            $('#password').val('123')
+        })
+    </script>
+}
 @*<environment include="Development">
         <script>
             $(document).ready(function(){

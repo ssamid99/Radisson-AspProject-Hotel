@@ -66,10 +66,10 @@
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.MaxNumberofPeople)
+                                        @Html.DisplayNameFor(model => model.Description)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Description)
+                                        @Html.DisplayNameFor(model => model.Price)
                                     </th>
 
                                     <th class="operations">
@@ -92,11 +92,11 @@
                                     <td class="ellipse">
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
-                                    <td class="ellipse">
-                                        @Html.DisplayFor(modelItem => item.MaxNumberofPeople)
-                                    </td>
                                     <td class="ellipse ">
                                         @item.Description.ToPlainText();
+                                    </td>
+                                    <td class="ellipse">
+                                        @Html.DisplayFor(modelItem => item.Price)
                                     </td>
 
                                     <td class="operations table-imaged">

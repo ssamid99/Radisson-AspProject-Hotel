@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.AppCode.Infrastructure;
 using Radisson.Domain.Models.DbContexts;
@@ -74,7 +75,7 @@ namespace Radisson.Domain.Business.ReservationModule
                     #region database de evvel olmayan indi elave olunan person-larin add olunmasi
                     var newExceptedIds = request.peopleIds.Except(db.ReservePeopleCloud.Where(tc => tc.ReservationId == data.Id).Select(tc => tc.PeopleId).ToList()).ToArray();
 
-                    if (newExceptedIds.Length > 0)
+                    if (newExceptedIds.Length > 0 && newExceptedIds.Length <= 3)
                     {
                         foreach (var exceptedId in newExceptedIds)
                         {
@@ -94,6 +95,11 @@ namespace Radisson.Domain.Business.ReservationModule
                     Error = false,
                     Message = "Success"
                 };
+            }
+            public JsonResult RoomType()
+            {
+                var rt = db.RoomTypes.ToList();
+                return new JsonResult(rt);
             }
         }
     }
