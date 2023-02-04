@@ -96,11 +96,6 @@ namespace Radisson.Domain.Business.ReservationModule
                     Message = "Success"
                 };
             }
-            public JsonResult RoomType()
-            {
-                var rt = db.RoomTypes.ToList();
-                return new JsonResult(rt);
-            }
         }
     }
 }

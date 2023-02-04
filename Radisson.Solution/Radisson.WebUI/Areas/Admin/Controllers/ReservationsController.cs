@@ -250,6 +250,38 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
+        public async Task<IActionResult> DeletedIndex(ReservationDeletedGetAllQuery query)
+        {
+            var response = await mediator.Send(query);
+            ViewBag.GetRTName = new Func<int, string>(GetRTName);
+            return View(response);
+        }
+        [HttpGet]
+        // GET: Admin/Reservations/Details/5
+        public async Task<IActionResult> DeletedDetails(ReservationDeletedGetSingleQuery query)
+        {
+            var response = await mediator.Send(query);
+            if (response == null)
+            {
+                return NotFound();
+            }
+            ViewBag.GetRTName = new Func<int, string>(GetRTName);
+            ViewBag.GetRNumber = new Func<int, int>(GetRNumber);
+            return View(response);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletedRemove(ReservationDeletedRemoveCommand command)
+        {
+            var response = await mediator.Send(command);
+
+            if (response != null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(response);
+        }
         public string GetRTName(int id)
         {
             var data = db.RoomTypes.FirstOrDefault(rt => rt.Id == id);
@@ -270,7 +302,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
         public JsonResult RoomType()
         {
-            var rt = db.RoomTypes.ToList();
+            var rt = db.RoomTypes.Where(rt=>rt.DeletedDate==null).ToList();
             return new JsonResult(rt);
         }
 
