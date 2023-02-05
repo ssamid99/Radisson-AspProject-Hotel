@@ -357,3 +357,6 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\ChangeRoom.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\DeletedIndex.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservations\DeletedDetails.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\ContactPosts\Details.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\ContactPosts\Edit.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\ContactPosts\Index.cshtml.g.cs

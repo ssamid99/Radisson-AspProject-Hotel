@@ -101,6 +101,53 @@ namespace Radisson.Domain.Migrations
                     b.ToTable("BlogPostComments");
                 });
 
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.ContactPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("AnswerDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("AnsweredbyId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("ContactPosts");
+                });
+
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Membership.RadissonRole", b =>
                 {
                     b.Property<int>("Id")
@@ -479,9 +526,6 @@ namespace Radisson.Domain.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaxNumberofPeople")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -538,6 +582,15 @@ namespace Radisson.Domain.Migrations
                     b.Navigation("CreatedByUser");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Radisson.Domain.Models.Entities.ContactPost", b =>
+                {
+                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId");
+
+                    b.Navigation("CreatedByUser");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Membership.RadissonRoleClaim", b =>

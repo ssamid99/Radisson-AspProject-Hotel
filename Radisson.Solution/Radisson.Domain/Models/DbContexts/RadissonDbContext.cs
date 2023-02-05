@@ -19,6 +19,7 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<PeopleinReservation> ReservePeopleCloud { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<BlogPostComment> BlogPostComments { get; set; }
+        public DbSet<ContactPost> ContactPosts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
