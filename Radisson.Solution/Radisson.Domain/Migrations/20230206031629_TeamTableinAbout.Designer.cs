@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Radisson.Domain.Models.DbContexts;
 
 namespace Radisson.Domain.Migrations
 {
     [DbContext(typeof(RadissonDbContext))]
-    partial class RadissonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230206031629_TeamTableinAbout")]
+    partial class TeamTableinAbout
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

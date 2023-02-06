@@ -25,6 +25,7 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<RadissonHotelImage> RadissonHotelImages { get; set; }
         public DbSet<ServicesHeader> ServicesHeaders { get; set; }
         public DbSet<ServicesBody> ServicesBodies { get; set; }
+        public DbSet<Team> Teams { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
