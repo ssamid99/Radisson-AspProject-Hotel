@@ -20,6 +20,11 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<BlogPostComment> BlogPostComments { get; set; }
         public DbSet<ContactPost> ContactPosts { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<RadissonHotel> RadissonHotels { get; set; }
+        public DbSet<RadissonHotelImage> RadissonHotelImages { get; set; }
+        public DbSet<ServicesHeader> ServicesHeaders { get; set; }
+        public DbSet<ServicesBody> ServicesBodies { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
