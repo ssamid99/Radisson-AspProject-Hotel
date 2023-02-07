@@ -77,12 +77,12 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var response = await mediator.Send(command);
-                //var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
-                //if (rooms.Count == 0)
-                //{
-                //    ModelState.AddModelError("RoomTypeId", "Error");
-                //    return View(command);
-                //}
+                var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
+                if (rooms.Count == 0)
+                {
+                    ModelState.AddModelError("RoomTypeId", "Error");
+                    return View(command);
+                }
                 if (response.Error == false)
                 {
                     return RedirectToAction(nameof(Index));

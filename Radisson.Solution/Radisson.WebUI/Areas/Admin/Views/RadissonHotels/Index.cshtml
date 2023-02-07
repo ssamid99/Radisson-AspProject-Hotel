@@ -1,0 +1,41 @@
+﻿@model RadissonHotel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Otel Haqqında</h2>
+@if (ViewBag.IsTableEmpty){
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+<div>
+<section class="about-section">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+           {
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="about-content">
+                    <div class="sec-title left">@item.Title</div>
+                    <div class="text">@item.Title</div>
+                </div>
+            </div>
+            @foreach(var img in item.Images){
+                var imagePath = item.Images.FirstOrDefault(p => p.DeletedDate == null)?.Name;
+            <div class="col-lg-6 col-md-12 col-sm-12 clearfix">
+                <div class="img-box">
+                    <img src="/uploads/images/@img">
+                </div>
+            </div>
+            }
+             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
+           }
+        </div>
+    </div>
+</section>
+</div>
+@section addcss{
+    <link href="~/css/aboutcss.css" rel="stylesheet" />
+}

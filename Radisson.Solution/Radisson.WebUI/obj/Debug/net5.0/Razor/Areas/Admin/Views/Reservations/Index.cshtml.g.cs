@@ -75,8 +75,15 @@ using Radisson.Domain.Business.BlogPostModule;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.AboutModule.RadissonHotels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b11d010a649b3678bbc9587cdb0e25aefd5565a0", @"/Areas/Admin/Views/Reservations/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e446939a6565489e763027dfd06d6be6a88d6cee", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f6b641d57284df36123bea91b6ea7e459b47718d", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_Reservations_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Reservation>>
     #nullable disable
@@ -131,7 +138,7 @@ using Radisson.Domain.Business.BlogPostModule;
             WriteLiteral("\r\n<h1>Rezervasiyalar</h1>\r\n\r\n");
             DefineSection("addcss", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b11d010a649b3678bbc9587cdb0e25aefd5565a09736", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b11d010a649b3678bbc9587cdb0e25aefd5565a09977", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -169,7 +176,7 @@ using Radisson.Domain.Business.BlogPostModule;
                         <ul class=""breadcrumb-title"">
                             <li class=""breadcrumb-item"" style=""float: left;"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a011856", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a012097", async() => {
                 WriteLiteral(" <i class=\"feather icon-home\"></i> ");
             }
             );
@@ -259,7 +266,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                                    </th>\r\n                                    <th class=\"operations\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a016879", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a017120", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fa fa-plus\"></i>\r\n                                        ");
             }
             );
@@ -334,7 +341,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("                                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a021346", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a021587", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-house-circle-check\"></i>");
             }
             );
@@ -376,7 +383,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("                                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a024074", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a024315", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-tent-arrow-turn-left\"></i>");
             }
             );
@@ -416,7 +423,7 @@ using Radisson.Domain.Business.BlogPostModule;
 #line hidden
 #nullable disable
             WriteLiteral("                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a026714", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a026955", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-pencil\"></i>");
             }
             );
@@ -448,7 +455,7 @@ using Radisson.Domain.Business.BlogPostModule;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a029069", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11d010a649b3678bbc9587cdb0e25aefd5565a029310", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-eye\"></i>");
             }
             );

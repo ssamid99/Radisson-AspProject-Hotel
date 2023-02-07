@@ -81,13 +81,24 @@
                     <span class="pcoded-mtext">Müraciətlər</span>
                 </a>
             </li>
-            <li>
-                <a asp-controller="faqs" asp-action="index">
-                    <span class="pcoded-micon">
-                        <i class="feather icon-help-circle"></i>
-                    </span>
-                    <span class="pcoded-mtext">Tez-tez verilən suallar</span>
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="feather icon-book"></i></span>
+                    <span class="pcoded-mtext">Rezervasiyalar</span>
+                    <span class="pcoded-mcaret"></span>
                 </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="RadissonHotels" asp-action="index">
+                            <span class="pcoded-mtext">Otel Haqqında</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="reservations" asp-action="deletedindex">
+                            <span class="pcoded-mtext">Kecmiş rezervasiyalar</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="pcoded-navigatio-lavel">Parametrlər</div>
