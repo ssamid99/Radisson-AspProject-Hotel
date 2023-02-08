@@ -38,7 +38,7 @@ namespace Radisson.Domain.Business.AboutModule.ServicesBodies
                 var entity = new ServicesBody();
 
                 entity.Title = request.Title;
-                entity.Title = request.Text;
+                entity.Text = request.Text;
                 entity.ServicesHeaderId = request.ServicesHeaderId;
 
                 if (request.Image == null)

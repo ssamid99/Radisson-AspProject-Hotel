@@ -83,8 +83,8 @@
             </li>
             <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                 <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-book"></i></span>
-                    <span class="pcoded-mtext">Rezervasiyalar</span>
+                    <span class="pcoded-micon"><i class="feather icon-info"></i></span>
+                    <span class="pcoded-mtext">Radisson Hotel</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
@@ -94,8 +94,31 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="reservations" asp-action="deletedindex">
-                            <span class="pcoded-mtext">Kecmiş rezervasiyalar</span>
+                        <a asp-controller="Abouts" asp-action="index">
+                            <span class="pcoded-mtext">Otel Qeydləri</span>
+                        </a>
+                    </li>
+                    <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                        <a href="javascript:void(0)">
+                            <span><i class="feature icon-bookmark"></i></span>
+                            <span>Xidmətlər</span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li>
+                                <a asp-controller="ServicesHeaders" asp-action="index">
+                                    <span class="pcoded-mtext">Başlıq</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="ServicesBodies" asp-action="index">
+                                    <span class="pcoded-mtext">Əsas Hissə</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a asp-controller="Teams" asp-action="index">
+                            <span class="pcoded-mtext">Otel Qeydləri</span>
                         </a>
                     </li>
                 </ul>

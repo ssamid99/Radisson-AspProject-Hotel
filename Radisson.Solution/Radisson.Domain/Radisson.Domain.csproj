@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppCode\Providers\" />
     <Folder Include="Models\DbContexts\" />
   </ItemGroup>
 

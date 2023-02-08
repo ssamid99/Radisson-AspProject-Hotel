@@ -30,6 +30,8 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var response = await mediator.Send(query);
             bool isTableEmpty = !db.RadissonHotels.Any();
             ViewBag.IsTableEmpty = isTableEmpty;
+            bool isImagesEmpty = db.RadissonHotelImages.Any();
+            ViewBag.isImagesEmpty = isImagesEmpty;
             return View(response);
         }
 
@@ -56,14 +58,10 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         // GET: Admin/RadissonHotels/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(RadissonHotelGetAllQuery query)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var radissonHotel = await db.RadissonHotels.FindAsync(id);
+            var radissonHotel = await mediator.Send(query);
             if (radissonHotel == null)
             {
                 return NotFound();
@@ -71,6 +69,12 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var editCommand = new RadissonHotelPutCommand();
             editCommand.Title = radissonHotel.Title;
             editCommand.Text = radissonHotel.Text;
+            editCommand.Images = radissonHotel.Images.Select(x => new ImageItem
+            {
+                Id = x.Id,
+                TempPath = x.Name,
+                IsMain = x.IsMain
+            }).ToArray();
             return View(editCommand);
         }
 

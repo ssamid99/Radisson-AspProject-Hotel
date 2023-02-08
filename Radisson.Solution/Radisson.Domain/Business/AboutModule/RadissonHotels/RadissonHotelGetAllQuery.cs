@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Radisson.Domain.Business.AboutModule.RadissonHotels
 {
-    public class RadissonHotelGetAllQuery : IRequest<List<RadissonHotel>>
+    public class RadissonHotelGetAllQuery : IRequest<RadissonHotel>
     {
-        public class RadissonHotelGetAllQueryHandler : IRequestHandler<RadissonHotelGetAllQuery, List<RadissonHotel>>
+        public class RadissonHotelGetAllQueryHandler : IRequestHandler<RadissonHotelGetAllQuery, RadissonHotel>
         {
             private readonly RadissonDbContext db;
 
@@ -21,16 +21,16 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
             {
                 this.db = db;
             }
-            public async Task<List<RadissonHotel>> Handle(RadissonHotelGetAllQuery request, CancellationToken cancellationToken)
+            public async Task<RadissonHotel> Handle(RadissonHotelGetAllQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.RadissonHotels.Where(r => r.DeletedDate == null)
+                var query = db.RadissonHotels
                     .Include(r=>r.Images)
-                    .ToListAsync(cancellationToken);
-                if(data == null)
+                    .AsQueryable();
+                if(query == null)
                 {
                     return null;
                 }
-                return data;
+                return await query.FirstOrDefaultAsync(r=>r.DeletedDate == null, cancellationToken);
             }
         }
     }
