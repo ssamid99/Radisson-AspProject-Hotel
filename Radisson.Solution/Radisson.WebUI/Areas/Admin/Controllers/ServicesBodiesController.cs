@@ -77,13 +77,13 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var editCommand = new ServiceBodyPostCommand();
+            var editCommand = new ServiceBodyPutCommand();
             editCommand.Title = servicesBody.Title;
             editCommand.Text = servicesBody.Text;
             editCommand.ImagePath = servicesBody.ImagePath;
             editCommand.ServicesHeaderId = servicesBody.ServicesHeaderId;
-            ViewBag.Headers = new SelectList(db.ServicesHeaders, "Id", "Title", servicesBody.ServicesHeaderId);
-            return View(servicesBody);
+            ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h=>h.DeletedDate == null).ToList(), "Id", "Title", servicesBody.ServicesHeaderId);
+            return View(editCommand);
         }
 
         // POST: Admin/ServicesBodies/Edit/5
