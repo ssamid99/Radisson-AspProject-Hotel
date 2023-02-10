@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System;
 using System.Linq;
 
-namespace Radisson.Domain.AppCode.Extensions
+namespace Radisson.Application.AppCode.Extensions
 {
     public partial class Extension
     {

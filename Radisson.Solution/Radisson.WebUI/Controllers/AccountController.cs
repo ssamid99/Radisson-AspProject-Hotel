@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Radisson.Domain.AppCode.Extensions;
-using Radisson.Domain.AppCode.Services;
+using Radisson.Application.AppCode.Extensions;
+using Radisson.Application.AppCode.Services;
 using Radisson.Domain.Models.Entities.Membership;
 using Radisson.Domain.Models.FormData;
 using System.Threading.Tasks;

@@ -1,15 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
-using Radisson.Domain.AppCode.Extensions;
+using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

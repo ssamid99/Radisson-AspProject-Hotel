@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Team>
+﻿@model PagedViewModel<Team>
 
 @{
     ViewData["Title"] = "Index";
@@ -63,13 +63,13 @@
 
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Name)
+                                        Name
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Surame)
+                                        Surame
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Text)
+                                        Text
                                     </th>
 
                                     <th class="operations">
@@ -80,7 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Items)
                             {
                                 <tr>
                                     <td class="image-cell">
@@ -108,6 +108,7 @@
                             }
                         </tbody>
                     </table>
+                    @Model.GetPager(Url, "Index", "Admin")
                 </div>
             </div>
         </div>

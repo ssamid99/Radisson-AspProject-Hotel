@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Radisson.Domain.AppCode.Extensions;
+using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;

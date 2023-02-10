@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Radisson.Domain.AppCode.Infrastructure;
-using Radisson.Domain.AppCode.Services;
+using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Application.AppCode.Services;
 using Radisson.Domain.Models.DbContexts;
 using System;
 using System.Collections.Generic;

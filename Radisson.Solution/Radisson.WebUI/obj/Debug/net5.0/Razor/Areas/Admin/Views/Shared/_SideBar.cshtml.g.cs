@@ -21,7 +21,7 @@ using Radisson.Domain.Models.Entities;
 #nullable disable
 #nullable restore
 #line 3 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.AppCode.Extensions;
+using Radisson.Application.AppCode.Extensions;
 
 #line default
 #line hidden
@@ -35,83 +35,90 @@ using Radisson.Domain.AppCode.Infrastructure;
 #nullable disable
 #nullable restore
 #line 5 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Models.FormData;
+using Radisson.Application.AppCode.Infrastructure;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.RoomModule;
+using Radisson.Domain.Models.FormData;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.RoomTypeModule;
+using Radisson.Domain.Business.RoomModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.PeopleModule;
+using Radisson.Domain.Business.RoomTypeModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.ReservationModule;
+using Radisson.Domain.Business.PeopleModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.BlogPostModule;
+using Radisson.Domain.Business.ReservationModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.RadissonHotels;
+using Radisson.Domain.Business.BlogPostModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.Abouts;
+using Radisson.Domain.Business.AboutModule.RadissonHotels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 13 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.ServicesHeaders;
+using Radisson.Domain.Business.AboutModule.Abouts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 14 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.ServicesBodies;
+using Radisson.Domain.Business.AboutModule.ServicesHeaders;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.AboutModule.ServicesBodies;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
 using Radisson.Domain.Business.AboutModule.Teams;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"677b405f88e7212ec6741230666344700800721c", @"/Areas/Admin/Views/Shared/_SideBar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"84036d8bcb7bb9463010890ce89572faab360f4c", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fe54f4d48b198d72f8c11c2e5a6ed694627b3da4", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_Shared__SideBar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -156,7 +163,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<nav class=\"pcoded-navbar\">\r\n    <div class=\"pcoded-inner-navbar main-menu\">\r\n        <div class=\"pcoded-navigatio-lavel\">İdarəetmə</div>\r\n        <ul class=\"pcoded-item pcoded-left-item\">\r\n            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c10925", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c11163", async() => {
                 WriteLiteral("\r\n                    <span class=\"pcoded-micon\">\r\n                        <i class=\"feather icon-home\"></i>\r\n                    </span>\r\n                    <span class=\"pcoded-mtext\">Ana səhifə</span>\r\n                ");
             }
             );
@@ -184,7 +191,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
                 <ul class=""pcoded-submenu"">
                     <li>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c13020", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c13258", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Aktiv rezervasiyalar</span>\r\n                        ");
             }
             );
@@ -202,7 +209,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                    <li>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c14573", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c14811", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Kecmiş rezervasiyalar</span>\r\n                        ");
             }
             );
@@ -220,7 +227,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c16157", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c16395", async() => {
                 WriteLiteral("\r\n                    <span class=\"pcoded-micon\">\r\n                        <i class=\"feather icon-box\"></i>\r\n                    </span>\r\n                    <span class=\"pcoded-mtext\">Otaqlar</span>\r\n                ");
             }
             );
@@ -238,7 +245,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </li>\r\n            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c17803", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c18041", async() => {
                 WriteLiteral("\r\n                    <span class=\"pcoded-micon\">\r\n                        <i class=\"feather icon-grid\"></i>\r\n                    </span>\r\n                    <span class=\"pcoded-mtext\">Otaqlar Növləri</span>\r\n                ");
             }
             );
@@ -256,7 +263,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </li>\r\n            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c19458", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c19696", async() => {
                 WriteLiteral("\r\n                    <span class=\"pcoded-micon\">\r\n                        <i class=\"feather icon-users\"></i>\r\n                    </span>\r\n                    <span class=\"pcoded-mtext\">Əlavə Qonaq Növləri</span>\r\n                ");
             }
             );
@@ -285,7 +292,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
                 <ul class=""pcoded-submenu"">
                     <li>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c21557", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c21795", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Paylaşımlar</span>\r\n                        ");
             }
             );
@@ -303,7 +310,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                    <li>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c23101", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c23339", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Silinmiş paylaşımlar</span>\r\n                        ");
             }
             );
@@ -321,7 +328,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c24684", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c24922", async() => {
                 WriteLiteral("\r\n                    <span class=\"pcoded-micon\">\r\n                        <i class=\"feather icon-mail\"></i>\r\n                    </span>\r\n                    <span class=\"pcoded-mtext\">Müraciətlər</span>\r\n                ");
             }
             );
@@ -349,7 +356,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
                 <ul class=""pcoded-submenu"">
                     <li>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c26780", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c27018", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Otel Haqqında</span>\r\n                        ");
             }
             );
@@ -367,7 +374,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                    <li>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c28328", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c28566", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Otel Qeydləri</span>\r\n                        ");
             }
             );
@@ -385,7 +392,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    </li>\r\n                    <li>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c29876", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c30114", async() => {
                 WriteLiteral("\r\n                            <span class=\"pcoded-mtext\">Komanda</span>\r\n                        ");
             }
             );
@@ -411,7 +418,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
                         <ul class=""pcoded-submenu"">
                             <li>
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c31723", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c31961", async() => {
                 WriteLiteral("\r\n                                    <span class=\"pcoded-mtext\">Başlıq</span>\r\n                                ");
             }
             );
@@ -429,7 +436,7 @@ using Radisson.Domain.Business.AboutModule.Teams;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c33304", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "677b405f88e7212ec6741230666344700800721c33542", async() => {
                 WriteLiteral("\r\n                                    <span class=\"pcoded-mtext\">Əsas Hissə</span>\r\n                                ");
             }
             );

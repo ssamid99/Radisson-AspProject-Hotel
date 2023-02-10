@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System;
 
-namespace Radisson.Domain.AppCode.Services
+namespace Radisson.Application.AppCode.Services
 {
     public class EmailService
     {

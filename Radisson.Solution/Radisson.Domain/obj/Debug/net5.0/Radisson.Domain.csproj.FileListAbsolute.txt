@@ -28,3 +28,6 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\obj\Debug\net5.0\
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\obj\Debug\net5.0\Radisson.Domain.pdb
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\obj\Debug\net5.0\Radisson.Domain.genruntimeconfig.cache
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\obj\Debug\net5.0\ref\Radisson.Domain.dll
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\bin\Debug\net5.0\Radisson.Application.dll
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\bin\Debug\net5.0\Radisson.Application.pdb
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Domain\obj\Debug\net5.0\Radisson.Domain.csproj.CopyComplete

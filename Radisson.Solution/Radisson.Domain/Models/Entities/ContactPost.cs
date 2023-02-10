@@ -1,9 +1,10 @@
-﻿using Radisson.Domain.AppCode.Infrastructure;
+﻿using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Domain.AppCode.Infrastructure;
 using System;
 
 namespace Radisson.Domain.Models.Entities
 {
-    public class ContactPost : BaseEntity
+    public class ContactPost : BaseEntity, IPageable
     {
         public string Name { get; set; }
         public string Surname { get; set; }

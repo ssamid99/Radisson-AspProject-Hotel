@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Room>
+﻿@model PagedViewModel<Room>
 
 @{
     ViewData["Title"] = "Index";
@@ -60,16 +60,16 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ReservationId)
+                                        ReservationId
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Number)
+                                        Number
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Aviable)
+                                        Aviable
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.RoomTypeId)
+                                        RoomTypeId
                                     </th>
 
                                     <th class="operations">
@@ -80,7 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Items)
                             {
                                 <tr>
                                     @if(item.ReservationId != null){
@@ -114,6 +114,7 @@
                             }
                         </tbody>
                     </table>
+                    @Model.GetPager(Url, "Index", "Admin")
                 </div>
             </div>
         </div>

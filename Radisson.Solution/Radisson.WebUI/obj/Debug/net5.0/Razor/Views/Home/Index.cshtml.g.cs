@@ -35,13 +35,13 @@ using Radisson.Domain.Models.FormData;
 #nullable disable
 #nullable restore
 #line 4 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
-using Radisson.Domain.AppCode.Extensions;
+using Radisson.Application.AppCode.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22992350a1dacac45e1f7b38bc62d3ee2efabc06", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a8e72004e296e3ab58ca2f4e47c53e1adc077b11", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"553920811a4d6aa0656a1a32f2f468c760da4435", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -99,7 +99,7 @@ using Radisson.Domain.AppCode.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n    </div>\r\n    <div class=\"text-right\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22992350a1dacac45e1f7b38bc62d3ee2efabc065270", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22992350a1dacac45e1f7b38bc62d3ee2efabc065275", async() => {
                 WriteLiteral("Log Out");
             }
             );
@@ -127,7 +127,7 @@ else
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"text-right\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22992350a1dacac45e1f7b38bc62d3ee2efabc066898", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22992350a1dacac45e1f7b38bc62d3ee2efabc066903", async() => {
                 WriteLiteral("Login");
             }
             );

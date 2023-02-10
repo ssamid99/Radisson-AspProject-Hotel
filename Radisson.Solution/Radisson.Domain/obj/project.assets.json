@@ -3234,6 +3234,30 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Radisson.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Coravel": "4.2.0",
+          "FluentValidation.AspNetCore": "11.2.2",
+          "MediatR": "11.1.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
+          "Microsoft.EntityFrameworkCore": "5.0.17",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
+          "Microsoft.Extensions.Hosting": "5.0.0",
+          "Microsoft.Extensions.Identity.Stores": "5.0.17",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Radisson.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Radisson.Application.dll": {}
+        }
       }
     }
   },
@@ -9277,6 +9301,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Radisson.Application/1.0.0": {
+      "type": "project",
+      "path": "../Radisson.Application/Radisson.Application.csproj",
+      "msbuildProject": "../Radisson.Application/Radisson.Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9294,7 +9323,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
       "Microsoft.Extensions.Hosting >= 5.0.0",
       "Microsoft.Extensions.Identity.Stores >= 5.0.17",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
+      "Radisson.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9328,7 +9358,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Radisson-AspProject-Hotel\\Radisson.Solution\\Radisson.Application\\Radisson.Application.csproj": {
+              "projectPath": "D:\\Radisson-AspProject-Hotel\\Radisson.Solution\\Radisson.Application\\Radisson.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

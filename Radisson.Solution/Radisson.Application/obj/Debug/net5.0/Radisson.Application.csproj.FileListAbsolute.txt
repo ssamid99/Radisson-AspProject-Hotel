@@ -1,0 +1,15 @@
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\bin\Debug\net5.0\Radisson.Application.deps.json
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\bin\Debug\net5.0\Radisson.Application.runtimeconfig.json
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\bin\Debug\net5.0\Radisson.Application.runtimeconfig.dev.json
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\bin\Debug\net5.0\Radisson.Application.dll
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\bin\Debug\net5.0\Radisson.Application.pdb
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.csproj.AssemblyReference.cache
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.AssemblyInfoInputs.cache
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.AssemblyInfo.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.csproj.CoreCompileInputs.cache
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.dll
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\refint\Radisson.Application.dll
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.pdb
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\Radisson.Application.genruntimeconfig.cache
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.Application\obj\Debug\net5.0\ref\Radisson.Application.dll

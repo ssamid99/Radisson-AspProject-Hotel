@@ -1,10 +1,11 @@
-﻿using Radisson.Domain.AppCode.Infrastructure;
+﻿using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Domain.AppCode.Infrastructure;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Radisson.Domain.Models.Entities
 {
-    public class Room : BaseEntity
+    public class Room : BaseEntity, IPageable
     {
         [Required]
         public int Number { get; set; }

@@ -2268,7 +2268,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Radisson.Domain/1.0.0": {
+      "Radisson.Application/1.0.0": {
         "dependencies": {
           "Coravel": "4.2.0",
           "FluentValidation.AspNetCore": "11.2.2",
@@ -2282,6 +2282,29 @@
           "Microsoft.Extensions.Hosting": "5.0.0",
           "Microsoft.Extensions.Identity.Stores": "5.0.17",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2"
+        },
+        "runtime": {
+          "Radisson.Application.dll": {}
+        },
+        "compile": {
+          "Radisson.Application.dll": {}
+        }
+      },
+      "Radisson.Domain/1.0.0": {
+        "dependencies": {
+          "Coravel": "4.2.0",
+          "FluentValidation.AspNetCore": "11.2.2",
+          "MediatR": "11.1.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
+          "Microsoft.EntityFrameworkCore": "5.0.17",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
+          "Microsoft.Extensions.Hosting": "5.0.0",
+          "Microsoft.Extensions.Identity.Stores": "5.0.17",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
+          "Radisson.Application": "1.0.0"
         },
         "runtime": {
           "Radisson.Domain.dll": {}
@@ -5178,6 +5201,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Radisson.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Radisson.Domain/1.0.0": {
       "type": "project",

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Radisson.Domain.AppCode.Extensions;
-using Radisson.Domain.AppCode.Services;
+using Radisson.Application.AppCode.Extensions;
+using Radisson.Application.AppCode.Services;
 using Radisson.Domain.Business.ContactPostModule;
 using Radisson.Domain.Models.DbContexts;
-using Radisson.Domain.Models.Entities;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {

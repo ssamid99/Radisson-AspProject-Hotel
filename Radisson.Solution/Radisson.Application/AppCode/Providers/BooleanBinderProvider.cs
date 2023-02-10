@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Radisson.Domain.AppCode.Providers
+namespace Radisson.Application.AppCode.Providers
 {
     public class BooleanBinderProvider : IModelBinderProvider
     {

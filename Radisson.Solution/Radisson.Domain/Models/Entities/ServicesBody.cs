@@ -1,4 +1,5 @@
-﻿using Radisson.Domain.AppCode.Infrastructure;
+﻿using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Domain.AppCode.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Radisson.Domain.Models.Entities
 {
-    public class ServicesBody : BaseEntity
+    public class ServicesBody : BaseEntity, IPageable
     {
         public string Title { get; set; }
         public string Text { get; set; }

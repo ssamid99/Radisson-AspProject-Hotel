@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Radisson.Application.AppCode.Infrastructure;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
@@ -11,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Radisson.Domain.Business.PeopleModule
 {
-    public class PeopleGetAllQuery : IRequest<List<People>>
+    public class PeopleGetAllQuery : PaginateModel, IRequest<PagedViewModel<People>>
     {
-        public class PeopleGetAllQueryHandler : IRequestHandler<PeopleGetAllQuery, List<People>>
+        public class PeopleGetAllQueryHandler : IRequestHandler<PeopleGetAllQuery, PagedViewModel<People>>
         {
             private readonly RadissonDbContext db;
 
@@ -21,14 +22,21 @@ namespace Radisson.Domain.Business.PeopleModule
             {
                 this.db = db;
             }
-            public async Task<List<People>> Handle(PeopleGetAllQuery request, CancellationToken cancellationToken)
+            public async Task<PagedViewModel<People>> Handle(PeopleGetAllQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.Peoples.Where(p => p.DeletedDate == null).ToListAsync(cancellationToken);
-                if(data == null)
+                if (request.PageSize < 6)
+                {
+                    request.PageSize = 6;
+                }
+                var query = db.Peoples
+                    .Where(r => r.DeletedDate == null)
+                    .AsQueryable();
+                if (query == null)
                 {
                     return null;
                 }
-                return data;
+                var pagedModel = new PagedViewModel<People>(query, request);
+                return pagedModel;
             }
         }
     }

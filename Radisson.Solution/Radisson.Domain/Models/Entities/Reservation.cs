@@ -1,11 +1,12 @@
-﻿using Radisson.Domain.AppCode.Infrastructure;
+﻿using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Domain.AppCode.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Radisson.Domain.Models.Entities
 {
-    public class Reservation : BaseEntity
+    public class Reservation : BaseEntity, IPageable
     {
         [Required]
         public string Name { get; set; }

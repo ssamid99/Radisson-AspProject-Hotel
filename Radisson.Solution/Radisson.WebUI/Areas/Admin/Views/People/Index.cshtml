@@ -1,4 +1,4 @@
-﻿@model IEnumerable<People>
+﻿@model PagedViewModel<People>
 
 @{
     ViewData["Title"] = "Index";
@@ -60,13 +60,13 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Text)
+                                        Text
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Price)
+                                        Price
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.CreatedDate)
+                                        CreatedDate
                                     </th>
 
                                     <th class="operations">
@@ -77,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Items)
                             {
                                 <tr>
                                     <td class="ellipse">
@@ -103,6 +103,7 @@
                             }
                         </tbody>
                     </table>
+                    @Model.GetPager(Url, "Index", "Admin")
                 </div>
             </div>
         </div>

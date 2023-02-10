@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlogPost>
+﻿@model PagedViewModel<BlogPost>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/lib/toastr.js/toastr.css">
 }
 
-
+<div class="page-body">
     <div class="page-wrapper">
         <div class="page-header">
             <div class="row align-items-end">
@@ -63,13 +63,13 @@
 
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Title)
+                                        Title
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Body)
+                                        Body
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.PublishedDate)
+                                        PublishedDate
                                     </th>
 
                                     <th class="operations">
@@ -80,7 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Items)
                             {
                                 <tr>
                                     <td class="image-cell">
@@ -109,11 +109,13 @@
                             }
                         </tbody>
                     </table>
+                    @Model.GetPager(Url, "Index", "Admin")
                 </div>
             </div>
         </div>
     </div>
     @Html.AntiForgeryToken()
+</div>
 </div>
 
 @section addjs{

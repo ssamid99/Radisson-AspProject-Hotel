@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Radisson.Domain.AppCode.Extensions
+namespace Radisson.Application.AppCode.Extensions
 {
     public static partial class Extension
     {

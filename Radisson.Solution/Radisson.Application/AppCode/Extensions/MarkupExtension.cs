@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Radisson.Domain.AppCode.Extensions
+namespace Radisson.Application.AppCode.Extensions
 {
     public static partial class Extension
     {

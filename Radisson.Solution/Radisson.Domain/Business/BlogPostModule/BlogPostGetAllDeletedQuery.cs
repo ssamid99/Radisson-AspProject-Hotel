@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Radisson.Application.AppCode.Infrastructure;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
@@ -11,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Radisson.Domain.Business.BlogPostModule
 {
-    public class BlogPostGetAllDeletedQuery : IRequest<List<BlogPost>>
+    public class BlogPostGetAllDeletedQuery : PaginateModel, IRequest<PagedViewModel<BlogPost>>
     {
-        public class BlogPostGetAllDeletedHandler : IRequestHandler<BlogPostGetAllDeletedQuery, List<BlogPost>>
+        public class BlogPostGetAllDeletedHandler : IRequestHandler<BlogPostGetAllDeletedQuery, PagedViewModel<BlogPost>>
         {
             private readonly RadissonDbContext db;
 
@@ -23,11 +24,21 @@ namespace Radisson.Domain.Business.BlogPostModule
             }
 
 
-            public async Task<List<BlogPost>> Handle(BlogPostGetAllDeletedQuery request, CancellationToken cancellationToken)
+            public async Task<PagedViewModel<BlogPost>> Handle(BlogPostGetAllDeletedQuery request, CancellationToken cancellationToken)
             {
-                var query = await db.BlogPosts.Where(bp => bp.DeletedDate != null)
-                                             .ToListAsync(cancellationToken);
-                return query;
+                if (request.PageSize < 6)
+                {
+                    request.PageSize = 6;
+                }
+                var query = db.BlogPosts
+                    .Where(bp => bp.DeletedDate != null)
+                    .AsQueryable();
+                if (query == null)
+                {
+                    return null;
+                }
+                var pagedModel = new PagedViewModel<BlogPost>(query, request);
+                return pagedModel;
             }
         }
     }

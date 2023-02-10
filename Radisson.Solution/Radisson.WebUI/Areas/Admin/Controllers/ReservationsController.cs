@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Radisson.Domain.AppCode.Extensions;
-using Radisson.Domain.AppCode.Infrastructure;
+using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Business.ReservationModule;
 using Radisson.Domain.Models.DbContexts;
-using Radisson.Domain.Models.Entities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

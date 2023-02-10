@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Radisson.Domain.AppCode.Extensions
+namespace Radisson.Application.AppCode.Extensions
 {
     static public partial class Extension
     {

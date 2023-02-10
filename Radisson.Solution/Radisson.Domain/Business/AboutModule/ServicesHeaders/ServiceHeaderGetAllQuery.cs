@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Radisson.Application.AppCode.Infrastructure;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
@@ -11,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace Radisson.Domain.Business.AboutModule.ServicesHeaders
 {
-    public class ServiceHeaderGetAllQuery : IRequest<List<ServicesHeader>>
+    public class ServiceHeaderGetAllQuery : PaginateModel, IRequest<PagedViewModel<ServicesHeader>>
     {
-        public class ServiceHeaderGetAllQueryHandler : IRequestHandler<ServiceHeaderGetAllQuery, List<ServicesHeader>>
+        public class ServiceHeaderGetAllQueryHandler : IRequestHandler<ServiceHeaderGetAllQuery, PagedViewModel<ServicesHeader>>
         {
             private readonly RadissonDbContext db;
 
@@ -21,15 +23,21 @@ namespace Radisson.Domain.Business.AboutModule.ServicesHeaders
             {
                 this.db = db;
             }
-            public async Task<List<ServicesHeader>> Handle(ServiceHeaderGetAllQuery request, CancellationToken cancellationToken)
+            public async Task<PagedViewModel<ServicesHeader>> Handle(ServiceHeaderGetAllQuery request, CancellationToken cancellationToken)
             {
-                var data = await db.ServicesHeaders.Where(r => r.DeletedDate == null).ToListAsync(cancellationToken);
-                if (data == null)
+                if (request.PageSize < 6)
+                {
+                    request.PageSize = 6;
+                }
+                var query = db.ServicesHeaders
+                    .Where(r => r.DeletedDate == null)
+                    .AsQueryable();
+                if (query == null)
                 {
                     return null;
                 }
-
-                return data;
+                var pagedModel = new PagedViewModel<ServicesHeader>(query, request);
+                return pagedModel;
             }
         }
     }

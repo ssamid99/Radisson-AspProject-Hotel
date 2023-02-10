@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Radisson.Domain.AppCode.Infrastructure
+namespace Radisson.Application.AppCode.Infrastructure
 {
     public class JsonResponse
     {
