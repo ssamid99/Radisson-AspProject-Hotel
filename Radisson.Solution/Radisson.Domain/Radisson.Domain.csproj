@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\DbContexts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Radisson.Application\Radisson.Application.csproj" />
   </ItemGroup>
 

@@ -26,44 +26,13 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<ServicesHeader> ServicesHeaders { get; set; }
         public DbSet<ServicesBody> ServicesBodies { get; set; }
         public DbSet<Team> Teams { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            var asm = typeof(RadissonDbContext).Assembly;
-
-            modelBuilder.ApplyConfigurationsFromAssembly(asm);
-
-            modelBuilder.Entity<RadissonUser>(e =>
-            {
-                e.ToTable("Users", "Membership");
-            });
-            modelBuilder.Entity<RadissonRole>(e =>
-            {
-                e.ToTable("Roles", "Membership");
-            });
-            modelBuilder.Entity<RadissonUserClaim>(e =>
-            {
-                e.ToTable("UserClaims", "Membership");
-            });
-            modelBuilder.Entity<RadissonUserLogin>(e =>
-            {
-                e.ToTable("UserLogins", "Membership");
-            });
-            modelBuilder.Entity<RadissonRoleClaim>(e =>
-            {
-                e.ToTable("RoleClaims", "Membership");
-            });
-            modelBuilder.Entity<RadissonUserRole>(e =>
-            {
-                e.ToTable("UserRoles", "Membership");
-            });
-            modelBuilder.Entity<RadissonUserToken>(e =>
-            {
-                e.ToTable("UserTokens", "Membership");
-            });
-        }
-
         
+        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfigurationsFromAssembly(typeof(RadissonDbContext).Assembly);
+        }
     }
 }
