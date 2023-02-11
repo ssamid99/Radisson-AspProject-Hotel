@@ -17,6 +17,9 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/admin/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/admin/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" type="text/css" href="~/lib/tab-control/tab-control.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/toastr.js/toastr.css">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/12b93b4558.js" crossorigin="anonymous"></script>
 
@@ -376,6 +379,32 @@
     <script type="text/javascript" src="~/admin/js/script.js"></script>
     <script type="text/javascript" src="~/admin/js/script.min.js"></script>
 
+    <script>
+        $.ajaxSetup({
+            statusCode: {
+                200: function (response) {
+                    if (response.error == false && response.length > 0) {
+                        toastr.success(response.message, 'Successful operation!');
+                    }
+                },
+                400: function (response) {
+                    toastr.error('Bad request!', "Error!");
+                },
+                401: function (response) {
+                    toastr.warning('You must log in before this operation!', "Warning!");
+                },
+                403: function (response) {
+                    toastr.warning('You are not authorized for this operation!', "Warning!");
+                },
+                404: function (response) {
+                    toastr.warning("Data was not found!", "Warning!");
+                },
+                500: function (response) {
+                    toastr.error('Server error has occured!', "Error!");
+                }
+            }
+        });
+    </script>
     @RenderSection("addjs", required:false)
     <script class="removeable">
         $(document).ready(function () {

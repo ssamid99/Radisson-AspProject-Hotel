@@ -26471,3 +26471,14 @@ b {
     .pagination a i {
         margin: 0 5px;
     }
+th.table-row-select,
+td.table-row-select {
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    text-align: center;
+}
+.operations .fa {
+    color: white;
+    margin: 0 !important;
+}

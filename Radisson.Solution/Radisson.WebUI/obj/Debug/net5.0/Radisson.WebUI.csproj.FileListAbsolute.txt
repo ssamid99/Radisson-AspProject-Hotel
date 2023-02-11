@@ -380,3 +380,9 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Teams\Index.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\bin\Debug\net5.0\Radisson.Application.dll
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\bin\Debug\net5.0\Radisson.Application.pdb
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Index.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Details.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\RadissonRoles\Create.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\RadissonRoles\Details.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\RadissonRoles\Edit.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\RadissonRoles\Index.cshtml.g.cs

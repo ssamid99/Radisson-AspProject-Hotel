@@ -60,7 +60,7 @@ namespace Radisson.Application.AppCode.Infrastructure
             StringBuilder builder = new StringBuilder();
             bool hasPaginationFunction = !string.IsNullOrWhiteSpace(paginateFunction);
 
-            builder.Append("<ul class='blog-pagination ptb-20'>");
+            builder.Append("<ul class='pagination ptb-20'>");
 
             if (this.PageIndex > 1)
             {

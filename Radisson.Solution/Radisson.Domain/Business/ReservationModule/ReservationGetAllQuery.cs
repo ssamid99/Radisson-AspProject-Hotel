@@ -30,6 +30,7 @@ namespace Radisson.Domain.Business.ReservationModule
                 }
                 var query = db.Reservations
                     .Where(r => r.DeletedDate == null)
+                    .OrderByDescending(r=>r.CreatedDate)
                     .AsQueryable();
                 if (query == null)
                 {
