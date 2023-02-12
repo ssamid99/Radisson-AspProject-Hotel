@@ -111,7 +111,10 @@
                                                         <p class="margin-top-20">
                                                             @comment.Text.ToPlainText()
                                                         </p>
-                                                        <a class="btn btn-sm btn-danger" onclick="removeComment(@comment.Id, '@comment.Text')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.deletecomment") && b.Value.Equals("1")))
+                                                        {
+                                                            <a class="btn btn-sm btn-danger" onclick="removeComment(@comment.Id, '@comment.Text')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,7 +135,10 @@
                                                                 @subComment.Text.ToPlainText()
                                                             </p>
                                                         </div>
-                                                        <a class="btn btn-sm btn-danger" onclick="removeComment(@subComment.Id, '@subComment.Text')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.deletecomment") && b.Value.Equals("1")))
+                                                        {
+                                                            <a class="btn btn-sm btn-danger" onclick="removeComment(@subComment.Id, '@subComment.Text')"><i class="fa-solid fa-trash-can"></i></a>
+                                                        }
                                                     </div>
                                                 </div>
                                             </li>
@@ -142,8 +148,14 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.edit") && b.Value.Equals("1")))
+                                    {
+                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
+                                    }
+                                    @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.index") && b.Value.Equals("1")))
+                                    {
+                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    }
                                 </div>
                             </div>
                         </div>

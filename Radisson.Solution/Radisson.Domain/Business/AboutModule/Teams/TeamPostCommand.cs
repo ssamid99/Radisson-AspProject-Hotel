@@ -15,7 +15,7 @@ namespace Radisson.Domain.Business.AboutModule.Teams
     public class TeamPostCommand : IRequest<JsonResponse>
     {
         public string Name { get; set; }
-        public string Surame { get; set; }
+        public string Surname { get; set; }
         public string Text { get; set; }
         public IFormFile Image { get; set; }
         public string ImagePath { get; set; }
@@ -35,7 +35,7 @@ namespace Radisson.Domain.Business.AboutModule.Teams
                 var entity = new Team();
 
                 entity.Name = request.Name;
-                entity.Surame = request.Surame;
+                entity.Surname = request.Surname;
                 entity.Text = request.Text;
 
                 if (request.Image == null)

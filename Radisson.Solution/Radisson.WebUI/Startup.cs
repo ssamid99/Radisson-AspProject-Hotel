@@ -1,4 +1,5 @@
 using Coravel;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
@@ -108,14 +109,19 @@ namespace Radisson.WebUI
                 configuration.GetSection("emailAccount").Bind(cfg);
             });
             services.AddSingleton<EmailService>();
+            services.Configure<CryptoServiceOptions>(cfg =>
+            {
+                configuration.GetSection("cryptograpy").Bind(cfg);
+            });
+            services.AddSingleton<CryptoService>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IClaimsTransformation, AppClaimProvider>();
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Radisson."));
             services.AddMediatR(assemblies.ToArray());
+            services.AddValidatorsFromAssemblies(assemblies);
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
             services.AddScheduler();
-            services.AddFluentValidation(r => r.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

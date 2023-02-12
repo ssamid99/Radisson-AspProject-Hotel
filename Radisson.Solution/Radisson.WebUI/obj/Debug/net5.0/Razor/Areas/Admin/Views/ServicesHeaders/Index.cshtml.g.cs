@@ -14,125 +14,132 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 2 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Application.AppCode.Extensions;
+using Radisson.Domain.Models.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.AppCode.Infrastructure;
+using Radisson.Application.AppCode.Extensions;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Application.AppCode.Infrastructure;
+using Radisson.Domain.AppCode.Infrastructure;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Models.FormData;
+using Radisson.Application.AppCode.Infrastructure;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.RoomModule;
+using Radisson.Domain.Models.FormData;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.RoomTypeModule;
+using Radisson.Domain.Business.RoomModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.PeopleModule;
+using Radisson.Domain.Business.RoomTypeModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.ReservationModule;
+using Radisson.Domain.Business.PeopleModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.BlogPostModule;
+using Radisson.Domain.Business.ReservationModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.RadissonHotels;
+using Radisson.Domain.Business.BlogPostModule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 13 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.Abouts;
+using Radisson.Domain.Business.AboutModule.RadissonHotels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 14 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.ServicesHeaders;
+using Radisson.Domain.Business.AboutModule.Abouts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.ServicesBodies;
+using Radisson.Domain.Business.AboutModule.ServicesHeaders;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 16 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Business.AboutModule.Teams;
+using Radisson.Domain.Business.AboutModule.ServicesBodies;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 17 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
-using Radisson.Domain.Models.Entities.Membership;
+using Radisson.Domain.Business.AboutModule.Teams;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 18 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Radisson.Domain.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
 using Radisson.Domain.Business.RadissonRoleModule;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1b89e9ab8e29dc7d56423197fbbcc1150f0cbe10", @"/Areas/Admin/Views/ServicesHeaders/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"02a8d158034fcfab8948c228525d73f9a1cb24e0", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0489d3baf6c8ba5363b9988453b8d986ab6fc77d", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_ServicesHeaders_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PagedViewModel<ServicesHeader>>
     #nullable disable
@@ -182,7 +189,7 @@ using Radisson.Domain.Business.RadissonRoleModule;
             WriteLiteral("\r\n<h1>Başlıqlar</h1>\r\n\r\n");
             DefineSection("addcss", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1010012", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1010231", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -220,7 +227,7 @@ using Radisson.Domain.Business.RadissonRoleModule;
                         <ul class=""breadcrumb-title"">
                             <li class=""breadcrumb-item"" style=""float: left;"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1012133", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1012352", async() => {
                 WriteLiteral(" <i class=\"feather icon-home\"></i> ");
             }
             );
@@ -280,7 +287,7 @@ using Radisson.Domain.Business.RadissonRoleModule;
 
                                     <th class=""operations"">
                                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1015314", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1015533", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fa fa-plus\"></i>\r\n                                        ");
             }
             );
@@ -322,7 +329,7 @@ using Radisson.Domain.Business.RadissonRoleModule;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                                    </td>\r\n                                    <td class=\"operations table-imaged\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1018271", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b89e9ab8e29dc7d56423197fbbcc1150f0cbe1018490", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-pencil\"></i>");
             }
             );

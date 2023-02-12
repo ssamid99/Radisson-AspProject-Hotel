@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.Business.BlogPostModule;
 using Radisson.Domain.Models.DbContexts;
-using Radisson.Domain.Models.Entities;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {
@@ -26,14 +22,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        //GET: Admin/BlogPosts
+        [Authorize("admin.blogposts.index")]
         public async Task<IActionResult> Index(BlogPostGetAllQuery query)
         {
+            var user = User;
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        //GET: Admin/BlogPosts/Details/5
+        [Authorize("admin.blogposts.details")]
         public async Task<IActionResult> Details(BlogPostGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -45,7 +42,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        //GET: Admin/BlogPosts/Create
+        [Authorize("admin.blogposts.create")]
         public IActionResult Create()
         {
             return View();
@@ -57,6 +54,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.create")]
         public async Task<IActionResult> Create(BlogPostPostCommand command)
         {
             if (command.Image == null)
@@ -76,7 +74,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        //GET: Admin/BlogPosts/Edit/5
+        [Authorize("admin.blogposts.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -105,6 +103,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.edit")]
         public async Task<IActionResult> Edit(BlogPostPutCommand command)
         {
             var response = await mediator.Send(command);
@@ -120,6 +119,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/BlogPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.delete")]
         public async Task<IActionResult> DeleteConfirmed(BlogPostRemoveCommand command)
         {
             var response = await mediator.Send(command);
@@ -132,11 +132,13 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Publish")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.publish")]
         public async Task<IActionResult> PublishConfirmed(BlogPostPublishCommand command)
         {
             var response = await mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
+        [Authorize("admin.blogposts.deletedposts")]
         public async Task<IActionResult> DeletedPosts(BlogPostGetAllDeletedQuery query)
         {
             var response = await mediator.Send(query);
@@ -145,6 +147,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Back")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.back")]
         public async Task<IActionResult> BackToPosts(BlogPostRemoveBackCommand command)
         {
             var response = await mediator.Send(command);
@@ -164,6 +167,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Clear")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.clear")]
         public async Task<IActionResult> ClearDeletedPosts(BlogPostClearCommand command)
         {
 
@@ -172,7 +176,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost, ActionName("DeleteComment")]
-        //[ValidateAntiForgeryToken]
+        [Authorize("admin.blogposts.deletecomment")]
         public async Task<IActionResult> DeleteComment(BlogPostCommentRemoveCommand command)
         {
             var response = await mediator.Send(command);

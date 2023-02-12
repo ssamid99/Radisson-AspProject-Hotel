@@ -26,8 +26,8 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<ServicesHeader> ServicesHeaders { get; set; }
         public DbSet<ServicesBody> ServicesBodies { get; set; }
         public DbSet<Team> Teams { get; set; }
-        
-        
+        public DbSet<Subscribe> Subscribes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -1,6 +1,5 @@
 ﻿using Radisson.Application.AppCode.Infrastructure;
 using Radisson.Domain.AppCode.Infrastructure;
-using System.ComponentModel.DataAnnotations;
 
 namespace Radisson.Domain.Models.Entities
 {

@@ -100,24 +100,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // GET: Admin/ContactPosts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var userId = User.GetCurrentUserId();
-
-            if (userId > 0)
-            {
-                var user = db.Users.FirstOrDefault(u => u.Id == userId);
-
-                if (user != null)
-                {
-                    ViewBag.Id = user.Id;
-                    
-                }
-
-            }
-
             var contactPost = await db.ContactPosts.FindAsync(id);
             if (contactPost == null)
             {
@@ -126,8 +108,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var editCommand = new ContactPostPutCommand();
             editCommand.Answer = contactPost.Answer;
             editCommand.AnswerDate = contactPost.AnswerDate;
-            editCommand.AnsweredbyId = contactPost.AnsweredbyId;
-            editCommand.Email = contactPost.Email;
             return View(contactPost);
         }
 
@@ -138,24 +118,10 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ContactPostPutCommand command)
         {
-            var userId = User.GetCurrentUserId();
-
-            if (userId > 0)
-            {
-                var user = db.Users.FirstOrDefault(u => u.Id == userId);
-
-                if (user != null)
-                {
-                    ViewBag.Id = user.Id;
-
-                }
-
-            }
             if (ModelState.IsValid)
             {
                 var response = await mediator.Send(command);
-                await emailService.SendMailAsync(command.Email, "Answer by Admin", command.Answer);
-                if (response.Error == false)
+                if (response !=null)
                 {
                     return RedirectToAction(nameof(Index));
                 }

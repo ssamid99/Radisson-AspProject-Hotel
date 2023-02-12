@@ -95,9 +95,18 @@
                                     </td>
 
                                     <td class="operations table-imaged">
-                                        <a class="btn btn-sm btn-success" onclick="removeEntityBack(@item.Id, '@item.Title')"><i class="fa-solid fa-rotate-left"></i></a>
-                                        <a asp-action="DeletedPostDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.back") && b.Value.Equals("1")))
+                                            {
+                                            <a class="btn btn-sm btn-success" onclick="removeEntityBack(@item.Id, '@item.Title')"><i class="fa-solid fa-rotate-left"></i></a>
+                                        }
+                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.deletedposdetails") && b.Value.Equals("1")))
+                                            {
+                                            <a asp-action="DeletedPostDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
+                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.clear") && b.Value.Equals("1")))
+                                        {
                                         <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')"><i class="fa-solid fa-trash-can"></i></a>
+                                        }
                                     </td>
                                 </tr>
                             }

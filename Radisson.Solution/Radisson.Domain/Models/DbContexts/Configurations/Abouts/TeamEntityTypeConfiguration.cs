@@ -14,7 +14,7 @@ namespace Radisson.Domain.Models.DbContexts.Configurations.Abouts
                 .UseIdentityColumn(1, 1);
             builder.Property(c => c.Name)
                 .IsRequired();
-            builder.Property(c => c.Surame)
+            builder.Property(c => c.Surname)
                 .IsRequired();
             builder.Property(c => c.Text)
                 .IsRequired();

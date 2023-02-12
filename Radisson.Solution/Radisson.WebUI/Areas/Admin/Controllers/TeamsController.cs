@@ -80,7 +80,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             }
             var editCommand = new TeamPutCommand();
             editCommand.Name = team.Name;
-            editCommand.Surame = team.Surame;
+            editCommand.Surname = team.Surname;
             editCommand.Text = team.Text;
             editCommand.ImagePath = team.ImagePath;
             return View(editCommand);
