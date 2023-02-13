@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.Business.SubscribeModule;
-using Radisson.Domain.Models.DbContexts;
-using Radisson.Domain.Models.Entities;
+using System.Threading.Tasks;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {

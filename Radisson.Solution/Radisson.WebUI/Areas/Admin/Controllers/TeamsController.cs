@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -26,14 +28,14 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/Teams
+        [Authorize("admin.teams.index")]
         public async Task<IActionResult> Index(TeamGetAllQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        // GET: Admin/Teams/Details/5
+        [Authorize("admin.teams.details")]
         public async Task<IActionResult> Details(TeamGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -44,7 +46,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/Teams/Create
+        [Authorize("admin.teams.create")]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +57,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.teams.create")]
         public async Task<IActionResult> Create(TeamPostCommand command)
         {
             if (ModelState.IsValid)
@@ -65,7 +68,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/Teams/Edit/5
+        [Authorize("admin.teams.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +94,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.teams.edit")]
         public async Task<IActionResult> Edit(TeamPutCommand command)
         {
             if (ModelState.IsValid)
@@ -104,6 +108,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/Teams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.teams.delete")]
         public async Task<IActionResult> DeleteConfirmed(TeamRemoveCommand command)
         {
             var response = await mediator.Send(command);

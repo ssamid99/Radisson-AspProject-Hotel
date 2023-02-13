@@ -5,12 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.Business.BlogPostModule;
 using Radisson.Domain.Models.DbContexts;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "sa")]
     public class BlogPostsController : Controller
     {
         private readonly RadissonDbContext db;
@@ -25,12 +23,11 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.blogposts.index")]
         public async Task<IActionResult> Index(BlogPostGetAllQuery query)
         {
-            var user = User;
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        [Authorize("admin.blogposts.details")]
+        [Authorize(Policy = "admin.blogposts.details")]
         public async Task<IActionResult> Details(BlogPostGetSingleQuery query)
         {
             var response = await mediator.Send(query);

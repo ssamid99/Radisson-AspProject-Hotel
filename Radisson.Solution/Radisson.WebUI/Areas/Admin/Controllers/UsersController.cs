@@ -236,7 +236,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "admin.users.remove")]
+        [Authorize(Policy = "admin.users.delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var brand = await db.Users.FindAsync(id);

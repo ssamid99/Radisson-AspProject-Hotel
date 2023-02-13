@@ -29,9 +29,12 @@
                         <li class="breadcrumb-item" style="float: left;">
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">People</a>
-                        </li>
+                        @if (User.HasAccess("admin.people.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">People</a>
+                            </li>
+                        }
                         <li class="breadcrumb-item" style="float: left;">
                             <span>Details</span>
                         </li>
@@ -91,8 +94,15 @@
                             }
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    @if (User.HasAccess("admin.people.edit"))
+                                    {
+                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
+                                    }
+                                    
+                                    @if (User.HasAccess("admin.people.index"))
+                                    {
+                                        <a asp-controller="people" asp-action="index" class="btn btn-info">Cancel</a>
+                                    }
                                 </div>
                             </div>
                         </div>

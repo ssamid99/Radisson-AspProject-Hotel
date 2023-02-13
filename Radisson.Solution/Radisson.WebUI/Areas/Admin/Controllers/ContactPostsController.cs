@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Application.AppCode.Services;
 using Radisson.Domain.Business.ContactPostModule;
 using Radisson.Domain.Models.DbContexts;
 using System;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,14 +26,14 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.emailService = emailService;
         }
 
-        // GET: Admin/ContactPosts
+        [Authorize("admin.contactposts.index")]
         public async Task<IActionResult> Index(ContactPostGetAllQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        // GET: Admin/ContactPosts/Details/5
+        [Authorize("admin.contactposts.details")]
         public async Task<IActionResult> Details(ContactPostGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -43,7 +45,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/ContactPosts/Create
+        [Authorize("admin.contactposts.create")]
         public IActionResult Create()//Bu Action UI ucundur
         {
             var userId = User.GetCurrentUserId();
@@ -68,6 +70,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.contactposts.create")]
         public async Task<IActionResult> Create(ContactPostPostCommand command)//Bu Action UI ucundur
         {
             if (ModelState.IsValid)
@@ -97,7 +100,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/ContactPosts/Edit/5
+        [Authorize("admin.contactposts.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             var contactPost = await db.ContactPosts.FindAsync(id);
@@ -116,6 +119,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.contactposts.edit")]
         public async Task<IActionResult> Edit(ContactPostPutCommand command)
         {
             if (ModelState.IsValid)
@@ -132,6 +136,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/ContactPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.contactposts.delete")]
         public async Task<IActionResult> DeleteConfirmed(ContactPostRemoveCommand command)
         {
             var response = await mediator.Send(command);
@@ -146,7 +151,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         public string GetUserNameSurname(int id)
         {
             var data = db.Users.FirstOrDefault(u => u.Id == id);
-            var ns = $"{data.Name + data.Surname}";
+            var ns = $"{data.Name} {data.Surname}";
             return ns;
         }
 

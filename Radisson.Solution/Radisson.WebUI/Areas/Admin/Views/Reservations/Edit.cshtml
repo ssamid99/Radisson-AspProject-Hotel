@@ -30,9 +30,13 @@
                         <li class="breadcrumb-item" style="float: left;">
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">Rezervasiyalar</a>
-                        </li>
+                        @if (User.HasAccess("admin.reservations.index"))
+                        {
+
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">Rezervasiyalar</a>
+                            </li>
+                        }
                         <li class="breadcrumb-item" style="float: left;">
                             <span>Edit</span>
                         </li>
@@ -97,7 +101,7 @@
                                        data-date-today-highlight="true"
                                        data-date-min-date="1" />
                                 <span asp-validation-for="CheckIn" class="text-danger"></span>
-                              
+
                             </div>
                             <div class="form-group">
                                 <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
@@ -127,7 +131,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Select People</label>
-                                <select id="p1" name="peopleIds" class="form-control select2" >
+                                <select id="p1" name="peopleIds" class="form-control select2">
                                     @foreach (var people in ViewBag.People)
                                     {
                                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
@@ -136,8 +140,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Select People</label>
-                                <select id="p2" name="peopleIds" class="form-control select2" >
-                                    
+                                <select id="p2" name="peopleIds" class="form-control select2">
+
                                     @foreach (var people in ViewBag.People)
                                     {
                                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
@@ -146,7 +150,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Select People</label>
-                                <select id="p3" name="peopleIds" class="select2 " >
+                                <select id="p3" name="peopleIds" class="select2 ">
                                     @foreach (var people in ViewBag.People)
                                     {
                                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
@@ -154,13 +158,13 @@
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label  class="col-sm-2 col-form-label">Seçili olan əlavə qonaqlar </label>
+                                <label class="col-sm-2 col-form-label">Seçili olan əlavə qonaqlar </label>
                                 <div class="fix-row">
                                     <ul style="margin-top:1px">
                                         @foreach (var item in ViewBag.ReservedPeople)
                                         {
                                             <li class="fix-row">@ViewBag.GetPText(Convert.ToInt32(item.Text))</li>
-                                            
+
                                         }
                                     </ul>
                                 </div>
@@ -168,14 +172,17 @@
                             <div class="form-group row">
                                 <label asp-for="Price" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <input asp-for="Price" class="form-control" readonly/>
+                                    <input asp-for="Price" class="form-control" readonly />
                                     <span asp-validation-for="Price" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
                                     <button class="btn btn-primary mr-2 fix-btn">Save</button>
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    @if (User.HasAccess("admin.reservations.index"))
+                                    {
+                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    }
                                 </div>
                             </div>
                         </form>
@@ -205,7 +212,7 @@
                 var additionalPerson3 = $("option:selected", $("select[id='p3']")).data("price");
                 var totalPrice = multipliedPrice + parseInt(additionalPerson1) + parseInt(additionalPerson2) + parseInt(additionalPerson3);
 
-                
+
                 $('input[name="Price"]').val(totalPrice);
 
             });

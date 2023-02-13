@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -27,14 +29,14 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/RadissonRoles
+        [Authorize("admin.radissonroles.index")]
         public async Task<IActionResult> Index(RadissonRoleGetAllQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        // GET: Admin/RadissonRoles/Details/5
+        [Authorize("admin.radissonroles.details")]
         public async Task<IActionResult> Details(RadissonRoleGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -45,7 +47,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/RadissonRoles/Create
+        [Authorize("admin.radissonroles.create")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.radissonroles.create")]
         public async Task<IActionResult> Create(RadissonRolePostCommand command)
         {
             if (ModelState.IsValid)
@@ -66,7 +69,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/RadissonRoles/Edit/5
+        [Authorize("admin.radissonroles.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,6 +92,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.radissonroles.edit")]
         public async Task<IActionResult> Edit(RadissonRolePutCommand command)
         {
             if (ModelState.IsValid)
@@ -103,6 +107,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/RadissonRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.radissonroles.delete")]
         public async Task<IActionResult> DeleteConfirmed(RadissonRoleRemoveCommand command)
         {
             var respone = await mediator.Send(command);

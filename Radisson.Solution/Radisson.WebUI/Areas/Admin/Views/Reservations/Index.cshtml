@@ -63,19 +63,23 @@
                                         Qonaq
                                     </th>
                                     <th>
-                                        Giriş Tarixi    
+                                        Giriş Tarixi
                                     </th>
                                     <th>
                                         Çıxış Tarixi
                                     </th>
                                     <th class="operations">
+                                    @if (User.HasAccess("admin.reservations.create"))
+                                    {
                                         <a asp-action="Create" class="btn btn-sm btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
+
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
@@ -88,21 +92,33 @@
                                     <td class="ellipse">
                                         @item.CheckOut
                                     </td>@*
-                                    <td class="ellipse">
-                                        @ViewBag.GetRTName(item.RoomTypeId)
-                                    </td>*@
+                                <td class="ellipse">
+                                @ViewBag.GetRTName(item.RoomTypeId)
+                                </td>*@
                                     <td class="operations table-imaged">
                                         @if (item.RoomId == null)
                                         {
-                                            <a asp-action="Confirm" asp-route-id="@item.Id" class="btn btn-sm btn-primary"><i class="fa-solid fa-house-circle-check"></i></a>
+                                            @if (User.HasAccess("admin.reservations.confirm"))
+                                            {
+                                                <a asp-action="Confirm" asp-route-id="@item.Id" class="btn btn-sm btn-primary"><i class="fa-solid fa-house-circle-check"></i></a>
+
+                                            }
                                         }
                                         else
                                         {
-                                            <a asp-action="changeroom" asp-route-id="@item.Id" class="btn btn-sm btn-secondary"><i class="fa-solid fa-tent-arrow-turn-left"></i></a>
+                                            @if (User.HasAccess("admin.reservations.changeroom"))
+                                            {
+                                                <a asp-action="changeroom" asp-route-id="@item.Id" class="btn btn-sm btn-secondary"><i class="fa-solid fa-tent-arrow-turn-left"></i></a>
+                                            }
                                         }
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        
+                                        @if (User.HasAccess("admin.reservations.edit"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                        }
+                                        @if (User.HasAccess("admin.reservations.details"))
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
                                     </td>
                                 </tr>
                             }

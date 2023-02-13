@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 
-    
+
 }
 
 <h1>Detallı</h1>
@@ -31,11 +31,14 @@
                         <li class="breadcrumb-item" style="float: left;">
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
+                        @if (User.HasAccess("admin.reservations.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">Rezervasiyalar</a>
+                            </li>
+                        }
                         <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">Rezervasiyalar</a>
-                        </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <span>Create</span>
+                            <span>Detallı</span>
                         </li>
                     </ul>
                 </div>
@@ -93,13 +96,14 @@
                                     @Model.CheckOut
                                 </div>
                             </div>
-                            @if(Model.RoomId != null){
+                            @if (Model.RoomId != null)
+                            {
                                 <div class="form-group row ">
-                                <label asp-for="RoomId" class="col-sm-2 col-form-label"></label>
-                                <div class="fix-row">
-                                    Nömrə @ViewBag.GetRNumber(Convert.ToInt32(Model.RoomId))
+                                    <label asp-for="RoomId" class="col-sm-2 col-form-label"></label>
+                                    <div class="fix-row">
+                                        Nömrə @ViewBag.GetRNumber(Convert.ToInt32(Model.RoomId))
+                                    </div>
                                 </div>
-                            </div>
                             }
                             <div class="form-group row ">
                                 <label asp-for="RoomTypeId" class="col-sm-2 col-form-label"></label>
@@ -111,10 +115,10 @@
                                 <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
                                 <div class="fix-row">
                                     <ul style="margin-top:1px">
-                                        @foreach (var item in Model.PeopleCloud.Select(tc=>tc.People))
-                                       {
+                                        @foreach (var item in Model.PeopleCloud.Select(tc => tc.People))
+                                        {
                                             <li class="fix-row">@item.Text</li>
-                                       }
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -126,9 +130,18 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
-                                    <a class="btn btn-sm btn-danger fix-btn" onclick="removeEntity(@Model.Id, '@Model.Name')"><i class="fa-solid fa-trash-can"></i></a>
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    @if (User.HasAccess("admin.reservations.edit"))
+                                    {
+                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
+                                    }
+                                    @if (User.HasAccess("admin.reservations.delete"))
+                                    {
+                                        <a class="btn btn-sm btn-danger fix-btn" onclick="removeEntity(@Model.Id, '@Model.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                    }
+                                    @if (User.HasAccess("admin.reservations.index"))
+                                    {
+                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    }
                                 </div>
                             </div>
                         </div>

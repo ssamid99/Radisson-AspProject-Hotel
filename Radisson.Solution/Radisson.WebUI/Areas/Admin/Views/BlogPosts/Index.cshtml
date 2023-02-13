@@ -69,7 +69,7 @@
                                     </th>
 
                                     <th class="operations">
-                                        @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.create") && b.Value.Equals("1")))
+                                        @if (User.HasAccess("admin.blogposts.create"))
                                         {
                                             <a asp-action="Create" class="btn btn-sm btn-primary">
                                                 <i class="fa fa-plus"></i>
@@ -99,19 +99,19 @@
                                         </td>
 
                                         <td class="table-imaged nowidth">
-                                            @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.publish") && b.Value.Equals("1")))
+                                            @if (User.HasAccess("admin.blogposts.publish"))
                                             {
                                                 <a class="btn btn-sm btn-secondary" onclick="publishDate(@item.Id, '@item.Title')"><i class="fa-solid fa-upload"></i></a>
                                             }
-                                            @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.edit") && b.Value.Equals("1")))
+                                            @if (User.HasAccess("admin.blogposts.edit"))
                                             {
                                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
                                             }
-                                            @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.details") && b.Value.Equals("1")))
+                                            @if (User.HasAccess("admin.blogposts.details"))
                                             {
                                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
                                             }
-                                            @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.delete") && b.Value.Equals("1")))
+                                            @if (User.HasAccess("admin.blogposts.delete"))
                                             {
                                                 <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')"><i class="fa-solid fa-trash-can"></i></a>
                                             }

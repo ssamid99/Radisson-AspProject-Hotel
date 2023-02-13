@@ -5,11 +5,14 @@
 }
 
 <h2>Otel Haqqında</h2>
-@if (ViewBag.IsTableEmpty)
+@if (User.HasAccess("admin.radissonhotels.create"))
 {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    @if (ViewBag.IsTableEmpty)
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    }
 }
 
 <div class="page-wrapper">
@@ -32,9 +35,12 @@
                         <li class="breadcrumb-item" style="float: left;">
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">RadissonHotel</a>
-                        </li>
+                        @if (User.HasAccess("admin.radissonhotels.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">RadissonHotel</a>
+                            </li>
+                        }
                         <li class="breadcrumb-item" style="float: left;">
                             <span>Index</span>
                         </li>
@@ -91,11 +97,14 @@
                             </div>
                             @if (!ViewBag.IsTableEmpty)
                             {
-                            <div class="form-group row">
-                                <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="Edit" asp-route-id=@Model?.Id class="btn btn-warning mr-2">Edit</a>
+                                <div class="form-group row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        @if (User.HasAccess("admin.radissonhotels.edit"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id=@Model?.Id class="btn btn-warning mr-2">Edit</a>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
                             }
                         </div>
                     </div>

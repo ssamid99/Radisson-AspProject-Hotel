@@ -30,7 +30,7 @@
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
                         <li class="breadcrumb-item" style="float: left;">
-                            @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.index") && b.Value.Equals("1")))
+                            @if (User.HasAccess("admin.blogposts.index"))
                             {
                                 <a asp-action="index">BlogPosts</a>
                             }
@@ -85,7 +85,7 @@
 
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    @if (User.HasClaim(b => b.Type.Equals("admin.blogpost.deletedposts") && b.Value.Equals("1")))
+                                    @if (User.HasAccess("admin.blogposts.deletedposts"))
                                     {
                                         <a asp-action="deletedposts" class="btn btn-info">Cancel</a>
                                     }

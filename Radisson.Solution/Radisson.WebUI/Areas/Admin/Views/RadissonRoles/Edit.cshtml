@@ -26,9 +26,12 @@
                 <li class="breadcrumb-item" style="float: left;">
                     <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                 </li>
-                <li class="breadcrumb-item" style="float: left;">
-                    <a asp-action="index">Rollar</a>
-                </li>
+                @if (User.HasAccess("admin.radissonroles.index"))
+                {
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="index">Rollar</a>
+                    </li>
+                }
                 <li class="breadcrumb-item" style="float: left;">
                     <span>Redaktə Et</span>
                 </li>
@@ -68,7 +71,11 @@
                         <div class="form-group row">
                             <div class="col-12 d-flex justify-content-end">
                                 <button class="btn btn-primary mr-2 fix-btn">Save</button>
-                                <a asp-controller="radissonroles" asp-action="index" class="btn btn-info">Cancel</a>
+                                @if (User.HasAccess("admin.radissonroles.index"))
+                                {
+                                    <a asp-controller="radissonroles" asp-action="index" class="btn btn-info">Cancel</a>
+
+                                }
                             </div>
                         </div>
                     </form>

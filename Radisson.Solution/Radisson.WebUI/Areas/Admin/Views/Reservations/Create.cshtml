@@ -66,7 +66,7 @@
                     @foreach (var roomType in ViewBag.RoomTypes)
                     {
                         <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
-                        
+
                     }
                 </select>
                 <span asp-validation-for="RoomTypeId" class="text-danger"></span>
@@ -83,7 +83,7 @@
             <div class="form-group">
                 <label>Select People</label>
                 <select id="p2" name="peopleIds" class="form-control select2" selected-value="@Model?.peopleIds.ToJsonArray()">
-                    
+
                     @foreach (var people in ViewBag.People)
                     {
                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
@@ -107,16 +107,19 @@
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary fix-btn" />
-                <a asp-action="index" class="btn btn-info">Cancel</a>
+                @if (User.HasAccess("admin.reservations.index"))
+                {
+                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                }
             </div>
         </form>
-       
+
     </div>
 </div>
 
 @section addjs{
     <script class="removeable" src="~/lib/select2/js/select2.full.min.js"></script>
-    <script >
+    <script>
         $(document).ready(function () {
             $("input[name='CheckIn']").change(function () {
                 $("input[name='CheckOut']").attr("min", $(this).val());

@@ -96,12 +96,24 @@
                                         @Html.DisplayFor(modelItem => item.AnswerDate)
                                     </td>
                                     <td class="operations table-imaged">
-                                        @if (item.AnswerDate == null)
+                                        @if (User.HasAccess("admin.contactposts.edit"))
                                         {
-                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Reply</a>
+                                            @if (item.AnswerDate == null)
+                                            {
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Reply</a>
+                                            }
+
                                         }
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        @if (User.HasAccess("admin.contactposts.details"))
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+
+                                        }
+                                        @if (User.HasAccess("admin.contactposts.delete"))
+                                        {
+                                            <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+
+                                        }
                                     </td>
                                 </tr>
                             }

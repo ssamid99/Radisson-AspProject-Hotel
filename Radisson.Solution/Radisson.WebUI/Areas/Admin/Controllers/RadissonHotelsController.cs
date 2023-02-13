@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/RadissonHotels
+        [Authorize("admin.radissonhotels.index")]
         public async Task<IActionResult> Index(RadissonHotelGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -36,7 +37,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
 
-        // GET: Admin/RadissonHotels/Create
+        [Authorize("admin.radissonhotels.create")]
         public IActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.radissonhotels.create")]
         public async Task<IActionResult> Create(RadissonHotelPostCommand command)
         {
             if (ModelState.IsValid)
@@ -57,7 +59,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/RadissonHotels/Edit/5
+        [Authorize("admin.radissonhotels.edit")]
         public async Task<IActionResult> Edit(RadissonHotelGetAllQuery query)
         {
 
@@ -83,6 +85,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.radissonhotels.edit")]
         public async Task<IActionResult> Edit(RadissonHotelPutCommand command)
         {
             if (ModelState.IsValid)

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -26,14 +28,14 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/ServicesHeaders
+        [Authorize("admin.servicesheaders.index")]
         public async Task<IActionResult> Index(ServiceHeaderGetAllQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);
         }
 
-        // GET: Admin/ServicesHeaders/Create
+        [Authorize("admin.servicesheaders.create")]
         public IActionResult Create()
         {
             return View();
@@ -44,6 +46,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesheaders.create")]
         public async Task<IActionResult> Create(ServiceHeaderPostCommand command)
         {
             if (ModelState.IsValid)
@@ -54,7 +57,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/ServicesHeaders/Edit/5
+        [Authorize("admin.servicesheaders.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,6 +80,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesheaders.edit")]
         public async Task<IActionResult> Edit(ServiceHeaderPutCommand command)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/ServicesHeaders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesheaders.delete")]
         public async Task<IActionResult> DeleteConfirmed(ServiceHeaderRemoveCommand command)
         {
             var response = await mediator.Send(command);

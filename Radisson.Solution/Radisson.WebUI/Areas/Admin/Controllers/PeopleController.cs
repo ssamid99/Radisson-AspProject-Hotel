@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/People
+        [Authorize("admin.people.index")]
         public async Task<IActionResult> Index(PeopleGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -37,7 +38,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/People/Details/5
+        [Authorize("admin.people.details")]
         public async Task<IActionResult> Details(PeopleGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -48,7 +49,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/People/Create
+        [Authorize("admin.people.create")]
         public IActionResult Create()
         {
             return View();
@@ -59,6 +60,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.people.create")]
         public async Task<IActionResult> Create(PeoplePostCommand command)
         {
             if (ModelState.IsValid)
@@ -69,7 +71,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/People/Edit/5
+        [Authorize("admin.people.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +95,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.people.edit")]
         public async Task<IActionResult> Edit(PeoplePutCommand command)
         {
             if (ModelState.IsValid)
@@ -107,6 +110,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.people.delete")]
         public async Task<IActionResult> DeleteConfirmed(PeopleRemoveCommand command)
         {
             if (ModelState.IsValid)

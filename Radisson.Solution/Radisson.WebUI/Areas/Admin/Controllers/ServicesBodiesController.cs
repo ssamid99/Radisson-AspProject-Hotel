@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/ServicesBodies
+        [Authorize("admin.servicesbodies.index")]
         public async Task<IActionResult> Index(ServiceBodyGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -30,7 +31,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/ServicesBodies/Details/5
+        [Authorize("admin.servicesbodies.details")]
         public async Task<IActionResult> Details(ServiceBodyGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -41,7 +42,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/ServicesBodies/Create
+        [Authorize("admin.servicesbodies.create")]
         public IActionResult Create()
         {
             ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h => h.DeletedDate == null).ToList(), "Id", "Title");
@@ -53,6 +54,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesbodies.create")]
         public async Task<IActionResult> Create(ServiceBodyPostCommand command)
         {
             if (ModelState.IsValid)
@@ -64,7 +66,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/ServicesBodies/Edit/5
+        [Authorize("admin.servicesbodies.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +93,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesbodies.edit")]
         public async Task<IActionResult> Edit(ServiceBodyPutCommand command)
         {
             if (ModelState.IsValid)
@@ -105,6 +108,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/ServicesBodies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.servicesbodies.delete")]
         public async Task<IActionResult> DeleteConfirmed(ServiceBodyRemoveCommand command)
         {
             var response = await mediator.Send(command);

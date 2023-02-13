@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/Reservations
+        [Authorize("admin.reservations.index")]
         public async Task<IActionResult> Index(ReservationGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -31,7 +32,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
         [HttpGet]
-        // GET: Admin/Reservations/Details/5
+        [Authorize("admin.reservations.details")]
         public async Task<IActionResult> Details(ReservationGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -43,7 +44,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             ViewBag.GetRNumber = new Func<int, int>(GetRNumber);
             return View(response);
         }
-        // GET: Admin/Reservations/Create
+        [Authorize("admin.reservations.create")]
         public IActionResult Create()
         {
             var userId = User.GetCurrentUserId();
@@ -70,6 +71,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.reservations.create")]
         public async Task<IActionResult> Create(ReservationPostCommand command)
         {
             if (ModelState.IsValid)
@@ -106,7 +108,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/Reservations/Edit/5
+        [Authorize("admin.reservations.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -143,6 +145,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.reservations.edit")]
         public async Task<IActionResult> Edit(ReservationPutCommand command)
         {
             if (ModelState.IsValid)
@@ -160,6 +163,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize("admin.reservations.confirm")]
         public async Task<IActionResult> Confirm(int? id)
         {
             if (id == null)
@@ -178,6 +182,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(reservation);
         }
         [HttpPost]
+        [Authorize("admin.reservations.confirm")]
         public async Task<IActionResult> Confirm(ReservationConfirmCommand command)
         {
             if (ModelState.IsValid)
@@ -196,6 +201,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize("admin.reservations.changeroom")]
         public async Task<IActionResult> ChangeRoom(int? id)
         {
             if (id == null)
@@ -218,6 +224,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize("admin.reservations.changeroom")]
         public async Task<IActionResult> ChangeRoom(ReservationChangeRoomCommand command)
         {
             if (ModelState.IsValid)
@@ -237,6 +244,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.reservations.delete")]
         public async Task<IActionResult> DeleteConfirmed(ReservationRemoveCommand command)
         {
             var response = await mediator.Send(command);
@@ -248,6 +256,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
+        [Authorize("admin.reservations.deletedindex")]
         public async Task<IActionResult> DeletedIndex(ReservationDeletedGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -255,7 +264,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
         [HttpGet]
-        // GET: Admin/Reservations/Details/5
+        [Authorize("admin.reservations.deleteddetails")]
         public async Task<IActionResult> DeletedDetails(ReservationDeletedGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -270,6 +279,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.reservations.deletedremove")]
         public async Task<IActionResult> DeletedRemove(ReservationDeletedRemoveCommand command)
         {
             var response = await mediator.Send(command);

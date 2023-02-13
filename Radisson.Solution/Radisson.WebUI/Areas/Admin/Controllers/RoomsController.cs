@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/Rooms
+        [Authorize("admin.rooms.index")]
         public async Task<IActionResult> Index(RoomGetAllQuery query)
         {
 
@@ -33,7 +35,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/Rooms/Details/5
+        [Authorize("admin.rooms.details")]
         public async Task<IActionResult> Details(RoomGetSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -45,7 +47,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/Rooms/Create
+        [Authorize("admin.rooms.create")]
         public IActionResult Create()
         {
             ViewBag.RoomType = new SelectList(db.RoomTypes.Where(rt=>rt.DeletedDate == null).ToList(), "Id", "Name");
@@ -54,6 +56,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.rooms.create")]
         public async Task<IActionResult> Create(RoomPostCommand command)
         {
             if (ModelState.IsValid)
@@ -65,7 +68,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/Rooms/Edit/5
+        [Authorize("admin.rooms.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +96,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.rooms.edit")]
         public async Task<IActionResult> Edit(RoomPutCommand command)
         {
             //if (id != room.Id)
@@ -113,6 +117,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize("admin.rooms.delete")]
         public async Task<IActionResult> DeleteConfirmed(RoomRemoveCommand command)
         {
             var response = await mediator.Send(command);

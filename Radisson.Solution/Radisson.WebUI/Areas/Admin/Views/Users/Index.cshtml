@@ -89,7 +89,7 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     }
-                                    @if (User.HasAccess("admin.users.remove"))
+                                    @if (User.HasAccess("admin.users.delete"))
                                     {
                                         <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id,'@item.Name')">
                                             <i class="fa fa-trash"></i>

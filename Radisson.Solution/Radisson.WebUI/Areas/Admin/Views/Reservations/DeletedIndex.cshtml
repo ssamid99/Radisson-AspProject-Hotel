@@ -98,8 +98,16 @@
                                         @ViewBag.GetRTName(item.RoomTypeId)
                                     </td>
                                     <td class="operations table-imaged">
-                                        <a asp-action="DeletedDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        @if (User.HasAccess("admin.reservations.deleteddetails"))
+                                        {
+                                            <a asp-action="DeletedDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+
+                                        }
+                                        @if (User.HasAccess("admin.reservations.deletedremove"))
+                                        {
+                                            <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+
+                                        }
                                     </td>
                                 </tr>
                             }

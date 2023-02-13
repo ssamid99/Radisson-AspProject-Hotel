@@ -23,9 +23,12 @@
                             <i class="feather icon-home"></i>
                         </a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a asp-action="index">İstifadəçilər</a>
-                    </li>
+                    @if (User.HasAccess("admin.users.index"))
+                    {
+                        <li class="breadcrumb-item">
+                            <a asp-action="index">İstifadəçilər</a>
+                        </li>
+                    }
                     <li class="breadcrumb-item">
                         <span>@Model.Name</span>
                     </li>
@@ -142,7 +145,10 @@
 
                 <div class="form-group row">
                     <div class="col-12 d-flex justify-content-end">
-                        <a asp-action="Index" class="btn btn-info">Geri</a>
+                        @if (User.HasAccess("admin.users.index"))
+                        {
+                            <a asp-action="Index" class="btn btn-info">Geri</a>
+                        }
                     </div>
                 </div>
             </div>

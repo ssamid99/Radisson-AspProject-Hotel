@@ -73,13 +73,16 @@
                                     </th>
 
                                     <th class="operations">
+                                    @if (User.HasAccess("admin.roomtypes.create"))
+                                    {
                                         <a asp-action="Create" class="btn btn-sm btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
@@ -100,9 +103,18 @@
                                     </td>
 
                                     <td class="operations table-imaged">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-danger" onclick="deleteEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        @if (User.HasAccess("admin.roomtypes.edit"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                        }
+                                        @if (User.HasAccess("admin.roomtypes.details"))
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
+                                        @if (User.HasAccess("admin.roomtypes.delete"))
+                                        {
+                                            <a class="btn btn-sm btn-danger" onclick="deleteEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        }
                                     </td>
                                 </tr>
                             }
@@ -158,6 +170,6 @@
                     }
                 });
         }
-        
+
     </script>
      }

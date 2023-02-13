@@ -25,9 +25,12 @@
                         <li class="breadcrumb-item" style="float: left;">
                             <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item" style="float: left;">
-                            <a asp-action="index">Müraciətlər</a>
-                        </li>
+                        @if (User.HasAccess("admin.contactposts.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">Müraciətlər</a>
+                            </li>
+                        }
                         <li class="breadcrumb-item" style="float: left;">
                             <span>Detallı</span>
                         </li>
@@ -109,7 +112,10 @@
 
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    @if (User.HasAccess("admin.contactposts.index"))
+                                    {
+                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                    }
                                 </div>
                             </div>
                         </div>

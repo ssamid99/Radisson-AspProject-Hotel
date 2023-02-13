@@ -60,15 +60,19 @@
                                     <th>
                                         NormalizedName
                                     </th>
-                                    
+
                                     <th class="operations">
+                                    @if (User.HasAccess("admin.radissonroles.create"))
+                                    {
                                         <a asp-action="Create" class="btn btn-sm btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                    }
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
@@ -79,9 +83,18 @@
                                         @item.NormalizedName
                                     </td>
                                     <td class="operations table-imaged">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        @if (User.HasAccess("admin.radissonroles.edit"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                        }
+                                        @if (User.HasAccess("admin.radissonroles.details"))
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
+                                        @if (User.HasAccess("admin.radissonroles.delete"))
+                                        {
+                                            <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>
+                                        }
                                     </td>
                                 </tr>
                             }
