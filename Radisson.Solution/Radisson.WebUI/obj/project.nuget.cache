@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "u7dEg076CB9SNVxDM25OBUKdts3BQMfM4+GobsPkgf5119SrN2FtT1Ck+CfKFRfdDQlJQVLjth3mS9wzw3MU2g==",
+  "dgSpecHash": "O39eJC5GNw6mz658ekLPFvye9U/DfHaoifWjrbzNUOOqFKR/oX1hqoxHP6PymwhXwgkH5nKtYACncVMstgWKAQ==",
   "success": true,
   "projectFilePath": "D:\\Radisson-AspProject-Hotel\\Radisson.Solution\\Radisson.WebUI\\Radisson.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\12345\\.nuget\\packages\\coravel\\4.2.0\\coravel.4.2.0.nupkg.sha512",
-    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation\\11.5.0\\fluentvalidation.11.5.0.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
-    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
+    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.0\\fluentvalidation.dependencyinjectionextensions.11.5.0.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",

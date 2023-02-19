@@ -61,12 +61,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.radissonroles.create")]
         public async Task<IActionResult> Create(RadissonRolePostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var response = await mediator.Send(command);
+                return View("Create", command);
+            }
+            else
+            {
+                var reponse = await mediator.Send(command);
                 return RedirectToAction(nameof(Index));
             }
-            return View(command);
         }
 
         [Authorize("admin.radissonroles.edit")]

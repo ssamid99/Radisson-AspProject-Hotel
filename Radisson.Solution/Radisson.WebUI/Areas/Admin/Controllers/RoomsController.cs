@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Radisson.Domain.Business.RoomModule;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Validators;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {
@@ -59,13 +61,16 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.rooms.create")]
         public async Task<IActionResult> Create(RoomPostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View("Create", command);
+            }
+            else
             {
                 var reponse = await mediator.Send(command);
+                ViewBag.RoomType = new SelectList(db.RoomTypes, "Id", "Name");
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.RoomType = new SelectList(db.RoomTypes, "Id", "Name");
-            return View(command);
         }
 
         [Authorize("admin.rooms.edit")]

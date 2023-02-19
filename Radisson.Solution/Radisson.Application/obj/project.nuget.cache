@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/lxxRDRSveeW5NaI4UIiRriLQHf1BGSSrAsC/BenesLr0fEAoRbLU5QxQtuqlvbvO8wYYA0XcSfHnNudX+vU5g==",
+  "dgSpecHash": "2E0acG387oBhFWOaY9MOiRm4r/HjsaBNueDkdPYYJlJhqWfLrP5Qo7sE1TbffMWeWtpoQ/Uh3qFQG0XkAWDMvA==",
   "success": true,
   "projectFilePath": "D:\\Radisson-AspProject-Hotel\\Radisson.Solution\\Radisson.Application\\Radisson.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\12345\\.nuget\\packages\\coravel\\4.2.0\\coravel.4.2.0.nupkg.sha512",
-    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation\\11.5.0\\fluentvalidation.11.5.0.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

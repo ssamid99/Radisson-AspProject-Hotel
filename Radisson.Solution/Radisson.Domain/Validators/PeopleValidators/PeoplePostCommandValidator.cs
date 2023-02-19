@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.PeopleModule;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.PeopleValidators
 {
-    public class PeopleValidators : AbstractValidator<People>
+    public class PeoplePostCommandValidator : AbstractValidator<PeoplePostCommand>
     {
-        public PeopleValidators()
+        public PeoplePostCommandValidator()
         {
             RuleFor(entity => entity.Text)
                .NotEmpty()

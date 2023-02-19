@@ -1,24 +1,24 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.AboutModule.ServicesBodies;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.AboutModuleValidators.ServicesBodiesValidators
 {
-    public class RoomTypeValidators : AbstractValidator<RoomType>
+    public class ServicesBodyPostCommandValidator : AbstractValidator<ServiceBodyPostCommand>
     {
-        public RoomTypeValidators()
+        public ServicesBodyPostCommandValidator()
         {
-            RuleFor(entity => entity.Name)
+            RuleFor(entity => entity.Title)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!")
                .MaximumLength(25)
                .WithMessage("Bu hissənin uzunluğu maksimum 25 olmalıdır!");
-            RuleFor(entity => entity.PriceInclude)
-               .NotEmpty()
-               .WithMessage("Boş buraxıla bilməz!");
-            RuleFor(entity => entity.Price)
+            RuleFor(entity => entity.Text)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
             RuleFor(entity => entity.ImagePath)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.ServicesHeaderId)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
         }

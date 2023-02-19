@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Radisson.Domain.Validators;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Radisson.Domain.Business.RoomModule
 {

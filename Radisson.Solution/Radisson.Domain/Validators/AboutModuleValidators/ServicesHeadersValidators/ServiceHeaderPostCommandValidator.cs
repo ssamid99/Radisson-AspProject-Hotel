@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.AboutModule.ServicesHeaders;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.AboutModuleValidators.ServicesHeadersValidators
 {
-    public class ServiceHeaderValidators : AbstractValidator<ServicesHeader>
+    public class ServicesHeaderPostCommandValidator : AbstractValidator<ServiceHeaderPostCommand>
     {
-        public ServiceHeaderValidators()
+        public ServicesHeaderPostCommandValidator()
         {
             RuleFor(entity => entity.Title)
                .NotEmpty()

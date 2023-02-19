@@ -18,8 +18,11 @@ using Radisson.Application.AppCode.Providers;
 using Radisson.Application.AppCode.Services;
 using Radisson.Domain.AppCode.Providers;
 using Radisson.Domain.AppCode.Services;
+using Radisson.Domain.Business.RoomTypeModule;
 using Radisson.Domain.Models.DbContexts;
+using Radisson.Domain.Models.Entities;
 using Radisson.Domain.Models.Entities.Membership;
+using Radisson.Domain.Validators;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -48,6 +51,9 @@ namespace Radisson.WebUI
                 cfg.Filters.Add(new AuthorizeFilter(policy));
                 cfg.ModelBinderProviders.Insert(0, new BooleanBinderProvider());
             });
+            services.AddFluentValidationAutoValidation();
+            //services.AddScoped<IValidator<RoomTypePostCommand>, RoomTypePostCommandValidators>();
+
             services.AddDbContext<RadissonDbContext>(cfg =>
             {
                 cfg.UseSqlServer(configuration["ConnectionStrings:cString"]);
@@ -70,7 +76,8 @@ namespace Radisson.WebUI
                 cfg.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 3, 0);
             });
 
-            services.ConfigureApplicationCookie(cfg => {
+            services.ConfigureApplicationCookie(cfg =>
+            {
 
                 cfg.LoginPath = "/signin.html";
                 cfg.AccessDeniedPath = "/accessdenied.html";
@@ -116,12 +123,13 @@ namespace Radisson.WebUI
             services.AddSingleton<CryptoService>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IClaimsTransformation, AppClaimProvider>();
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Radisson."));
-            services.AddMediatR(assemblies.ToArray());
-            services.AddValidatorsFromAssemblies(assemblies);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Radisson.")).ToArray();
+            services.AddMediatR(assemblies);
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-
             services.AddScheduler();
+            services.AddValidatorsFromAssemblies(assemblies);
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

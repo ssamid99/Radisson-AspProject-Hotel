@@ -29,6 +29,13 @@ namespace Radisson.Domain.Business.ReservationModule
                 {
                     return null;
                 }
+                //var control = await db.Rooms.FirstOrDefaultAsync(x => x.RoomTypeId == request.Id && x.DeletedDate == null, cancellationToken);
+                //if(control == null)
+                //{
+                //    return null;
+                //}
+                //control.RoomTypeId = Convert.ToInt32(null);
+                //control.Aviable = false;
                 data.DeletedDate = DateTime.UtcNow.AddHours(4);
                 await db.SaveChangesAsync(cancellationToken);
                 return data;

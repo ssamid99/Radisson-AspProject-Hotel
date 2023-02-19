@@ -54,21 +54,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.blogposts.create")]
         public async Task<IActionResult> Create(BlogPostPostCommand command)
         {
-            if (command.Image == null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("ImagePath", "Shekil Gonderilmelidir");
+                return View("Create", command);
             }
-
-            if (ModelState.IsValid)
+            else
             {
-                var response = await mediator.Send(command);
-                if (response.Error == false)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
+                var reponse = await mediator.Send(command);
+                return RedirectToAction(nameof(Index));
             }
-
-            return View(command);
         }
 
         [Authorize("admin.blogposts.edit")]

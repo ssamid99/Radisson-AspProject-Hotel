@@ -73,31 +73,30 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.contactposts.create")]
         public async Task<IActionResult> Create(ContactPostPostCommand command)//Bu Action UI ucundur
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var response = await mediator.Send(command);
-               
-                if (response != null)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
+                return View("Create", command);
             }
-            var userId = User.GetCurrentUserId();
-
-            if (userId > 0)
+            else
             {
-                var user = db.Users.FirstOrDefault(u => u.Id == userId);
+                var reponse = await mediator.Send(command);
 
-                if (user != null)
+                var userId = User.GetCurrentUserId();
+
+                if (userId > 0)
                 {
-                    ViewBag.Name = user.Name;
-                    ViewBag.Surname = user.Surname;
-                    ViewBag.Email = user.Email;
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user != null)
+                    {
+                        ViewBag.Name = user.Name;
+                        ViewBag.Surname = user.Surname;
+                        ViewBag.Email = user.Email;
+                    }
+
                 }
-
+                return RedirectToAction(nameof(Index));
             }
-
-            return View(command);
         }
 
         [Authorize("admin.contactposts.edit")]

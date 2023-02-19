@@ -57,13 +57,16 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.servicesbodies.create")]
         public async Task<IActionResult> Create(ServiceBodyPostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var response = await mediator.Send(command);
+                return View("Create", command);
+            }
+            else
+            {
+                var reponse = await mediator.Send(command);
+                ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h=>h.DeletedDate == null).ToList(), "Id", "Title", command.ServicesHeaderId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h=>h.DeletedDate == null).ToList(), "Id", "Title", command.ServicesHeaderId);
-            return View(command);
         }
 
         [Authorize("admin.servicesbodies.edit")]

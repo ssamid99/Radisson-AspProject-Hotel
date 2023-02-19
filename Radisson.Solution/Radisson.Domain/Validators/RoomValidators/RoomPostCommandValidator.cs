@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.RoomModule;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.RoomValidators
 {
-    public class RoomValidators : AbstractValidator<Room>
+    public class RoomPostCommandValidator : AbstractValidator<RoomPostCommand>
     {
-        public RoomValidators()
+        public RoomPostCommandValidator()
         {
             RuleFor(entity => entity.Number)
                .NotEmpty()

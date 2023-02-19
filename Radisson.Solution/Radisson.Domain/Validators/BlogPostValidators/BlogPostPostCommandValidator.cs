@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.BlogPostModule;
 
 namespace Radisson.Domain.Validators.BlogPostValidators
 {
-    public class BlogPostValidator : AbstractValidator<BlogPost>
+    public class BlogPostPostCommandValidator : AbstractValidator<BlogPostPostCommand>
     {
-        public BlogPostValidator()
+        public BlogPostPostCommandValidator()
         {
             RuleFor(entity => entity.Title)
                 .NotEmpty()
@@ -21,7 +21,7 @@ namespace Radisson.Domain.Validators.BlogPostValidators
 
             RuleFor(entity => entity.ImagePath)
                 .NotEmpty()
-                .WithMessage("Boş buraxıla bilməz!");
+                .WithMessage("Şəkil seçilməyib!");
         }
     }
 }

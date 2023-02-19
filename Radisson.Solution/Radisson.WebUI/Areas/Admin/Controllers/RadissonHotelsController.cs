@@ -51,12 +51,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.radissonhotels.create")]
         public async Task<IActionResult> Create(RadissonHotelPostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var response = await mediator.Send(command);
+                return View("Create", command);
+            }
+            else
+            {
+                var reponse = await mediator.Send(command);
                 return RedirectToAction(nameof(Index));
             }
-            return View(command);
         }
 
         [Authorize("admin.radissonhotels.edit")]
@@ -71,7 +74,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var editCommand = new RadissonHotelPutCommand();
             editCommand.Title = radissonHotel.Title;
             editCommand.Text = radissonHotel.Text;
-            editCommand.Images = radissonHotel.Images.Select(x => new ImageItem
+            editCommand.Images = radissonHotel.Images.Where(i=>i.DeletedDate == null).Select(x => new ImageItem
             {
                 Id = x.Id,
                 TempPath = x.Name,

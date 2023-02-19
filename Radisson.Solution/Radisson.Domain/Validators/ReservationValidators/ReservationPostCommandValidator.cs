@@ -1,22 +1,22 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
+using Radisson.Domain.Business.ReservationModule;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.ReservationValidators
 {
-    public class ContactPostValidators : AbstractValidator<ContactPost>
+    public class ReservationPostCommandValidator : AbstractValidator<ReservationPostCommand>
     {
-        public ContactPostValidators()
+        public ReservationPostCommandValidator()
         {
             RuleFor(entity => entity.Name)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!")
-               .MaximumLength(20)
-               .WithMessage("Bu hissənin uzunluğu maksimum 20 olmalıdır!");
+               .MaximumLength(25)
+               .WithMessage("Bu hissənin uzunluğu maksimum 25 olmalıdır!");
             RuleFor(entity => entity.Surname)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!")
                .MaximumLength(35)
-               .WithMessage("Bu hissənin uzunluğu maksimum 35 olmalıdır!");
+               .WithMessage("Bu hissənin uzunluğu maksimum 25 olmalıdır!");
             RuleFor(entity => entity.Email)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!")
@@ -24,12 +24,13 @@ namespace Radisson.Domain.Validators
                .WithMessage("Yanlış email adresi!")
                .MaximumLength(45)
                .WithMessage("Bu hissənin uzunluğu maksimum 45 olmalıdır!");
-            RuleFor(entity => entity.Phone)
+            RuleFor(entity => entity.CheckIn)
                .NotEmpty()
-               .WithMessage("Boş buraxıla bilməz!")
-               .MaximumLength(30)
-               .WithMessage("Bu hissənin uzunluğu maksimum 30 olmalıdır!");
-            RuleFor(entity => entity.Message)
+               .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.CheckOut)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.RoomTypeId)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
         }

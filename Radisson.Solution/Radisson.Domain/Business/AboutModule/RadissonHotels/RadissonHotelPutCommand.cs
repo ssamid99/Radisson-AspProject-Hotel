@@ -36,9 +36,7 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
             {
                 try
                 {
-                    var entity = db.RadissonHotels
-                        .Include(p => p.Images)
-                         .FirstOrDefault(p => p.Id == request.Id && p.DeletedDate == null);
+                    var entity = await db.RadissonHotels.Include(p => p.Images).FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
                     if (entity == null)
                     {
@@ -59,13 +57,14 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
 
                             string extension = Path.GetExtension(imageItem.File.FileName);//.jpg
                             string name = $"hotel-{Guid.NewGuid().ToString().ToLower()}{extension}";
-
+                            image.Name = name;
                             string fullName = env.GetImagePhysicalPath(name);
 
                             using (var fs = new FileStream(fullName, FileMode.Create, FileAccess.Write))
                             {
                                 await imageItem.File.CopyToAsync(fs, cancellationToken);
                             }
+                            
                             entity.Images.Add(image);
                         }
                         #endregion

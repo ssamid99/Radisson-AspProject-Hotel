@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Radisson.Domain.Models.Entities;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.SubscribeValidators
 {
-    public class SubscribeValidators : AbstractValidator<Subscribe>
+    public class SubscribeValidator : AbstractValidator<Subscribe>
     {
-        public SubscribeValidators()
+        public SubscribeValidator()
         {
             RuleFor(entity => entity.Email)
               .NotEmpty()

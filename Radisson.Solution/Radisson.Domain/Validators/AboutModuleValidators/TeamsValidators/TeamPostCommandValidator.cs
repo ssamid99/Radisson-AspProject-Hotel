@@ -1,16 +1,11 @@
 ﻿using FluentValidation;
-using Radisson.Domain.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Radisson.Domain.Business.AboutModule.Teams;
 
-namespace Radisson.Domain.Validators
+namespace Radisson.Domain.Validators.AboutModuleValidators.TeamsValidators
 {
-    public class TeamValidators : AbstractValidator<Team>
+    public class TeamPostCommandValidator : AbstractValidator<TeamPostCommand>
     {
-        public TeamValidators()
+        public TeamPostCommandValidator()
         {
             RuleFor(entity => entity.Name)
                  .NotEmpty()
@@ -27,7 +22,7 @@ namespace Radisson.Domain.Validators
                .WithMessage("Boş buraxıla bilməz!");
             RuleFor(entity => entity.ImagePath)
                .NotEmpty()
-               .WithMessage("Boş buraxıla bilməz!");
+               .WithMessage("Şəkil seçilməyib!");
         }
     }
 }

@@ -74,37 +74,41 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.reservations.create")]
         public async Task<IActionResult> Create(ReservationPostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View("Create", command);
+            }
+            else
             {
                 var response = await mediator.Send(command);
                 var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
                 if (rooms.Count == 0)
                 {
-                    ModelState.AddModelError("RoomTypeId", "Error");
+                    ModelState.AddModelError(string.Empty, "No rooms are available for the selected room type.");
                     return View(command);
                 }
                 if (response.Error == false)
                 {
                     return RedirectToAction(nameof(Index));
                 }
-            }
-            var userId = User.GetCurrentUserId();
 
-            if (userId > 0)
-            {
-                var user = db.Users.FirstOrDefault(u => u.Id == userId);
+                var userId = User.GetCurrentUserId();
 
-                if (user != null)
+                if (userId > 0)
                 {
-                    ViewBag.Name = user.Name;
-                    ViewBag.Surname = user.Surname;
-                    ViewBag.Email = user.Email;
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user != null)
+                    {
+                        ViewBag.Name = user.Name;
+                        ViewBag.Surname = user.Surname;
+                        ViewBag.Email = user.Email;
+                    }
+
                 }
-
-            }
-            ViewBag.RoomTypes = db.RoomTypes.ToList();
-            ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
-
+                ViewBag.RoomTypes = db.RoomTypes.ToList();
+                ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
+            } 
             return View(command);
         }
 
@@ -244,9 +248,13 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         // POST: Admin/Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize("admin.reservations.delete")]
-        public async Task<IActionResult> DeleteConfirmed(ReservationRemoveCommand command)
+        //[Authorize("admin.reservations.delete")]
+        public async Task<IActionResult> Delete(int? id, ReservationRemoveCommand command)
         {
+            if(command.Id != id)
+            {
+                return NotFound();
+            }
             var response = await mediator.Send(command);
 
             if (response != null)

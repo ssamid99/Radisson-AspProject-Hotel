@@ -35,6 +35,7 @@
         "dependencies": {
           "Coravel": "4.2.0",
           "FluentValidation.AspNetCore": "11.2.2",
+          "FluentValidation.DependencyInjectionExtensions": "11.5.0",
           "MediatR": "11.1.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -348,11 +349,11 @@
           "lib/netstandard2.0/Coravel.dll": {}
         }
       },
-      "FluentValidation/11.2.1": {
+      "FluentValidation/11.5.0": {
         "runtime": {
           "lib/net5.0/FluentValidation.dll": {
             "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.2.1.0"
+            "fileVersion": "11.5.0.0"
           }
         },
         "compile": {
@@ -361,8 +362,8 @@
       },
       "FluentValidation.AspNetCore/11.2.2": {
         "dependencies": {
-          "FluentValidation": "11.2.1",
-          "FluentValidation.DependencyInjectionExtensions": "11.2.1"
+          "FluentValidation": "11.5.0",
+          "FluentValidation.DependencyInjectionExtensions": "11.5.0"
         },
         "runtime": {
           "lib/net5.0/FluentValidation.AspNetCore.dll": {
@@ -374,15 +375,15 @@
           "lib/net5.0/FluentValidation.AspNetCore.dll": {}
         }
       },
-      "FluentValidation.DependencyInjectionExtensions/11.2.1": {
+      "FluentValidation.DependencyInjectionExtensions/11.5.0": {
         "dependencies": {
-          "FluentValidation": "11.2.1",
+          "FluentValidation": "11.5.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.2.1.0"
+            "fileVersion": "11.5.0.0"
           }
         },
         "compile": {
@@ -2271,6 +2272,7 @@
       "Radisson.Application/1.0.0": {
         "dependencies": {
           "Coravel": "4.2.0",
+          "FluentValidation": "11.5.0",
           "FluentValidation.AspNetCore": "11.2.2",
           "MediatR": "11.1.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
@@ -2293,6 +2295,7 @@
       "Radisson.Domain/1.0.0": {
         "dependencies": {
           "Coravel": "4.2.0",
+          "FluentValidation": "11.5.0",
           "FluentValidation.AspNetCore": "11.2.2",
           "MediatR": "11.1.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
@@ -3984,12 +3987,12 @@
       "path": "coravel/4.2.0",
       "hashPath": "coravel.4.2.0.nupkg.sha512"
     },
-    "FluentValidation/11.2.1": {
+    "FluentValidation/11.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZrQD0TGd0mHqf/zErZOEaba8cBeInaJj02nqinO+0La3uE08sJ5ScTYqsCbdx9fLHsX8rh+5KH5RtL2eOUS+OA==",
-      "path": "fluentvalidation/11.2.1",
-      "hashPath": "fluentvalidation.11.2.1.nupkg.sha512"
+      "sha512": "sha512-DExajJh+cguLk1XodH+LVVFuSsCqoEmXOQsxqP5rvVeUD1hIda59cyuL73LHJAYIrFatR8ZZ1H7kfejHN9XFWw==",
+      "path": "fluentvalidation/11.5.0",
+      "hashPath": "fluentvalidation.11.5.0.nupkg.sha512"
     },
     "FluentValidation.AspNetCore/11.2.2": {
       "type": "package",
@@ -3998,12 +4001,12 @@
       "path": "fluentvalidation.aspnetcore/11.2.2",
       "hashPath": "fluentvalidation.aspnetcore.11.2.2.nupkg.sha512"
     },
-    "FluentValidation.DependencyInjectionExtensions/11.2.1": {
+    "FluentValidation.DependencyInjectionExtensions/11.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WqR2kt0OidUCg9xS+YOoiDmdCu7EnYLLgQb/bX+5fTTVor+90dWmr1OdJaWlLZvg2nbwV9EfxA9FZp91+JmQtg==",
-      "path": "fluentvalidation.dependencyinjectionextensions/11.2.1",
-      "hashPath": "fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512"
+      "sha512": "sha512-GrOU4S2SKiDtI9B9Ol3/CE6gkG9wopxxhOfQJIsoymmQ0uCspPl8mfQXpEVCC72/Nv6qg1gp82ylo5b5d3GzRQ==",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.5.0",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

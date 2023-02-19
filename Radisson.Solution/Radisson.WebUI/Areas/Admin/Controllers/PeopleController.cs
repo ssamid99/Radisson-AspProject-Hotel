@@ -63,12 +63,15 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.people.create")]
         public async Task<IActionResult> Create(PeoplePostCommand command)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var response = await mediator.Send(command);
+                return View("Create", command);
+            }
+            else
+            {
+                var reponse = await mediator.Send(command);
                 return RedirectToAction(nameof(Index));
             }
-            return View(command);
         }
 
         [Authorize("admin.people.edit")]
