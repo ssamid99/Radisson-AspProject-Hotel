@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Business.ReservationModule;
 using Radisson.Domain.Models.DbContexts;
+using Radisson.Domain.Models.Entities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Radisson.WebUI.Areas.Admin.Controllers
 {
@@ -42,6 +44,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             }
             ViewBag.GetRTName = new Func<int, string>(GetRTName);
             ViewBag.GetRNumber = new Func<int, int>(GetRNumber);
+            ViewBag.GetPName = new Func<int, string>(GetPName);
             return View(response);
         }
         [Authorize("admin.reservations.create")]
@@ -61,7 +64,9 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
                 }
 
             }
-            ViewBag.RoomTypes = db.RoomTypes.ToList();
+            var rooms = db.Rooms.Where(r => r.Aviable == true && r.DeletedDate == null).ToList();
+            var roomTypeIds = rooms.Select(r => r.RoomTypeId).Distinct().ToList();
+            ViewBag.RoomTypes = db.RoomTypes.Where(rt => roomTypeIds.Contains(rt.Id) && rt.DeletedDate == null).ToList();
             ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
             return View();
         }
@@ -74,24 +79,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         [Authorize("admin.reservations.create")]
         public async Task<IActionResult> Create(ReservationPostCommand command)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("Create", command);
-            }
-            else
-            {
-                var response = await mediator.Send(command);
-                var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
-                if (rooms.Count == 0)
-                {
-                    ModelState.AddModelError(string.Empty, "No rooms are available for the selected room type.");
-                    return View(command);
-                }
-                if (response.Error == false)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-
                 var userId = User.GetCurrentUserId();
 
                 if (userId > 0)
@@ -106,9 +93,30 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
                     }
 
                 }
-                ViewBag.RoomTypes = db.RoomTypes.ToList();
-                ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
-            } 
+            if (!ModelState.IsValid)
+            {
+                return View("Create", command);
+            }
+            else
+            {
+                var response = await mediator.Send(command);
+                var rooms = await db.Rooms.Where(r => r.RoomTypeId == command.RoomTypeId && r.Aviable == true).ToListAsync();
+                if (rooms.Count == 0)
+                {
+                    ModelState.AddModelError(string.Empty, "Təəssüf ki seçilən növdə boş otaq yoxdur.");
+                    goto end;
+                }
+                if (response.Error == false)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+            }
+        end:
+            var room = db.Rooms.Where(r => r.Aviable == true && r.DeletedDate == null).ToList();
+            var roomTypeIds = room.Select(r => r.RoomTypeId).Distinct().ToList();
+            ViewBag.RoomTypes = db.RoomTypes.Where(rt => roomTypeIds.Contains(rt.Id) && rt.DeletedDate == null).ToList();
+            ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
             return View(command);
         }
 
@@ -127,9 +135,12 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewBag.RoomTypes = db.RoomTypes.ToList();
+            var peoples = await db.ReservePeopleCloud.FirstOrDefaultAsync(p => p.ReservationId == reservation.Id && p.DeletedDate == null);
+            var room = db.Rooms.Where(r => r.Aviable == true && r.DeletedDate == null).ToList();
+            var roomTypeIds = room.Select(r => r.RoomTypeId).Distinct().ToList();
+            ViewBag.RoomTypes = db.RoomTypes.Where(rt => roomTypeIds.Contains(rt.Id) && rt.DeletedDate == null).ToList();
             ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
-            ViewBag.ReservedPeople = new SelectList(db.ReservePeopleCloud.Where(p => p.ReservationId == id && p.DeletedDate == null).ToList(),"Id","PeopleId");
+            ViewBag.ReservedPeople = new SelectList(db.ReservePeopleCloud.Where(p => p.ReservationId == id && p.DeletedDate == null).ToList(), "Id", "PeopleId");
             ViewBag.GetPText = new Func<int, string>(GetPText);
             var editCommand = new ReservationPutCommand();
             editCommand.Id = reservation.Id;
@@ -140,7 +151,9 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             editCommand.CheckOut = reservation.CheckOut;
             editCommand.RoomTypeId = reservation.RoomTypeId;
             editCommand.Price = reservation.Price;
-            editCommand.peopleIds = reservation.PeopleCloud.Select(tc => tc.Id).ToArray();
+            editCommand.P1 = peoples.PeopleFirst;
+            editCommand.P2 = peoples.PeopleSecond;
+            editCommand.P3 = peoples.PeopleThird;
             return View(editCommand);
         }
 
@@ -161,7 +174,9 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
-            ViewBag.RoomTypes = db.RoomTypes.ToList();
+            var room = db.Rooms.Where(r => r.Aviable == true && r.DeletedDate == null).ToList();
+            var roomTypeIds = room.Select(r => r.RoomTypeId).Distinct().ToList();
+            ViewBag.RoomTypes = db.RoomTypes.Where(rt => roomTypeIds.Contains(rt.Id) && rt.DeletedDate == null).ToList();
             ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
             return View(command);
         }
@@ -315,6 +330,11 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             var data = db.Rooms.FirstOrDefault(rt => rt.Id == id);
             var number = data.Number;
             return number;
+        }
+        public string GetPName(int id)
+        {
+            var data = db.Peoples.FirstOrDefault(r => r.Id == id && r.DeletedDate == null);
+            return data.Text;
         }
         public JsonResult RoomType()
         {

@@ -33,6 +33,15 @@ namespace Radisson.Domain.Validators.ReservationValidators
             RuleFor(entity => entity.RoomTypeId)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.P1)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.P2)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
+            RuleFor(entity => entity.P3)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
         }
     }
 }

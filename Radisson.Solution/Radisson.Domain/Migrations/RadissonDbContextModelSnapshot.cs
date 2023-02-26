@@ -452,7 +452,16 @@ namespace Radisson.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PeopleId")
+                    b.Property<int>("PeopleFirst")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PeopleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeopleSecond")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeopleThird")
                         .HasColumnType("int");
 
                     b.Property<int>("ReservationId")
@@ -974,9 +983,7 @@ namespace Radisson.Domain.Migrations
 
                     b.HasOne("Radisson.Domain.Models.Entities.People", "People")
                         .WithMany("PeopleCloud")
-                        .HasForeignKey("PeopleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PeopleId");
 
                     b.HasOne("Radisson.Domain.Models.Entities.Reservation", "Reservation")
                         .WithMany("PeopleCloud")

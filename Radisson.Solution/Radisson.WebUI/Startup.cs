@@ -61,7 +61,7 @@ namespace Radisson.WebUI
                 .AddIdentity<RadissonUser, RadissonRole>()
                 .AddEntityFrameworkStores<RadissonDbContext>()
                 .AddDefaultTokenProviders();
-            services.AddScoped<ScheduledTasks>();
+            services.AddScoped<CloseExpiredBooking>();
             services.Configure<IdentityOptions>(cfg =>
             {
                 cfg.Password.RequireDigit = false;
@@ -149,11 +149,11 @@ namespace Radisson.WebUI
             app.UseAuthentication();
             app.UseAuthorization();
 
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var scheduledTasks = scope.ServiceProvider.GetService<ScheduledTasks>();
-                //scheduledTasks.ScheduleFuncAsync();
-            }
+            app.ApplicationServices.UseScheduler(cfg => {
+
+                cfg.Schedule<CloseExpiredBooking>().EveryTenSeconds();
+
+            });
 
 
             app.UseEndpoints(cfg =>

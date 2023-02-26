@@ -28,6 +28,7 @@ namespace Radisson.WebUI.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.RoomTypes = db.RoomTypes.ToList();
             return View();
         }
 

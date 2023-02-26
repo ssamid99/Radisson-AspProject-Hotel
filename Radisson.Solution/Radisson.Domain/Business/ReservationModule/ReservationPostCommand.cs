@@ -23,7 +23,9 @@ namespace Radisson.Domain.Business.ReservationModule
         public DateTime CheckOut { get; set; }
         public int RoomTypeId { get; set; }
         public int Price { get; set; }
-        public int[] peopleIds { get; set; }
+        public int P1 { get; set; }
+        public int P2 { get; set; }
+        public int P3 { get; set; }
         public class ReservationPostCommandHandler : IRequestHandler<ReservationPostCommand, JsonResponse>
         {
             private readonly RadissonDbContext db;
@@ -43,28 +45,24 @@ namespace Radisson.Domain.Business.ReservationModule
                 data.CheckOut = request.CheckOut;
                 data.RoomTypeId = request.RoomTypeId;
                 data.Price = request.Price;
-                if (request.peopleIds != null)
+                var peoplein = new PeopleinReservation();
+                peoplein.PeopleFirst = request.P1;
+                peoplein.PeopleSecond = request.P2;
+                peoplein.PeopleThird = request.P3;
+                data.PeopleCloud.Add(peoplein);
+                var rooms = await db.Rooms.Where(r => r.RoomTypeId == data.RoomTypeId && r.Aviable == true && r.DeletedDate == null).ToListAsync(cancellationToken);
+                if (rooms.Count == 0)
                 {
-                    foreach (var exceptedId in request.peopleIds)
+                    return new JsonResponse
                     {
-                        var peoplein = new PeopleinReservation();
-                        peoplein.PeopleId = exceptedId;
-                        data.PeopleCloud.Add(peoplein);
-                    }
+                        Error = true,
+                        Message = "Təəssüf ki seçilən növdə boş otaq yoxdur"
+
+                    };
+                    //return null;
                 }
-                //var rooms = await db.Rooms.Where(r => r.RoomTypeId == request.RoomTypeId && r.Aviable == true).ToListAsync();
-                //if (rooms == null)
-                //{
-                //    return new JsonResponse
-                //    {
-                //        Error = true,
-                //        Message = "Təəssüf ki seçilən növdə boş otaq yoxdur"
-
-                //    };
-
-                //}
-                //else
-                //{
+                else
+                {
                     await db.Reservations.AddAsync(data, cancellationToken);
                     await db.SaveChangesAsync(cancellationToken);
                     return new JsonResponse
@@ -73,7 +71,7 @@ namespace Radisson.Domain.Business.ReservationModule
                         Message = "Success"
                     };
 
-                //}
+                }
             }
         }
     }

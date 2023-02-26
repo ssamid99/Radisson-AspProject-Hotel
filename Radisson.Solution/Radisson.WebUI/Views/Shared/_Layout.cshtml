@@ -6,6 +6,16 @@
     <title>@ViewData["Title"] - Radisson.WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/img/icon/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/icon/feather/css/feather.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/admin/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" type="text/css" href="~/lib/tab-control/tab-control.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/toastr.js/toastr.css">
 </head>
 <body>
     <header>
@@ -40,9 +50,28 @@
             &copy; 2023 - Radisson.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/lib/popper.js/umd/popper.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="~/lib/modernizr/modernizr.min.js"></script>
+    <script src="~/lib/chart.js/chart.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="~/lib/toastr.js/toastr.min.js"></script>
+    <script src="~/lib/toastr.js/toastr.customize.js"></script>
+
+    <script src="~/admin/pages/widget/amchart/amcharts.js"></script>
+    <script src="~/admin/pages/widget/amchart/serial.js"></script>
+    <script src="~/admin/pages/widget/amchart/light.js"></script>
+    <script src="~/admin/js/jquery.mcustomscrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/admin/js/smoothscroll.js"></script>
+    <script src="~/admin/js/pcoded.min.js"></script>
+
+    <script src="~/admin/js/vartical-layout.min.js"></script>
+
+    <script type="text/javascript" src="~/admin/js/script.js"></script>
+    <script type="text/javascript" src="~/admin/js/script.min.js"></script>
+    @await RenderSectionAsync("addjs", required: false)
 </body>
 </html>

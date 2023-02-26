@@ -3,7 +3,7 @@
     ViewData["Title"] = "Change Room";
 }
 
-<h1>Change Room</h1>
+<h1>Otaq Redaktəsi</h1>
 
 <h4>Rezervasiyalar</h4>
 <hr />
@@ -11,18 +11,7 @@
 <div class="page-wrapper">
     <div class="page-header">
         <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <div class="d-inline">
-                        <h4>Bootstrap Border Sizes</h4>
-                        <span>
-                            lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item" style="float: left;">
@@ -35,7 +24,7 @@
                             </li>
                         }
                         <li class="breadcrumb-item" style="float: left;">
-                            <span>Change Room</span>
+                            <span>Otaq Redaktəsi</span>
                         </li>
                     </ul>
                 </div>
@@ -46,53 +35,38 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Basic Form Inputs</h5>
-                        <span>
-                            Add class of <code>.form-control</code> with
-                            <code>&lt;input&gt;</code> tag
-                        </span>
-
-
-                        <div class="card-header-right">
-                            <i class="icofont icofont-spinner-alt-5"></i>
-                        </div>
-
-                    </div>
                     <div class="card-block">
-                        <h4 class="sub-title">Basic Inputs</h4>
-
                         <div>
                             <form asp-action="changeroom" method="post">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="Id" />
                                 <div class="form-group row ">
-                                    <label asp-for="CheckIn" class="col-sm-2 col-form-label"></label>
+                                    <label asp-for="CheckIn" class="col-sm-2 col-form-label">Giriş Tarixi</label>
                                     <div class="fix-row">
                                         @Model.CheckIn
                                     </div>
                                 </div>
                                 <div class="form-group row ">
-                                    <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
+                                    <label asp-for="CheckOut" class="col-sm-2 col-form-label">Çıxış Tarixi</label>
                                     <div class="fix-row">
                                         @Model.CheckOut
                                     </div>
                                 </div>
                                 <div class="form-group row ">
-                                    <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+                                    <label asp-for="Price" class="col-sm-2 col-form-label">Qiymət</label>
                                     <div class="fix-row">
                                         @Model.Price AZN
                                     </div>
                                 </div>
                                 <div class="form-group row ">
-                                    <label asp-for="RoomTypeId" class="control-label"></label>
+                                    <label asp-for="RoomTypeId" class="control-label">Otaq Növü</label>
                                     <select asp-for="RoomTypeId" id="RoomType" class="form-control select2">
                                         <option selected disabled>---Secin---</option>
                                     </select>
                                     <span asp-validation-for="RoomTypeId" class="text-danger"></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label asp-for="RoomId" class="control-label"></label>
+                                    <label asp-for="RoomId" class="control-label">Otaq Nömrəsi</label>
                                     <select asp-for="RoomId" id="Room" class="form-control select2">
                                         <option selected disabled>---Secin---</option>
                                     </select>
@@ -101,10 +75,10 @@
 
                                 <div class="form-group row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <input type="submit" value="Save" class="btn btn-primary fix-btn" />
+                                        <input type="submit" value="Yadda Saxla" class="btn btn-warning fix-btn" />
                                         @if (User.HasAccess("admin.reservations.index"))
                                         {
-                                            <a asp-action="index" class="btn btn-info">Cancel</a>
+                                            <a asp-action="index" class="btn btn-info">Geri</a>
                                         }
                                     </div>
                                 </div>

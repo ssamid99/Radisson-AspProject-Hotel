@@ -23,7 +23,9 @@ namespace Radisson.Domain.Business.ReservationModule
         public DateTime CheckOut { get; set; }
         public int RoomTypeId { get; set; }
         public int Price { get; set; }
-        public int[] peopleIds { get; set; }
+        public int P1 { get; set; }
+        public int P2 { get; set; }
+        public int P3 { get; set; }
         public class ReservationPutCommandHandler : IRequestHandler<ReservationPutCommand, JsonResponse>
         {
             private readonly RadissonDbContext db;
@@ -52,42 +54,16 @@ namespace Radisson.Domain.Business.ReservationModule
                 {
                     data.RoomTypeId = request.RoomTypeId;
                 }
-                if (request.peopleIds != null)
+                var peoples = db.ReservePeopleCloud.FirstOrDefault(p => p.ReservationId == data.Id && p.DeletedDate == null);
+                if (peoples == null)
                 {
-                    #region database de evvel olub indi olmayan person-larin silinmesi
-                    var exceptedIds = db.ReservePeopleCloud.Where(tc => tc.ReservationId == data.Id).Select(tc => tc.PeopleId).ToList()
-                                        .Except(request.peopleIds).ToArray();
-
-                    if (exceptedIds.Length > 0)
-                    {
-                        foreach (var exceptedId in exceptedIds)
-                        {
-                            var peopleItem = db.ReservePeopleCloud.FirstOrDefault(tc => tc.PeopleId == exceptedId
-                                                         && tc.ReservationId == data.Id);
-                            if (peopleItem != null)
-                            {
-                                db.ReservePeopleCloud.Remove(peopleItem);
-                            }
-                        }
-                    }
-                    #endregion
-
-                    #region database de evvel olmayan indi elave olunan person-larin add olunmasi
-                    var newExceptedIds = request.peopleIds.Except(db.ReservePeopleCloud.Where(tc => tc.ReservationId == data.Id).Select(tc => tc.PeopleId).ToList()).ToArray();
-
-                    if (newExceptedIds.Length > 0 && newExceptedIds.Length <= 3)
-                    {
-                        foreach (var exceptedId in newExceptedIds)
-                        {
-                            var peopleItem = new PeopleinReservation();
-                            peopleItem.PeopleId = exceptedId;
-                            peopleItem.ReservationId = data.Id;
-
-                            await db.ReservePeopleCloud.AddAsync(peopleItem);
-                        }
-                    }
-                    #endregion
+                    return null;
                 }
+                peoples.PeopleFirst = request.P1;
+                peoples.PeopleSecond = request.P2;
+                peoples.PeopleThird = request.P3;
+
+                db.ReservePeopleCloud.Update(peoples);
                 await db.SaveChangesAsync(cancellationToken);
 
                 return new JsonResponse

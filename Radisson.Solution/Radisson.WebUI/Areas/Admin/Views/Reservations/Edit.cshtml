@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Redaktə Et</h1>
 
 <h4>Rezervasiyalar</h4>
 <hr />
@@ -13,18 +13,7 @@
 <div class="page-wrapper">
     <div class="page-header">
         <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <div class="d-inline">
-                        <h4>Bootstrap Border Sizes</h4>
-                        <span>
-                            lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item" style="float: left;">
@@ -38,7 +27,7 @@
                             </li>
                         }
                         <li class="breadcrumb-item" style="float: left;">
-                            <span>Edit</span>
+                            <span>Redaktə Et</span>
                         </li>
                     </ul>
                 </div>
@@ -49,32 +38,17 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Basic Form Inputs</h5>
-                        <span>
-                            Add class of <code>.form-control</code> with
-                            <code>&lt;input&gt;</code> tag
-                        </span>
-
-
-                        <div class="card-header-right">
-                            <i class="icofont icofont-spinner-alt-5"></i>
-                        </div>
-
-                    </div>
                     <div class="card-block">
-                        <h4 class="sub-title">Basic Inputs</h4>
-
                         <form method="post" autocomplete="off" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Name" class="col-sm-2 col-form-label">Ad</label>
                                 <div class="col-sm-10">
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Surname" class="col-sm-2 col-form-label">Soyad</label>
                                 <div class="col-sm-10">
                                     <input asp-for="Surname" class="form-control" />
                                     <span asp-validation-for="Surname" class="text-danger"></span>
@@ -88,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="CheckIn" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="CheckIn" class="col-sm-2 col-form-label">Giriş Tarixi</label>
                                 <input id="chin" asp-for="CheckIn" class="form-control"
                                        size="16"
                                        type="date"
@@ -104,7 +78,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="CheckOut" class="col-sm-2 col-form-label">Çıxış Tarixi</label>
                                 <input id="chout" asp-for="CheckOut" class="form-control"
                                        size="16"
                                        type="date"
@@ -119,7 +93,7 @@
                                 <span asp-validation-for="CheckOut" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="RoomTypeId" class="control-label"></label>
+                                <label asp-for="RoomTypeId" class="control-label">Otaq Növü</label>
                                 <select id="rt" asp-for="RoomTypeId" class="form-control select2">
                                     @foreach (var roomType in ViewBag.RoomTypes)
                                     {
@@ -130,8 +104,8 @@
                                 <span asp-validation-for="RoomTypeId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label>Select People</label>
-                                <select id="p1" name="peopleIds" class="form-control select2">
+                                <label class="control-label">Əlavə Qonaqlar</label>
+                                <select id="p1" name="P1" class="form-control select2">
                                     @foreach (var people in ViewBag.People)
                                     {
                                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
@@ -139,8 +113,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Select People</label>
-                                <select id="p2" name="peopleIds" class="form-control select2">
+                                <label class="control-label">Əlavə Qonaqlar</label>
+                                <select id="p2" name="P2" class="form-control select2">
 
                                     @foreach (var people in ViewBag.People)
                                     {
@@ -149,28 +123,17 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Select People</label>
-                                <select id="p3" name="peopleIds" class="select2 ">
+                                <label class="control-label">Əlavə Qonaqlar</label>
+                                <select id="p3" name="P3" class="form-control select2 ">
                                     @foreach (var people in ViewBag.People)
                                     {
                                         <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
                                     }
                                 </select>
                             </div>
+                            
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Seçili olan əlavə qonaqlar </label>
-                                <div class="fix-row">
-                                    <ul style="margin-top:1px">
-                                        @foreach (var item in ViewBag.ReservedPeople)
-                                        {
-                                            <li class="fix-row">@ViewBag.GetPText(Convert.ToInt32(item.Text))</li>
-
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Price" class="col-sm-2 col-form-label">Toplam Qiymət:</label>
                                 <div class="col-sm-10">
                                     <input asp-for="Price" class="form-control" readonly />
                                     <span asp-validation-for="Price" class="text-danger"></span>
@@ -178,10 +141,10 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button class="btn btn-primary mr-2 fix-btn">Save</button>
+                                    <button class="btn btn-warning mr-2 fix-btn">Yadda Saxla</button>
                                     @if (User.HasAccess("admin.reservations.index"))
                                     {
-                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                        <a asp-action="index" class="btn btn-info">Geri</a>
                                     }
                                 </div>
                             </div>
@@ -201,7 +164,7 @@
             $("input[id='chin']").change(function () {
                 $("input[id='chout']").attr("min", $(this).val());
             });
-            $("select[id='rt'], select[name='peopleIds']").change(function () {
+            $("select[id='rt'], select[name='P1'], select[name='P2'], select[name='P3']").change(function () {
                 var checkIn = new Date($("input[id='chin']").val());
                 var checkOut = new Date($("input[id='chout']").val());
                 var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));

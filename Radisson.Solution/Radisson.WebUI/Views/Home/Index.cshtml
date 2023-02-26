@@ -21,3 +21,30 @@ else
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div class="form-group">
+    <select class="form-control select2">
+        <option selected disable>---Seçin---</option>
+            @foreach (var roomType in ViewBag.RoomTypes)
+            {
+                <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+            }
+    </select>
+</div>
+<a id="goToLink" href="" class="btn btn-primary">Go To</a>
+
+@section addjs{
+    <script>
+        $(function () {
+            var select = $(".select2");
+            var goToLink = $("#goToLink");
+
+            select.change(function () {
+                var selectedOption = select.find(":selected");
+                var roomId = selectedOption.val();
+                //var href = '@Url.Action("Details", "RoomTypes", new { id = "" })' + roomId;
+                var href = '/admin/roomtypes/details/'+roomId
+                goToLink.attr("href", href);
+            });
+        });
+    </script>
+}

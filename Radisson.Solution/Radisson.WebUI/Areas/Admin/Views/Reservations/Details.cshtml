@@ -14,18 +14,7 @@
 <div class="page-wrapper">
     <div class="page-header">
         <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <div class="d-inline">
-                        <h4>Bootstrap Border Sizes</h4>
-                        <span>
-                            lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item" style="float: left;">
@@ -49,31 +38,19 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Basic Form Inputs</h5>
-                        <span>
-                            Add class of <code>.form-control</code> with
-                            <code>&lt;input&gt;</code> tag
-                        </span>
-
-
-                        <div class="card-header-right">
-                            <i class="icofont icofont-spinner-alt-5"></i>
-                        </div>
-
-                    </div>
+                    
                     <div class="card-block">
-                        <h4 class="sub-title">Basic Inputs</h4>
+                        <h4 class="sub-title">Reservasiya Haqqınnda Məlumat</h4>
 
                         <div>
                             <div class="form-group row ">
-                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Name" class="col-sm-2 col-form-label">Ad</label>
                                 <div class="fix-row">
                                     @Model.Name
                                 </div>
                             </div>
                             <div class="form-group row ">
-                                <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Surname" class="col-sm-2 col-form-label">Soyad</label>
                                 <div class="fix-row">
                                     @Model.Surname
                                 </div>
@@ -85,13 +62,13 @@
                                 </div>
                             </div>
                             <div class="form-group row ">
-                                <label asp-for="CheckIn" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="CheckIn" class="col-sm-2 col-form-label">Giriş Tarixi</label>
                                 <div class="fix-row">
                                     @Model.CheckIn
                                 </div>
                             </div>
                             <div class="form-group row ">
-                                <label asp-for="CheckOut" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="CheckOut" class="col-sm-2 col-form-label">Çıxış Tarixi</label>
                                 <div class="fix-row">
                                     @Model.CheckOut
                                 </div>
@@ -99,31 +76,46 @@
                             @if (Model.RoomId != null)
                             {
                                 <div class="form-group row ">
-                                    <label asp-for="RoomId" class="col-sm-2 col-form-label"></label>
+                                    <label asp-for="RoomId" class="col-sm-2 col-form-label">Otaq Nömrəsi</label>
                                     <div class="fix-row">
                                         Nömrə @ViewBag.GetRNumber(Convert.ToInt32(Model.RoomId))
                                     </div>
                                 </div>
                             }
                             <div class="form-group row ">
-                                <label asp-for="RoomTypeId" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="RoomTypeId" class="col-sm-2 col-form-label">Otaq Növü</label>
                                 <div class="fix-row">
                                     @ViewBag.GetRTName(Model.RoomTypeId)
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            @foreach(var item in Model.PeopleCloud.Where(p=>p.ReservationId == Model.Id)){
+                                <div class="form-group row">
                                 <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
                                 <div class="fix-row">
-                                    <ul style="margin-top:1px">
-                                        @foreach (var item in Model.PeopleCloud.Select(tc => tc.People))
-                                        {
-                                            <li class="fix-row">@item.Text</li>
-                                        }
-                                    </ul>
+                                    <div class="fix-row">
+                                        @ViewBag.GetPName(item.PeopleFirst)
+                                    </div>
                                 </div>
                             </div>
+                                <div class="form-group row">
+                                    <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
+                                    <div class="fix-row">
+                                        <div class="fix-row">
+                                            @ViewBag.GetPName(item.PeopleSecond)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
+                                    <div class="fix-row">
+                                        <div class="fix-row">
+                                            @ViewBag.GetPName(item.PeopleThird)
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                             <div class="form-group row ">
-                                <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+                                <label asp-for="Price" class="col-sm-2 col-form-label">Qiymət</label>
                                 <div class="fix-row">
                                     @Model.Price AZN
                                 </div>
@@ -132,11 +124,11 @@
                                 <div class="col-12 d-flex justify-content-end">
                                     @if (User.HasAccess("admin.reservations.edit"))
                                     {
-                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Edit</a>
+                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Redaktə Et</a>
                                     }
                                     @if (User.HasAccess("admin.reservations.index"))
                                     {
-                                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                                        <a asp-action="index" class="btn btn-info">Geri</a>
                                     }
                                 </div>
                             </div>
