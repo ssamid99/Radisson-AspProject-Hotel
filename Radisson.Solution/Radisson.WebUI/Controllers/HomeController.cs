@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Radisson.Application.AppCode.Extensions;
 using Radisson.Application.AppCode.Services;
+using Radisson.Domain.Business.ContactPostModule;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using Radisson.WebUI.Models;
@@ -10,6 +13,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Radisson.WebUI.Controllers
 {
@@ -18,12 +22,14 @@ namespace Radisson.WebUI.Controllers
         private readonly RadissonDbContext db;
         private readonly CryptoService crypto;
         private readonly EmailService emailService;
+        private readonly IMediator mediator;
 
-        public HomeController(RadissonDbContext db, CryptoService crypto, EmailService emailService)
+        public HomeController(RadissonDbContext db, CryptoService crypto, EmailService emailService, IMediator mediator)
         {
             this.db = db;
             this.crypto = crypto;
             this.emailService = emailService;
+            this.mediator = mediator;
         }
 
         public IActionResult Index()
@@ -32,9 +38,54 @@ namespace Radisson.WebUI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Contact()
         {
+            var userId = User.GetCurrentUserId();
+
+            if (userId > 0)
+            {
+                var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                if (user != null)
+                {
+                    ViewBag.Name = user.Name;
+                    ViewBag.Surname = user.Surname;
+                    ViewBag.Email = user.Email;
+                }
+
+            }
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Contact(ContactPostPostCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", command);
+            }
+            else
+            {
+                var reponse = await mediator.Send(command);
+
+                var userId = User.GetCurrentUserId();
+
+                if (userId > 0)
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user != null)
+                    {
+                        ViewBag.Name = user.Name;
+                        ViewBag.Surname = user.Surname;
+                        ViewBag.Email = user.Email;
+                    }
+
+                }
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

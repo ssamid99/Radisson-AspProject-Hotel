@@ -1,0 +1,82 @@
+﻿@model ContactPostPostCommand
+@{
+    ViewData["Title"] = "Contact";
+}
+
+    <!-- page-title -->
+    <section class="page-title sec-pad centred" style="background-image: url(images/background/page-title.jpg);">
+        <div class="container">
+            <div class="content-box">
+                <div class="title">Contact Us</div>
+                <ul class="bread-crumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- page-title end -->
+
+
+    <!-- contact-info -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-placeholder"></i></div>
+                        <div class="text">PO Box 16122 Collins Street<br />West Victoria 8007 Canada</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-mobile"></i></div>
+                        <div class="text">(+48) 564-334-21-22-34<br />(+48) 564-334-21-25</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-mail"></i></div>
+                        <div class="text">info@panola.com<br />info@example.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-info end -->
+
+
+    <!-- contact-section -->
+    <section class="contact-section gray-bg sec-pad">
+        <div class="container">
+            <div class="title centred"><h2>Contact Form</h2></div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 offset-lg-2 column">
+                     <form id="contact-form" name="contact_form" class="default-form" action="http://html.commonsupport.xyz/2018/Panola/inc/sendmail.php" method="post">
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <input type="text" name="form_name" value="" placeholder="First Name" required="">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <input type="text" name="form_phone" value="" placeholder="Last Name" required="">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <input type="email" name="form_email" value="" placeholder="Email" required="">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <input type="text" name="form_subject" value="" placeholder="Phone number" required="">
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <textarea placeholder="Your Message" name="form_message" required=""></textarea>
+                            </div>
+                            <div class="form-group centred col-lg-12 col-md-12 col-sm-12">
+                                <button type="submit" class="theme-btn" data-loading-text="Please wait...">Submit Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-section end -->
+

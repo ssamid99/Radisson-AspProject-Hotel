@@ -2,76 +2,357 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Radisson.WebUI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"]||Radisson Hotel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" href="~/img/icon/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="~/admin/icon/feather/css/feather.css">
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="~/admin/css/style.css">
-    <link rel="stylesheet" type="text/css" href="~/admin/css/jquery.mCustomScrollbar.css">
-
     <link rel="stylesheet" type="text/css" href="~/lib/tab-control/tab-control.css">
     <link rel="stylesheet" type="text/css" href="~/lib/toastr.js/toastr.css">
+    @await RenderSectionAsync("addcss", required:false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Radisson.WebUI</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+<body class="boxed_wrapper">
+    <div class="preloader"></div>
+    <header class="main-header">
+        <div class="header-bottom clearfix">
+            <figure class="logo-box">
+                <a asp-controller="home" asp-action="index" class="fix-logo"><img src="~/images/logo.png" alt="" /></a>
+            </figure>
+            <div class="menu-area">
+                <nav class="main-menu navbar-expand-lg">
+                    <div class="navbar-header">
+                        <button type="button"
+                                class="navbar-toggle"
+                                data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            <li class="current">
+                                <a asp-controller="home" asp-action="index">Ana Səhifə</a>
+                            </li>
+                            <li>
+                                <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
+                            </li>
+                            <li><a href="about.html">Otel Haqqında</a></li>
+                            <li class="dropdown">
+                                <a href="#">Xidmətlər</a>
+                                <ul>
+                                    <li><a href="service.html">Our Services</a></li>
+                                    <li><a href="resturent.html">Resturent</a></li>
+                                    <li><a href="spa.html">Our Spa</a></li>
+                                    <li><a href="offer.html">Special Offers</a></li>
+                                    <li><a href="error.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="blog-details.html">Forumlar</a>
+                            </li>
+                            <li><a asp-controller="home" asp-action="contact">Müraciətlər</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="link">
+                    <a href="login.html" class="fix-a">Daxil Ol</a>
                 </div>
             </div>
-        </nav>
+        </div>
+        <!-- header-bottom end -->
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container clearfix">
+                <figure class="logo-box">
+                    <a href="index.html"><img src="images/small-logo.png" alt="" /></a>
+                </figure>
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->
+                            <button type="button"
+                                    class="navbar-toggle"
+                                    data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li class="current">
+                                    <a asp-controller="home" asp-action="index">Ana səhifə</a>
+                                </li>
+                                <li>
+                                    <a href="room-grid.html">Otaqlar</a>
+                                </li>
+                                <li><a href="about.html">OtelHaqqında</a></li>
+                                <li class="dropdown">
+                                    <a href="#">Xidmətlər</a>
+                                    <ul>
+                                        <li><a href="service.html">Our Services</a></li>
+                                        <li><a href="resturent.html">Resturent</a></li>
+                                        <li><a href="spa.html">Our Spa</a></li>
+                                        <li><a href="offer.html">Special Offers</a></li>
+                                        <li><a href="error.html">404 Page</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="blog-details.html">Forumlar</a>
+                                </li>
+                                <li><a href="contact.html">Müraciətlər</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @RenderBody()
+    <!-- main-footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+            <div class="logo-widget footer-widget">
+              <figure class="footer-logo">
+                <a href="index.html">
+                                <img src="~/images/footer-logo.png" alt="" /></a>
+              </figure>
+              <div class="text">
+                <p>
+                  Lorem ipsum dolor amet consecte tur adi pisicing elit sed
+                  eiusm tempor incididunt
+                </p>
+                <p>
+                  labore dolore magna aliqua enim ad minim veniam quis.nostrud
+                  exercita.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 big-column">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 footer-column">
+                <div class="service-widget footer-widget"></div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 footer-widget">
+                <div class="contact-widget footer-widget">
+                  <div class="footer-title">Contact Info</div>
+                  <div class="text">
+                    Flat 20, Reynolds Neck, North Helenaville, FV77
+                  </div>
+                  <div class="phone">+2(305) 587-3407</div>
+                  <div class="mail">info@panola.com</div>
+                  <ul class="footer-social">
+                    <li>
+                      <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-vimeo"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+            <div class="newsletter-widget footer-widget">
+              <div class="footer-title">Newsletter</div>
+              <div class="text">
+                Eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </div>
+              <div class="subscribe-form">
+                <form action="#" method="post">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      required=""
+                    />
+                    <button type="submit">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="header-top clearfix">
+      <div class="left-content">
+        <ul class="content-box">
+          <li>
+            <a href="#"><i class="fa fa-envelope"></i>Support@example.com</a>
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa fa-globe"></i>Kleine Pierboulevard 8-6 2249 KV
+              Vries</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="right-content">
+        <ul class="social-box">
+          <li>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-vimeo"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Radisson.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <button class="scroll-top scroll-to-target" data-target="html">
+      <span class="fa fa-long-arrow-up"></span>
+    </button>
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/wow.js"></script>
+    <script src="~/js/validation.js"></script>
+    <script src="~/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/js/SmoothScroll.js"></script>
+    @*<script src="~/js/html5lightbox/html5lightbox.js"></script>*@
+    <script src="~/js/map-helper.js"></script>
+    <script src="~/js/isotope.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
     <script type="text/javascript" src="~/lib/popper.js/umd/popper.min.js"></script>
-    <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="~/lib/modernizr/modernizr.min.js"></script>
-    <script src="~/lib/chart.js/chart.min.js"></script>
+    <script src="~/js/script.js"></script>
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     <script src="~/lib/toastr.js/toastr.customize.js"></script>
-
-    <script src="~/admin/pages/widget/amchart/amcharts.js"></script>
-    <script src="~/admin/pages/widget/amchart/serial.js"></script>
-    <script src="~/admin/pages/widget/amchart/light.js"></script>
-    <script src="~/admin/js/jquery.mcustomscrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="~/admin/js/smoothscroll.js"></script>
-    <script src="~/admin/js/pcoded.min.js"></script>
-
-    <script src="~/admin/js/vartical-layout.min.js"></script>
-
-    <script type="text/javascript" src="~/admin/js/script.js"></script>
-    <script type="text/javascript" src="~/admin/js/script.min.js"></script>
     @await RenderSectionAsync("addjs", required: false)
-</body>
+    <script class="removeable">
+        $(document).ready(function () {
+            $.ajaxSetup({
+                statusCode: {
+                    //200: function(response) {
+                    //    if (response.error == false && response.length > 0) {
+                    //        toastr.success(response.message, 'Successful operation!');
+                    //    }
+                    //},
+                    400: function (response) {
+                        toastr.error('Bad request!', "Error!");
+                    },
+                    401: function (response) {
+                        toastr.warning('You must log in before this operation!', "Warning!");
+                        $('#flipFlop').modal('show');
+                    },
+                    403: function (response) {
+                        toastr.warning('You are not authorized for this operation!', "Warning!");
+                    },
+                    404: function (response) {
+                        toastr.warning("Data was not found!", "Warning!");
+                    },
+                    500: function (response) {
+                        toastr.error('Server error has occured!', "Error!");
+                    }
+                }
+            });
+            $('#softLogin').submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(e.currentTarget);
+                $.ajax({
+                    url: '@Url.Action("Signin","Account", values: new{area=""})',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log(response);
+                        if (response.error == false) {
+                            $('#flipFlop').modal('hide');
+                        }
+                    }
+                });
+            })
+</script>
+    <script class="removeable">
+        $(document).ready(function () {
+            $('.removeable').remove();
+        });
+    </script>
+            <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalLabel">Please, login to continue ☺</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="softLogin" method="post" class="form validate-form">
+                        @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                        {
+                            <div class="form-input">
+                                <div class="alert alert-danger">
+                                    @ViewBag.Message
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-input">
+                            <label for="UserName">Username or Email</label>
+                            <input name="UserName" class="user-input" />
+                        </div>
+                        <div class="form-input">
+                            <label for="Password">Password</label>
+                            <input name="Password"
+                                   class="user-input"
+                                   type="password" />
+                        </div>
+                        <div class="form-btn">
+                            <button type="submit" class="tg-btn btn">Sign in</button>
+                        </div>
+                        <ul class="login-more">
+                            <li>
+                                <span> Forgot </span>
+                                <a href="#"> Username / Password? </a>
+                            </li>
+                            <li>
+                                <span> Don’t have an account? </span>
+                                <a asp-controller="account" asp-action="register"> Sign up </a>
+                            </li>
+                            <li>
+                                <a asp-controller="home" asp-action="index"> Continue without sign in </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
 </html>

@@ -45,59 +45,6 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        [Authorize("admin.contactposts.create")]
-        public IActionResult Create()//Bu Action UI ucundur
-        {
-            var userId = User.GetCurrentUserId();
-
-            if (userId > 0)
-            {
-                var user = db.Users.FirstOrDefault(u => u.Id == userId);
-
-                if (user != null)
-                {
-                    ViewBag.Name = user.Name;
-                    ViewBag.Surname = user.Surname;
-                    ViewBag.Email = user.Email;
-                }
-
-            }
-            return View();
-        }
-
-        // POST: Admin/ContactPosts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize("admin.contactposts.create")]
-        public async Task<IActionResult> Create(ContactPostPostCommand command)//Bu Action UI ucundur
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Create", command);
-            }
-            else
-            {
-                var reponse = await mediator.Send(command);
-
-                var userId = User.GetCurrentUserId();
-
-                if (userId > 0)
-                {
-                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
-
-                    if (user != null)
-                    {
-                        ViewBag.Name = user.Name;
-                        ViewBag.Surname = user.Surname;
-                        ViewBag.Email = user.Email;
-                    }
-
-                }
-                return RedirectToAction(nameof(Index));
-            }
-        }
 
         [Authorize("admin.contactposts.edit")]
         public async Task<IActionResult> Edit(int? id)
