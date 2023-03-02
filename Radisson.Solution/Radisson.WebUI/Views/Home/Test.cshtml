@@ -1,0 +1,29 @@
+﻿
+@model ServiceHeaderBodyModel
+@{
+    ViewData["Title"] = "Test";
+
+}
+
+<h1>Test</h1>
+
+<ul class="nav nav-tabs">
+    @foreach (var item in Model.ServicesHeaders)
+    {
+        <li class="nav-item @(item == Model.ServicesHeaders.First() ? "active" : "")">
+            <a class="nav-link @(item == Model.ServicesHeaders.First() ? "active" : "")" data-toggle="tab" href="#@item.Id">@item.Title</a>
+        </li>
+    }
+</ul>
+
+<div class="tab-content">
+    @foreach (var header in Model.ServicesHeaders)
+    {
+        <div id="@header.Id" class="tab-pane @(header == Model.ServicesHeaders.First() ? "active" : "fade")">
+            @foreach (var body in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
+            {
+                <h3>@body.Text</h3>
+            }
+        </div>
+    }
+</div>

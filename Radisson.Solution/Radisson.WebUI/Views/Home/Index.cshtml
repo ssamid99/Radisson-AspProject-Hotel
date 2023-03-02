@@ -88,13 +88,13 @@
             </div>
             <div class="single-item">
                 <div class="form-group select-box">
-                    <label>Guests</label>
+                    <label>Rooms</label>
                     <select class="custom-select-box">
-                        <option selected="selected">Guests</option>
-                        <option>Guests Lavel 1</option>
-                        <option>Guests Lavel 2</option>
-                        <option>Guests Lavel 3</option>
-                        <option>Guests Lavel 4</option>
+                        <option selected="selected">Rooms</option>
+                        <option>Rooms Lavel 1</option>
+                        <option>Rooms Lavel 2</option>
+                        <option>Rooms Lavel 3</option>
+                        <option>Rooms Lavel 4</option>
                     </select>
                 </div>
             </div>
@@ -119,48 +119,7 @@
     </div>
 </section>
 <!-- filter-section end -->
-<!-- about-section -->
-<section class="about-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="about-content">
-                    <div class="sec-title left">Panola Hotel</div>
-                    <div class="text">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                        qui officia deserunt mollit anim id est laborum. sed ut
-                        perspiciatis unde omnis natus error.
-                    </div>
-                    <div class="text">
-                        Inventore veritatis et quasi architebeatae vitae dicta sunt
-                        explicabo. Nemo enim ipsam voluptatem.
-                    </div>
-                    <div class="link">
-                        <a href="about.html" class="theme-btn-two">About Us</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 clearfix">
-                <div class="img-box">
-                    <figure class="img-three wow zoomIn animated">
-                        <img src="images/resource/3.jpg" alt="" />
-                    </figure>
-                    <figure class="img-two wow slideInRight"
-                            data-wow-delay="0ms"
-                            data-wow-duration="1500ms">
-                        <img src="images/resource/2.jpg" alt="" />
-                    </figure>
-                    <figure class="img-one wow slideInLeft"
-                            data-wow-delay="0ms"
-                            data-wow-duration="1500ms">
-                        <img src="images/resource/1.jpg" alt="" />
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- about-section end -->
+@await Component.InvokeAsync("RadissonHotel")
 <!-- room-section -->
 <section class="room-section overlay-style-one gray-bg sec-pad">
     <div class="container">
@@ -299,176 +258,7 @@
     </div>
 </section>
 <!-- room-section end -->
-<!-- service-section -->
-<section class="service-section sec-pad">
-    <div class="container">
-        <div class="top-title">
-            <div class="sec-title">Our Services</div>
-            <div class="title-text">Excepteur sint occaecat cupidatat</div>
-        </div>
-        <div class="custom-tab-title">
-            <ul class="tab-title clearfix">
-                <li data-tab-name="details" class="active">
-                    <div class="single-btn">
-                        <div class="icon-box"><i class="flaticon-coffee-cup"></i></div>
-                        <div class="text">Restaurent</div>
-                    </div>
-                </li>
-                <li data-tab-name="review">
-                    <div class="single-btn">
-                        <div class="icon-box"><i class="flaticon-mortar"></i></div>
-                        <div class="text">Health & Beauty</div>
-                    </div>
-                </li>
-                <li data-tab-name="review1">
-                    <div class="single-btn">
-                        <div class="icon-box">
-                            <i class="flaticon-swimming-pool"></i>
-                        </div>
-                        <div class="text">Swimming Pool</div>
-                    </div>
-                </li>
-                <li data-tab-name="review2">
-                    <div class="single-btn">
-                        <div class="icon-box"><i class="flaticon-lecture"></i></div>
-                        <div class="text">Conference Room</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="tab-details-content">
-            <div class="tab-content" id="details">
-                <div class="single-tab-content">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="img-box">
-                                <img src="images/resource/7.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="content">
-                                <div class="title">Restaurent</div>
-                                <div class="text">
-                                    <p>
-                                        Excepteur sint occaecat cupidatat non proident sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
-                                        sed ut perspiciatis unde omnis natus error.Inventore
-                                        veritatis et quasi architebeatae vitae dicta sunt
-                                        explicabonemo enim ipsam voluptatem quia
-                                        voluptassit.aspernatur aut odit aut fugit, sed quia
-                                        consequuntur
-                                    </p>
-                                    <p>
-                                        Magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt.neque porro quisquam est qui dolore ipsum quia
-                                        dolor sit amet, consectetur adipisci velit sed quia.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="review">
-                <div class="single-tab-content">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="img-box">
-                                <img src="images/resource/service-2.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="content">
-                                <div class="title">Health & Beauty</div>
-                                <div class="text">
-                                    <p>
-                                        Excepteur sint occaecat cupidatat non proident sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
-                                        sed ut perspiciatis unde omnis natus error.Inventore
-                                        veritatis et quasi architebeatae vitae dicta sunt
-                                        explicabonemo enim ipsam voluptatem quia
-                                        voluptassit.aspernatur aut odit aut fugit, sed quia
-                                        consequuntur
-                                    </p>
-                                    <p>
-                                        Magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt.neque porro quisquam est qui dolore ipsum quia
-                                        dolor sit amet, consectetur adipisci velit sed quia.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="review1">
-                <div class="single-tab-content">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="img-box">
-                                <img src="images/resource/service-3.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="content">
-                                <div class="title">Swimming Pool</div>
-                                <div class="text">
-                                    <p>
-                                        Excepteur sint occaecat cupidatat non proident sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
-                                        sed ut perspiciatis unde omnis natus error.Inventore
-                                        veritatis et quasi architebeatae vitae dicta sunt
-                                        explicabonemo enim ipsam voluptatem quia
-                                        voluptassit.aspernatur aut odit aut fugit, sed quia
-                                        consequuntur
-                                    </p>
-                                    <p>
-                                        Magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt.neque porro quisquam est qui dolore ipsum quia
-                                        dolor sit amet, consectetur adipisci velit sed quia.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="review2">
-                <div class="single-tab-content">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="img-box">
-                                <img src="images/resource/service-4.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="content">
-                                <div class="title">Conference Room</div>
-                                <div class="text">
-                                    <p>
-                                        Excepteur sint occaecat cupidatat non proident sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
-                                        sed ut perspiciatis unde omnis natus error.Inventore
-                                        veritatis et quasi architebeatae vitae dicta sunt
-                                        explicabonemo enim ipsam voluptatem quia
-                                        voluptassit.aspernatur aut odit aut fugit, sed quia
-                                        consequuntur
-                                    </p>
-                                    <p>
-                                        Magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt.neque porro quisquam est qui dolore ipsum quia
-                                        dolor sit amet, consectetur adipisci velit sed quia.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- service-section end -->
+@await Component.InvokeAsync("ServiceHeaderBody")
 <!-- news-section -->
 <section class="news-section sec-pad">
     <div class="container">

@@ -52,7 +52,6 @@ namespace Radisson.WebUI
                 cfg.ModelBinderProviders.Insert(0, new BooleanBinderProvider());
             });
             services.AddFluentValidationAutoValidation();
-            //services.AddScoped<IValidator<RoomTypePostCommand>, RoomTypePostCommandValidators>();
 
             services.AddDbContext<RadissonDbContext>(cfg =>
             {

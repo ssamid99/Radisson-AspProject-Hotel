@@ -56,13 +56,20 @@ using Radisson.Domain.Models.Entities;
 #nullable disable
 #nullable restore
 #line 8 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
 using Radisson.Domain.Business.ContactPostModule;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"06244975e076c03bf090fae7907c48ec3ea79a2e", @"/Views/RoomTypes/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b4fb654dd6195946a55ef489fd0ecc2ddbc2778a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db020c4ea8268d2ba41afd3af98399e171049207", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_RoomTypes_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<RoomType>
     #nullable disable
@@ -226,7 +233,7 @@ using Radisson.Domain.Business.ContactPostModule;
                 <div class=""room-sidebar"">
                     <div class=""");
             WriteLiteral("filter-content\">\r\n                        <div class=\"title\"><h3>Book Your Room</h3></div>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e14176", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e14386", async() => {
                 WriteLiteral(@"
                             <div class=""single-item"">
                                 <div class=""form-group"">
@@ -254,7 +261,7 @@ using Radisson.Domain.Business.ContactPostModule;
                             <div class=""single-item"">
             ");
                 WriteLiteral("                    <div class=\"form-group select-box\">\r\n                                    <label>Guests</label>\r\n                                    <select class=\"custom-select-box\">\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e16191", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e16401", async() => {
                     WriteLiteral("Guests");
                 }
                 );
@@ -269,7 +276,7 @@ using Radisson.Domain.Business.ContactPostModule;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e17333", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e17543", async() => {
                     WriteLiteral("Guests Lavel 1");
                 }
                 );
@@ -283,7 +290,7 @@ using Radisson.Domain.Business.ContactPostModule;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e18396", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e18606", async() => {
                     WriteLiteral("Guests Lavel 2");
                 }
                 );
@@ -297,7 +304,7 @@ using Radisson.Domain.Business.ContactPostModule;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e19459", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e19669", async() => {
                     WriteLiteral("Guests Lavel 3");
                 }
                 );
@@ -311,7 +318,7 @@ using Radisson.Domain.Business.ContactPostModule;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e20522", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06244975e076c03bf090fae7907c48ec3ea79a2e20732", async() => {
                     WriteLiteral("Guests Lavel 4");
                 }
                 );

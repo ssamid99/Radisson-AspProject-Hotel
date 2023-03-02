@@ -1,0 +1,82 @@
+﻿@model PagedViewModel<About>
+@{
+    ViewData["Title"] = "Otel Haqqında";
+}
+
+<section class="page-title centred"
+         style="background-image: url(~/images/background/page-title.jpg)">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">About Us</div>
+            <ul class="bread-crumb">
+                <li><a href="index.html">Home</a></li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </div>
+</section>
+@await Component.InvokeAsync("RadissonHotel")
+
+<!-- fact-counter -->
+<section class="fact-counter gray-bg sec-pad centred">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12 column">
+                <div class="single-item">
+                    <div class="content-box">
+                        <div></div>
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                            <div class="count-outer">
+                                <span class="count-text" data-speed="1500" data-stop="50">0</span>
+                            </div>
+                        </article>
+                        <div class="text">Rooms</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 column">
+                <div class="single-item">
+                    <div class="content-box">
+                        <div></div>
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                            <div class="count-outer">
+                                <span class="count-text" data-speed="1500" data-stop="25">0</span>
+                            </div>
+                        </article>
+                        <div class="text">Staffs</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 column">
+                <div class="single-item">
+                    <div class="content-box">
+                        <div>
+                        </div>
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                            <div class="count-outer">
+                                <span>0</span><span class="count-text" data-speed="1500" data-stop="3">0</span>
+                            </div>
+                        </article>
+                        <div class="text">Swimming Pool</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 column">
+                <div class="single-item">
+                    <div class="content-box">
+                        <div></div>
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                            <div class="count-outer">
+                                <span class="count-text" data-speed="1500" data-stop="79">0</span>
+                            </div>
+                        </article>
+                        <div class="text">Awards Win</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- fact-counter end -->
+@await Component.InvokeAsync("ServiceHeaderBody")
+

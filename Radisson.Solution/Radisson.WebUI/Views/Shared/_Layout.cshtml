@@ -43,7 +43,7 @@
                             <li>
                                 <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                             </li>
-                            <li><a href="about.html">Otel Haqqında</a></li>
+                            <li><a asp-controller="home" asp-action="about" >Otel Haqqında</a></li>
                             <li class="dropdown">
                                 <a href="#">Xidmətlər</a>
                                 <ul>
@@ -71,7 +71,7 @@
         <div class="sticky-header">
             <div class="container clearfix">
                 <figure class="logo-box">
-                    <a href="index.html"><img src="images/small-logo.png" alt="" /></a>
+                    <a href="index.html"><img src="~/images/small-logo.png" alt="" /></a>
                 </figure>
                 <div class="menu-area">
                     <nav class="main-menu navbar-expand-lg">
@@ -92,9 +92,9 @@
                                     <a asp-controller="home" asp-action="index">Ana səhifə</a>
                                 </li>
                                 <li>
-                                    <a href="room-grid.html">Otaqlar</a>
+                                    <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                                 </li>
-                                <li><a href="about.html">OtelHaqqında</a></li>
+                                <li><a asp-controller="abouts" asp-action="index">OtelHaqqında</a></li>
                                 <li class="dropdown">
                                     <a href="#">Xidmətlər</a>
                                     <ul>

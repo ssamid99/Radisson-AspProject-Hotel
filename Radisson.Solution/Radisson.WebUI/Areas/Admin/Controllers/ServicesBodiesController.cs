@@ -59,12 +59,12 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h => h.DeletedDate == null).ToList(), "Id", "Title");
                 return View("Create", command);
             }
             else
             {
                 var reponse = await mediator.Send(command);
-                ViewBag.Headers = new SelectList(db.ServicesHeaders.Where(h=>h.DeletedDate == null).ToList(), "Id", "Title", command.ServicesHeaderId);
                 return RedirectToAction(nameof(Index));
             }
         }

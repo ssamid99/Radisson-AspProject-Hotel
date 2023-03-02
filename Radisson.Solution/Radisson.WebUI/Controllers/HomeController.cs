@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Application.AppCode.Services;
+using Radisson.Domain.Business.AboutModule.Abouts;
+using Radisson.Domain.Business.AboutModule.ServicesHeaders;
 using Radisson.Domain.Business.ContactPostModule;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
@@ -36,6 +38,16 @@ namespace Radisson.WebUI.Controllers
         {
             ViewBag.RoomTypes = db.RoomTypes.ToList();
             return View();
+        }
+
+        public async Task<IActionResult> About(AboutGetAllQuery query)
+        {
+            var response = await mediator.Send(query);
+            if(response == null)
+            {
+                return NotFound();
+            }
+            return View(response);
         }
 
         [HttpGet]
@@ -87,6 +99,8 @@ namespace Radisson.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
