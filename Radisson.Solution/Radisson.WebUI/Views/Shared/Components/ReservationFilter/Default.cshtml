@@ -1,0 +1,74 @@
+﻿@model Reservation
+
+
+<section class="filter-section">
+    <div class="container">
+        <form method="post" action="#" class="filter-content clearfix">
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Arrival date</label>
+                    <i class="fa fa-angle-down"></i>
+                    <input type="text"
+                           name="date1"
+                           placeholder="Arrival date"
+                           id="datepicker" />
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Departure date</label>
+                    <i class="fa fa-angle-down"></i>
+                    <input type="text"
+                           name="date2"
+                           placeholder="Departure date"
+                           id="datepicker_1" />
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group select-box">
+                    <label>Rooms</label>
+                    <select name="RoomTypeId" class="custom-select-box">
+                        @if (ViewBag.RoomTypes != null)
+                        {
+                            <option selected disable>---Seçin---</option>
+                            @foreach (var roomType in ViewBag.RoomTypes)
+                            {
+                                <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Price</label>
+                    <input name="Price"
+                           readonly />
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <div class="link">
+                        <button type="submit" class="theme-btn">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section addjs{
+    <script>
+         $(document).ready(function () {
+            $("select[name='RoomTypeId']").change(function () {
+                var checkIn = new Date($("input[name='date1']").val());
+                var checkOut = new Date($("input[name='date2']").val());
+                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
+                var multipliedPrice = diffDays * selectedPrice;
+                var totalPrice = multipliedPrice;
+                $('input[name="Price"]').value(totalPrice);
+            });
+        });
+    </script>
+}

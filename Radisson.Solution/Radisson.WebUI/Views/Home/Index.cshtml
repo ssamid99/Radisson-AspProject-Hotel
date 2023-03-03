@@ -62,63 +62,8 @@
     </div>
 </section>
 <!-- main-slider end -->
-<!-- filter-section -->
-<section class="filter-section">
-    <div class="container">
-        <form method="post" action="#" class="filter-content clearfix">
-            <div class="single-item">
-                <div class="form-group">
-                    <label>Arrival date</label>
-                    <i class="fa fa-angle-down"></i>
-                    <input type="text"
-                           name="date"
-                           placeholder="Arrival date"
-                           id="datepicker" />
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="form-group">
-                    <label>Departure date</label>
-                    <i class="fa fa-angle-down"></i>
-                    <input type="text"
-                           name="date"
-                           placeholder="Departure date"
-                           id="datepicker_1" />
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="form-group select-box">
-                    <label>Rooms</label>
-                    <select class="custom-select-box">
-                        <option selected="selected">Rooms</option>
-                        <option>Rooms Lavel 1</option>
-                        <option>Rooms Lavel 2</option>
-                        <option>Rooms Lavel 3</option>
-                        <option>Rooms Lavel 4</option>
-                    </select>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="text"
-                           name="Price"
-                           placeholder="Price"
-                           readonly
-                           required="" />
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="form-group">
-                    <div class="link">
-                        <button type="submit" class="theme-btn">Book Now</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-<!-- filter-section end -->
+@await Component.InvokeAsync("ReservationFilter")
+
 @await Component.InvokeAsync("RadissonHotel")
 <!-- room-section -->
 <section class="room-section overlay-style-one gray-bg sec-pad">
@@ -368,3 +313,4 @@
     </div>
 </section>
 <!-- news-section -->
+                            

@@ -295,37 +295,37 @@
 	}
 
 	// Date picker
-	function datepicker_2 () {
-	    if ($('#datepicker_2').length) {
-	        $('#datepicker_2').datepicker();
-	    };
-	}
+	//function datepicker_2 () {
+	//    if ($('#datepicker_2').length) {
+	//        $('#datepicker_2').datepicker();
+	//    };
+	//}
 
 	// Date picker
-	function datepicker_3 () {
-	    if ($('#datepicker_3').length) {
-	        $('#datepicker_3').datepicker();
-	    };
-	}
+	//function datepicker_3 () {
+	//    if ($('#datepicker_3').length) {
+	//        $('#datepicker_3').datepicker();
+	//    };
+	//}
 
 	// Date picker
-	function datepicker_4 () {
-	    if ($('#datepicker_4').length) {
-	        $('#datepicker_4').datepicker();
-	    };
-	}
+	//function datepicker_4 () {
+	//    if ($('#datepicker_4').length) {
+	//        $('#datepicker_4').datepicker();
+	//    };
+	//}
 
 	// Date picker
-	function datepicker_5 () {
-	    if ($('#datepicker_5').length) {
-	        $('#datepicker_5').datepicker();
-	    };
-	}
+	//function datepicker_5 () {
+	//    if ($('#datepicker_5').length) {
+	//        $('#datepicker_5').datepicker();
+	//    };
+	//}
 
 	//Custom Seclect Box
-	if($('.custom-select-box').length){
-		$('.custom-select-box').selectmenu().selectmenu('menuWidget').addClass('overflow');
-	}
+	//if($('.custom-select-box').length){
+	//	$('.custom-select-box').selectmenu().selectmenu('menuWidget').addClass('overflow');
+	//}
 
 
 	//Sortable Masonary with Filters
