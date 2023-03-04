@@ -39,8 +39,4 @@
     <ProjectReference Include="..\Radisson.Domain\Radisson.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\uploads\images\" />
-  </ItemGroup>
-
 </Project>

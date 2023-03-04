@@ -24,7 +24,6 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
             public async Task<RadissonHotel> Handle(RadissonHotelGetAllQuery request, CancellationToken cancellationToken)
             {
                 var query = db.RadissonHotels
-                    .Include(r=>r.Images)
                     .AsQueryable();
                 if(query == null)
                 {

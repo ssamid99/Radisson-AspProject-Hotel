@@ -496,6 +496,14 @@ namespace Radisson.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FullText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -511,40 +519,6 @@ namespace Radisson.Domain.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("RadissonHotels");
-                });
-
-            modelBuilder.Entity("Radisson.Domain.Models.Entities.RadissonHotelImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RadissonHotelsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("RadissonHotelsId");
-
-                    b.ToTable("RadissonHotelImages");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
@@ -1007,23 +981,6 @@ namespace Radisson.Domain.Migrations
                     b.Navigation("CreatedByUser");
                 });
 
-            modelBuilder.Entity("Radisson.Domain.Models.Entities.RadissonHotelImage", b =>
-                {
-                    b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedByUserId");
-
-                    b.HasOne("Radisson.Domain.Models.Entities.RadissonHotel", "RadissonHotels")
-                        .WithMany("Images")
-                        .HasForeignKey("RadissonHotelsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedByUser");
-
-                    b.Navigation("RadissonHotels");
-                });
-
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>
                 {
                     b.HasOne("Radisson.Domain.Models.Entities.Membership.RadissonUser", "CreatedByUser")
@@ -1126,11 +1083,6 @@ namespace Radisson.Domain.Migrations
             modelBuilder.Entity("Radisson.Domain.Models.Entities.People", b =>
                 {
                     b.Navigation("PeopleCloud");
-                });
-
-            modelBuilder.Entity("Radisson.Domain.Models.Entities.RadissonHotel", b =>
-                {
-                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("Radisson.Domain.Models.Entities.Reservation", b =>

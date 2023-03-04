@@ -16,24 +16,27 @@ namespace Radisson.Domain.Validators.AboutModuleValidators.RadissonHotelsValidat
             RuleFor(entity => entity.Text)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
-            RuleFor(m => m.Images)
-                .Custom((list, context) =>
-                {
-                    if (list == null)
-                    {
-                        context.AddFailure("Şəkil seçilməyib!");
-                    }
-                    else if (list.Count(l => l.IsMain == true) == 0)
-                    {
-                        context.AddFailure("Esas sekil secilmeyib");
-                    }
-                });
+            RuleFor(entity => entity.Image)
+               .NotEmpty()
+               .WithMessage("Boş buraxıla bilməz!");
+            //RuleFor(m => m.Images)
+            //    .Custom((list, context) =>
+            //    {
+            //        if (list == null)
+            //        {
+            //            context.AddFailure("Şəkil seçilməyib!");
+            //        }
+            //        else if (list.Count(l => l.IsMain == true) == 0)
+            //        {
+            //            context.AddFailure("Esas sekil secilmeyib");
+            //        }
+            //    });
 
-            RuleForEach(m => m.Images)
-                .ChildRules(m =>
-                {
-                    m.RuleFor(i => i.File != null);
-                });
+            //RuleForEach(m => m.Images)
+            //    .ChildRules(m =>
+            //    {
+            //        m.RuleFor(i => i.File != null);
+            //    });
         }
     }
 }

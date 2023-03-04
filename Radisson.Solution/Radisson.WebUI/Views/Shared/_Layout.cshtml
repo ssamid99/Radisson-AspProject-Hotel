@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/lib/tab-control/tab-control.css">
     <link rel="stylesheet" type="text/css" href="~/lib/toastr.js/toastr.css">
-    @await RenderSectionAsync("addcss", required:false)
+    @RenderSection("addcss", required:false)
 </head>
 <body class="boxed_wrapper">
     <div class="preloader"></div>
@@ -94,7 +94,7 @@
                                 <li>
                                     <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                                 </li>
-                                <li><a asp-controller="abouts" asp-action="index">OtelHaqqında</a></li>
+                                <li><a asp-controller="abouts" asp-action="index">Otel Haqqında</a></li>
                                 <li class="dropdown">
                                     <a href="#">Xidmətlər</a>
                                     <ul>
@@ -231,7 +231,7 @@
     </button>
 
     <script src="~/js/jquery.js"></script>
-    <script src="~/lib/popper.js/umd/popper.min.js"></script>
+@*<script src="~/lib/jquery/jquery.min.js"></script>*@
     <script src="~/js/bootstrap.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/js/wow.js"></script>
@@ -241,14 +241,13 @@
     <script src="~/js/map-helper.js"></script>
     <script src="~/js/isotope.js"></script>
     <script src="~/js/jquery-ui.js"></script>
-   @* <script src="~/js/html5lightbox/html5lightbox.js"></script>*@
+@*    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+*@    <script src="~/js/script.js"></script>
     <script type="text/javascript" src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="~/lib/modernizr/modernizr.min.js"></script>
-    <script src="~/js/script.js"></script>
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     <script src="~/lib/toastr.js/toastr.customize.js"></script>
-    @await RenderSectionAsync("addjs", required: false)
     <script class="removeable">
         $(document).ready(function () {
             $.ajaxSetup({
@@ -301,6 +300,8 @@
     $('.removeable').remove();
     });
     </script>
+    @RenderSection("addjs", required: false)
+    @RenderSection("MySection", required: false)
     <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

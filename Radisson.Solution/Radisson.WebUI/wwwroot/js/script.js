@@ -27,6 +27,31 @@
 	
 	headerStyle();
 
+	
+         $(function () {
+            $("select[name='RoomTypeId']").change(function () {
+                var checkIn = new Date($("input[name='date1']").val());
+                var checkOut = new Date($("input[name='date2']").val());
+                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
+                var multipliedPrice = diffDays * selectedPrice;
+                var totalPrice = multipliedPrice;
+                $('input[name="Price"]').val(totalPrice);
+            });
+        });
+
+    
+        $(function () {
+            var select = $(".select2");
+            var goToLink = $("#goToLink");
+            select.change(function () {
+                var selectedOption = select.find(":selected");
+                var roomId = selectedOption.val();
+			var href = '/admin/roomtypes/details/' + roomId
+			goToLink.attr("href", href);
+            });
+        });
+
 	// dropdown menu
 	var mobileWidth = 992;
 	var navcollapse = $('.navigation li.dropdown');
@@ -280,7 +305,7 @@
 	}
 	
 
-	// Date picker
+	//// Date picker
 	function datepicker () {
 	    if ($('#datepicker').length) {
 	        $('#datepicker').datepicker();
@@ -407,10 +432,6 @@
 			customTabProductPageTab ();
 			datepicker ();
 			datepicker_1 ();
-			datepicker_2 ();
-			datepicker_3 ();
-			datepicker_4 ();
-			datepicker_5 ();
 		})(jQuery);
 	});
 

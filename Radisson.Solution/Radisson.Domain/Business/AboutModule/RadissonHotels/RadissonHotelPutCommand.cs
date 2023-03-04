@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
@@ -18,7 +19,9 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
         public int Id { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public ImageItem[] Images { get; set; }
+        public string FullText { get; set; }
+        public IFormFile Image { get; set; }
+        public string ImagePath { get; set; }
 
         public class RadissonHotelPutCommandHandler : IRequestHandler<RadissonHotelPutCommand, RadissonHotel>
         {
@@ -36,7 +39,7 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
             {
                 try
                 {
-                    var entity = await db.RadissonHotels.Include(p => p.Images).FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
+                    var entity = await db.RadissonHotels.FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
                     if (entity == null)
                     {
@@ -45,55 +48,29 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
 
                     entity.Title = request.Title;
                     entity.Text = request.Text;
+                    entity.FullText = request.FullText;
 
-                    if (request.Images != null && request.Images.Where(i => i.File != null).Count() > 0)
+                    if (request.Image == null)
+                        goto end;
+
+                    string extension = Path.GetExtension(request.Image.FileName); //.jpg-ni goturur
+                    request.ImagePath = $"hotel-{Guid.NewGuid().ToString().ToLower()}{extension}";
+
+                    string fullPath = env.GetImagePhysicalPath(request.ImagePath);
+
+                    using (var fs = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
                     {
-                        #region Elave edilen Files
-                        foreach (var imageItem in request.Images.Where(i => i.File != null && i.Id == null))
-                        {
-                            var image = new RadissonHotelImage();
-                            image.IsMain = imageItem.IsMain;
-                            image.RadissonHotelsId = entity.Id;
-
-                            string extension = Path.GetExtension(imageItem.File.FileName);//.jpg
-                            string name = $"hotel-{Guid.NewGuid().ToString().ToLower()}{extension}";
-                            image.Name = name;
-                            string fullName = env.GetImagePhysicalPath(name);
-
-                            using (var fs = new FileStream(fullName, FileMode.Create, FileAccess.Write))
-                            {
-                                await imageItem.File.CopyToAsync(fs, cancellationToken);
-                            }
-                            
-                            entity.Images.Add(image);
-                        }
-                        #endregion
-
-                        #region Movcud shekilerden silinibse
-                        foreach (var imageItem in request.Images.Where(i => i.Id > 0 && string.IsNullOrWhiteSpace(i.TempPath)))
-                        {
-                            var data = await db.RadissonHotelImages.FirstOrDefaultAsync(pi => pi.Id == imageItem.Id && pi.RadissonHotelsId == entity.Id);
-                            if (data != null)
-                            {
-                                data.IsMain = false;
-                                data.DeletedDate = DateTime.UtcNow.AddHours(4);
-                            }
-                        }
-                        #endregion
-
-                        #region Deyishiklik edilmeyibse
-                        foreach (var imageItem in entity.Images)
-                        {
-                            var formForm = request.Images.FirstOrDefault(i => i.Id == imageItem.Id);
-                            if (formForm != null)
-                            {
-
-                                imageItem.IsMain = formForm.IsMain;
-                            }
-                        }
-                        #endregion
+                        request.Image.CopyTo(fs);
                     }
 
+                    string oldPath = env.GetImagePhysicalPath(entity.ImagePath);
+
+
+                    System.IO.File.Move(oldPath, env.GetImagePhysicalPath($"archive{DateTime.Now:yyyyMMdd}-{entity.ImagePath}"));
+
+                    entity.ImagePath = request.ImagePath;
+
+                end:
                     await db.SaveChangesAsync(cancellationToken);
                     return entity;
                 }

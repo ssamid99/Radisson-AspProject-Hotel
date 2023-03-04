@@ -21,59 +21,22 @@
 <section class="fact-counter gray-bg sec-pad centred">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12 column">
-                <div class="single-item">
-                    <div class="content-box">
-                        <div></div>
-                        <article class="column wow fadeIn" data-wow-duration="0ms">
-                            <div class="count-outer">
-                                <span class="count-text" data-speed="1500" data-stop="50">0</span>
-                            </div>
-                        </article>
-                        <div class="text">Rooms</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 column">
-                <div class="single-item">
-                    <div class="content-box">
-                        <div></div>
-                        <article class="column wow fadeIn" data-wow-duration="0ms">
-                            <div class="count-outer">
-                                <span class="count-text" data-speed="1500" data-stop="25">0</span>
-                            </div>
-                        </article>
-                        <div class="text">Staffs</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 column">
-                <div class="single-item">
-                    <div class="content-box">
-                        <div>
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-12 column">
+                    <div class="single-item">
+                        <div class="content-box">
+                            <div></div>
+                            <article class="column wow fadeIn" data-wow-duration="0ms">
+                                <div class="count-outer">
+                                    <span class="count-text" data-speed="1500" data-stop="@item.Count">0</span>
+                                </div>
+                            </article>
+                            <div class="text">@item.Title</div>
                         </div>
-                        <article class="column wow fadeIn" data-wow-duration="0ms">
-                            <div class="count-outer">
-                                <span>0</span><span class="count-text" data-speed="1500" data-stop="3">0</span>
-                            </div>
-                        </article>
-                        <div class="text">Swimming Pool</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 column">
-                <div class="single-item">
-                    <div class="content-box">
-                        <div></div>
-                        <article class="column wow fadeIn" data-wow-duration="0ms">
-                            <div class="count-outer">
-                                <span class="count-text" data-speed="1500" data-stop="79">0</span>
-                            </div>
-                        </article>
-                        <div class="text">Awards Win</div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

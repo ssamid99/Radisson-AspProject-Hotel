@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Hosting;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Models.DbContexts;
@@ -16,16 +18,20 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
     {
         public string Title { get; set; }
         public string Text { get; set; }
-        public ImageItem[] Images { get; set; }
+        public string FullText { get; set; }
+        public IFormFile Image { get; set; }
+        public string ImagePath { get; set; }
         public class RadissonHotelPostCommandHandler : IRequestHandler<RadissonHotelPostCommand, RadissonHotel>
         {
             private readonly RadissonDbContext db;
             private readonly IHostEnvironment env;
+            private readonly IActionContextAccessor ctx;
 
-            public RadissonHotelPostCommandHandler(RadissonDbContext db, IHostEnvironment env)
+            public RadissonHotelPostCommandHandler(RadissonDbContext db, IHostEnvironment env, IActionContextAccessor ctx)
             {
                 this.db = db;
                 this.env = env;
+                this.ctx = ctx;
             }
             public async Task<RadissonHotel> Handle(RadissonHotelPostCommand request, CancellationToken cancellationToken)
             {
@@ -35,29 +41,24 @@ namespace Radisson.Domain.Business.AboutModule.RadissonHotels
                     var entity = new RadissonHotel();
                     entity.Title = request.Title;
                     entity.Text = request.Text;
-                    
+                    entity.FullText = request.FullText;
+                    entity.CreatedByUserId = ctx.GetCurrentUserId();
+                    if (request.Image == null)
+                        goto end;
 
-                    if (request.Images != null && request.Images.Where(i => i.File != null).Count() > 0)
+                    string extension = Path.GetExtension(request.Image.FileName);//.jpg
+
+                    request.ImagePath = $"hotel-{Guid.NewGuid().ToString().ToLower()}{extension}";
+                    string fullPath = env.GetImagePhysicalPath(request.ImagePath);
+
+                    using (var fs = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
                     {
-                        entity.Images = new List<RadissonHotelImage>();
-
-                        foreach (var item in request.Images.Where(i => i.File != null))
-                        {
-                            var image = new RadissonHotelImage();
-                            image.IsMain = item.IsMain;
-                            string extension = Path.GetExtension(item.File.FileName);//.jpg
-                            image.Name = $"hotel-{Guid.NewGuid().ToString().ToLower()}{extension}";
-
-                            string fullName = env.GetImagePhysicalPath(image.Name);
-
-                            using (var fs = new FileStream(fullName, FileMode.Create, FileAccess.Write))
-                            {
-                                await item.File.CopyToAsync(fs, cancellationToken);
-                            }
-                            entity.Images.Add(image);
-                        }
+                        request.Image.CopyTo(fs);
                     }
 
+                    entity.ImagePath = request.ImagePath;
+                    
+                    end:
                     await db.RadissonHotels.AddAsync(entity, cancellationToken);
                     await db.SaveChangesAsync(cancellationToken);
                     return entity;

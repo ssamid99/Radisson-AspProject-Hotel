@@ -21,6 +21,10 @@ namespace Radisson.Domain.Models.DbContexts.Configurations.Abouts
                 .IsRequired();
             builder.Property(c => c.Text)
                 .IsRequired();
+            builder.Property(c => c.FullText)
+                .IsRequired();
+            builder.Property(c => c.ImagePath)
+                .IsRequired();
         }
     }
 }

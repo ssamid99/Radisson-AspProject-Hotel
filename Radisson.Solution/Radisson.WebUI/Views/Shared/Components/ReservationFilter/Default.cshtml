@@ -11,7 +11,8 @@
                     <input type="text"
                            name="date1"
                            placeholder="Arrival date"
-                           id="datepicker" />
+                           id="datepicker" 
+                           autocomplete="off" />
                 </div>
             </div>
             <div class="single-item">
@@ -21,13 +22,14 @@
                     <input type="text"
                            name="date2"
                            placeholder="Departure date"
-                           id="datepicker_1" />
+                           id="datepicker_1" 
+                           autocomplete="off"/>
                 </div>
             </div>
             <div class="single-item">
-                <div class="form-group select-box">
+                <div class="form-group select-box" >
                     <label>Rooms</label>
-                    <select name="RoomTypeId" class="custom-select-box">
+                    <select name="RoomTypeId" class="select2">
                         @if (ViewBag.RoomTypes != null)
                         {
                             <option selected disable>---Seçin---</option>
@@ -49,26 +51,10 @@
             <div class="single-item">
                 <div class="form-group">
                     <div class="link">
-                        <button type="submit" class="theme-btn">Book Now</button>
+                        <a id="goToLink" href="" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </section>
-
-@section addjs{
-    <script>
-         $(document).ready(function () {
-            $("select[name='RoomTypeId']").change(function () {
-                var checkIn = new Date($("input[name='date1']").val());
-                var checkOut = new Date($("input[name='date2']").val());
-                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
-                var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
-                var multipliedPrice = diffDays * selectedPrice;
-                var totalPrice = multipliedPrice;
-                $('input[name="Price"]').value(totalPrice);
-            });
-        });
-    </script>
-}
