@@ -55,14 +55,14 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="blog-details.html">Forumlar</a>
+                                <a asp-controller="blogposts" asp-action="index">Forumlar</a>
                             </li>
                             <li><a asp-controller="home" asp-action="contact">Müraciətlər</a></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="link">
-                    <a href="login.html" class="fix-a">Daxil Ol</a>
+                    <a asp-controller="account" asp-action="signin" class="fix-a">Daxil Ol</a>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog-details.html">Forumlar</a>
+                                    <a asp-controller="blogposts" asp-action="index">Forumlar</a>
                                 </li>
                                 <li><a href="contact.html">Müraciətlər</a></li>
                             </ul>

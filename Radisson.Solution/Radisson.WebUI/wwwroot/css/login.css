@@ -2,34 +2,21 @@
 @import url("https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur");
 @import url(font-awesome.css);
 
-/* End Fonts */
-/* Start Global rules */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-/* End Global rules */
-
-/* Start body rules */
 body {
   background: antiquewhite;
   background-attachment: fixed;
   background-repeat: no-repeat;
 
   font-family: "Vibur", cursive;
-  /*   the main font */
   font-family: "Abel", sans-serif;
   opacity: 0.95;
-  /* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
 }
 
-/* |||||||||||||||||||||||||||||||||||||||||||||*/
-/* //////////////////////////////////////////// */
-
-/* End body rules */
-
-/* Start form  attributes */
 form {
   width: 450px;
   min-height: 500px;
@@ -37,10 +24,10 @@ form {
   border-radius: 5px;
   margin: 2% auto;
   box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-  padding: 2%;
+  padding: 4%;
   background-image: linear-gradient(-225deg, #0d2933 50%, #cda274 50%);
 }
-/* form Container */
+
 form .con {
   display: -webkit-flex;
   display: flex;
@@ -60,24 +47,23 @@ margin-top: 40% !important;
 
 }
 
-/* the header form form */
+
 header {
   margin: 2% auto 10% auto; 
   text-align: center;
 }
-/* Login title form form */
+
 header h2 {
   font-size: 250%;
   font-family: "Playfair Display", serif;
   color: #cda274;
 }
-/*  A welcome message or an explanation of the login form */
+
 header p {
   letter-spacing: 0.05em;
 }
 
-/* //////////////////////////////////////////// */
-/* //////////////////////////////////////////// */
+
 
 .input-item {
   background: #fff;
@@ -86,7 +72,7 @@ header p {
   border-radius: 5px 0px 0px 5px;
 }
 
-/* Show/hide password Font Icon */
+
 #eye {
   background: #fff;
   color: #333;
@@ -104,7 +90,7 @@ header p {
 
   cursor: pointer;
 }
-/* inputs form  */
+
 input[class="form-input"] {
   width: 250px;
   height: 50px;
@@ -125,17 +111,13 @@ input[class="form-input"] {
 input[id="txt-input"] {
   width: 277px;
 }
-/* focus  */
+
 input:focus {
   transform: translateX(-2px);
   border-radius: 5px;
 }
 
-/* //////////////////////////////////////////// */
-/* //////////////////////////////////////////// */
 
-/* input[type="text"] {min-width: 250px;} */
-/* buttons  */
 button {
   display: inline-block;
   color: #252537;
@@ -157,7 +139,7 @@ button {
   margin: 7% auto;
   letter-spacing: 0.05em;
 }
-/* Submits */
+
 .submits {
   width: 48%;
   display: inline-block;
@@ -165,17 +147,17 @@ button {
   margin-left: 2%;
 }
 
-/*       Forgot Password button FAF3DD  */
+
 .frgt-pass {
   background: transparent;
 }
 
-/*     Sign Up button  */
+
 .sign-up {
   background: #b8f2e6;
 }
 
-/* buttons hover */
+
 button:hover {
   transform: translatey(3px);
   box-shadow: none;
@@ -186,7 +168,6 @@ a{
   color: black;
 }
 
-/* buttons hover Animation */
 button:hover {
   animation: ani9 0.4s ease-in-out infinite alternate;
 }

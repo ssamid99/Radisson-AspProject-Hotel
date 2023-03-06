@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Radisson.Application.AppCode.Extensions;
 using Radisson.Domain.Models.DbContexts;
 using Radisson.Domain.Models.Entities;
 using System;
@@ -23,10 +25,12 @@ namespace Radisson.Domain.Business.ContactPostModule
         public class ContactPostPostCommandHandler : IRequestHandler<ContactPostPostCommand, ContactPost>
         {
             private readonly RadissonDbContext db;
+            private readonly IActionContextAccessor ctx;
 
-            public ContactPostPostCommandHandler(RadissonDbContext db)
+            public ContactPostPostCommandHandler(RadissonDbContext db, IActionContextAccessor ctx)
             {
                 this.db = db;
+                this.ctx = ctx;
             }
             public async Task<ContactPost> Handle(ContactPostPostCommand request, CancellationToken cancellationToken)
             {
@@ -36,6 +40,7 @@ namespace Radisson.Domain.Business.ContactPostModule
                 data.Email = request.Email;
                 data.Phone = request.Phone;
                 data.Message = request.Message;
+                data.CreatedByUserId = ctx.GetCurrentUserId();
                 await db.ContactPosts.AddAsync(data, cancellationToken);
                 await db.SaveChangesAsync(cancellationToken);
                 return data;

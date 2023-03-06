@@ -91,12 +91,15 @@
                                     @Model.Message
                                 </p>
                             </div>
+                            @if (Model.AnsweredbyId != null)
+                            {
                             <div class="form-group row">
                                 <label asp-for="AnsweredbyId" class="col-sm-2 col-form-label"></label>
                                 <div>
                                     @ViewBag.UserSN(Convert.ToInt32(Model.AnsweredbyId))
                                 </div>
                             </div>
+                            }
                             <div class="form-group row">
                                 <label asp-for="AnswerDate" class="col-sm-2 col-form-label"></label>
                                 <div>

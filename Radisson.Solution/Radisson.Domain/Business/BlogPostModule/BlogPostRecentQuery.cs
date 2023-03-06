@@ -29,7 +29,7 @@ namespace Radisson.Domain.Business.BlogPostModule
                 var posts = await db.BlogPosts
                      .Where(bp => bp.DeletedDate == null && bp.PublishedDate != null)
                      .OrderByDescending(bp => bp.PublishedDate)
-                     .Take(request.Size < 2 ? 2 : request.Size)
+                     .Take(request.Size < 3 ? 3 : request.Size)
                      .ToListAsync(cancellationToken);
 
                 return posts;

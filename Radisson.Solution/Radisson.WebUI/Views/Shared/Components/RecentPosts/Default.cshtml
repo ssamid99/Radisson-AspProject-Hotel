@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BlogPost>
+
+<div class="content-box">
+    @foreach (var item in Model)
+    {
+        <div class="single-post">
+            <figure class="post-thumb"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug"><img src="~/uploads/images/@item.ImagePath" alt=""></a></figure>
+            <div class="text"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">@item.Title</a></div>
+            <div class="post-info">@item.PublishedDate?.ToString("MMM dd, yyyy")</div>
+        </div>
+    }
+</div>

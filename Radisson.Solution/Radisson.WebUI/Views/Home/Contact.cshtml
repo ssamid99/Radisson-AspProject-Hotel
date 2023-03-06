@@ -31,7 +31,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 column">
                     <div class="single-item">
                         <div class="icon-box"><i class="flaticon-mobile"></i></div>
-                        <div class="text">(+48) 564-334-21-22-34<br />(+48) 564-334-21-25</div>
+                        <div class="text">(+994) 55 505 50 55<br />(+994) 50-505-50-55</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 column">
@@ -43,34 +43,36 @@
             </div>
         </div>
     </section>
-    <!-- contact-info end -->
 
-
-    <!-- contact-section -->
     <section class="contact-section gray-bg sec-pad">
         <div class="container">
             <div class="title centred"><h2>Contact Form</h2></div>
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-sm-12 offset-lg-2 column">
-                     <form id="contact-form" name="contact_form" class="default-form" action="http://html.commonsupport.xyz/2018/Panola/inc/sendmail.php" method="post">
+                     <form class="default-form" asp-controller="home" asp-action="contact" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="text" name="form_name" value="" placeholder="First Name" required="">
+                                <input type="text" asp-for="Name" value="" placeholder="Ad">
+                            <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="text" name="form_phone" value="" placeholder="Last Name" required="">
+                                <input type="text" asp-for="Surname" value="" placeholder="Soyad" >
+                            <span asp-validation-for="Surname" class="text-danger"></span>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="email" name="form_email" value="" placeholder="Email" required="">
+                                <input type="email" asp-for="Email" value="" placeholder="Email" >
+                            <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="text" name="form_subject" value="" placeholder="Phone number" required="">
+                                <input type="text" asp-for="Phone" value="" placeholder="Əlaqə nömrəsi" >
+                            <span asp-validation-for="Phone" class="text-danger"></span>
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                <textarea placeholder="Your Message" name="form_message" required=""></textarea>
+                                <textarea placeholder="Sizin Mesajınız" asp-for="Message"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
                             </div>
                             <div class="form-group centred col-lg-12 col-md-12 col-sm-12">
-                                <button type="submit" class="theme-btn" data-loading-text="Please wait...">Submit Now</button>
+                                <button type="submit" class="theme-btn" data-loading-text="Gözləyin...">Göndərin</button>
                             </div>
                         </div>
                     </form>
@@ -78,5 +80,4 @@
             </div>
         </div>
     </section>
-    <!-- contact-section end -->
 

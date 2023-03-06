@@ -8,27 +8,49 @@
             <div class="title-text">Excepteur sint occaecat cupidatat</div>
         </div>
         <div class="custom-tab-title">
+@*
+            <ul class="nav nav-tabs">
+                @foreach (var item in Model.ServicesHeaders)
+                {
+                    //<li class="nav-item @(item == Model.ServicesHeaders.First() ? "active" : "")">
+                        <a class="nav-link @(item == Model.ServicesHeaders.First() ? "active" : "")" data-toggle="tab" href="#@item.Id">@item.Title</a>
+                    //</li>
+                }
+            </ul>
+
+            <div class="tab-content">
+                @foreach (var header in Model.ServicesHeaders)
+                {
+                    <div id="@header.Id" class="tab-pane @(header == Model.ServicesHeaders.First() ? "active" : "fade")">
+                        @foreach (var body in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
+                        {
+                            <h3>@body.Text</h3>
+                        }
+                    </div>
+                }
+            </div>*@
             <ul class="tab-title clearfix">
                 @foreach (var item in Model.ServicesHeaders)
                 {
                     <li class="@(item == Model.ServicesHeaders.First() ? "active" : "")">
                         <div class="single-btn">
+                            <div class="text">
                             <a class="@(item == Model.ServicesHeaders.First() ? "active" : "")" data-toggle="tab" href="#@item.Id">
-                                <div class="icon-box"></div>
-                                <div class="text">@item.Title</div>
-                            </a>
+                                @item.Title
+                                </a>
+                            </div>
                         </div>
                     </li>
                 }
             </ul>
         </div>
-        <div class="tab-details-content">
             @foreach (var header in Model.ServicesHeaders)
             {
-                <div class="tab-content @(header == Model.ServicesHeaders.First() ? "active" : "fade")" id="@header.Id">
-                    @foreach (var item in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
-                    {
-                        <div class="single-tab-content">
+        <div class="tab-details-content">
+                <div id="@header.Id" class="tab-pane @(header == Model.ServicesHeaders.First() ? "active" : "fade")">
+                        @foreach (var item in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
+                        {
+                    <div class="single-tab-content">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="img-box">
@@ -46,11 +68,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
+                    </div>
+                        }
                 </div>
-            }
         </div>
+            }
     </div>
 </section>
 <!-- service-section end -->

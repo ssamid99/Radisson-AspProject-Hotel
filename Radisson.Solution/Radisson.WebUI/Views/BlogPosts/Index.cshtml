@@ -1,0 +1,49 @@
+﻿@model PagedViewModel<BlogPost>
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <!-- page-title -->
+    <section class="page-title sec-pad centred" style="background-image: url(images/background/page-title.jpg);">
+        <div class="container">
+            <div class="content-box">
+                <div class="title">Our News</div>
+                <ul class="bread-crumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Our News</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- page-title end -->
+
+
+    <!-- news-section -->
+    <section class="news-section blog-classic sec-pad-2">
+    <div id="dynamic-content" class="container">
+        <partial name="_PostBody" model="@Model" />
+    </div>
+    </section>
+    <!-- news-section -->
+
+
+@section addjs{
+
+    <script>
+        function goPage(pageIndex, pageSize) {
+
+            $.ajax({
+                url: `@Url.Action("Index")?pageIndex=${pageIndex}&pageSize=${pageSize}`,
+                method: 'GET',
+                success: function (response) {
+                    $('#dynamic-content').html(response);
+                    location.hash = '#dynamic-content';
+                    location.hash = '';
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            });
+        }
+    </script>
+}

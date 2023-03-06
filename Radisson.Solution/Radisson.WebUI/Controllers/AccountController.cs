@@ -51,7 +51,13 @@ namespace Radisson.WebUI.Controllers
                     goto end;
                 }
 
+                var userm = await userManager.IsEmailConfirmedAsync(foundedUser);
 
+                if (userm == false)
+                {
+                    ModelState.AddModelError("EmailConfirmed", "Emaili Təsdiqlə!");
+                    goto end;
+                }
 
                 var signinResult = await signInManager.PasswordSignInAsync(foundedUser, user.Password, true, true);
 
@@ -143,6 +149,79 @@ namespace Radisson.WebUI.Controllers
         end:
             return RedirectToAction(nameof(Signin));
         }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(RadissonForgotPassword model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var foundedUser = await userManager.FindByEmailAsync(model.Email);
+
+            if (foundedUser != null && await userManager.IsEmailConfirmedAsync(foundedUser))
+            {
+                var token = await userManager.GeneratePasswordResetTokenAsync(foundedUser);
+                token = token.Replace(" ", "+");
+                string path = $"{Request.Scheme}://{Request.Host}/reset-password.html?email={foundedUser.Email}&token={token}";
+
+                var emailResponse = await emailService.SendMailAsync(foundedUser.Email, "Radisson Otel Giriş", $"Şifrənizi <a href='{path}'>link</a> vasitəsilə yeniləyin!");
+                return View("ForgotPasswordConfirmation");
+            }
+            return View(model);
+        }
+
+        [Route("reset-password.html")]
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (token == null || email == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var model = new ResetPasswordModel();
+            model.Token = token.Replace(" ", "+");
+            model.Email = email;
+            return View(model);
+        }
+
+        [Route("reset-password.html")]
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var foundedUser = await userManager.FindByEmailAsync(model.Email);
+
+            if (foundedUser == null)
+            {
+                return View(model);
+            }
+            var result = await userManager.ResetPasswordAsync(foundedUser, model.Token.Replace(" ", "+"), model.Password);
+
+            if (result.Succeeded)
+            {
+                return View("ResetPasswordConfirmation");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
+
         [Route("/logout.html")]
         public async Task<IActionResult> Logout()
         {

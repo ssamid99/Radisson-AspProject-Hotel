@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Hosting;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Application.AppCode.Infrastructure;
@@ -23,11 +24,13 @@ namespace Radisson.Domain.Business.BlogPostModule
         {
             private readonly RadissonDbContext db;
             private readonly IHostEnvironment env;
+            private readonly IActionContextAccessor ctx;
 
-            public BlogPostPostCommandHandler(RadissonDbContext db, IHostEnvironment env)
+            public BlogPostPostCommandHandler(RadissonDbContext db, IHostEnvironment env, IActionContextAccessor ctx)
             {
                 this.db = db;
                 this.env = env;
+                this.ctx = ctx;
             }
             public async Task<JsonResponse> Handle(BlogPostPostCommand request, CancellationToken cancellationToken)
             {
@@ -35,7 +38,7 @@ namespace Radisson.Domain.Business.BlogPostModule
 
                 entity.Title = request.Title;
                 entity.Body = request.Body;
-
+                entity.CreatedByUserId = ctx.GetCurrentUserId();
 
                 if (request.Image == null)
                     goto end;

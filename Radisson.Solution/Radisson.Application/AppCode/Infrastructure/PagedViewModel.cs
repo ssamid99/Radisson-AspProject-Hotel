@@ -74,12 +74,12 @@ namespace Radisson.Application.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='prev'>
-                                <a href='{link}'><i class='fa fa-angle-left'></i></a>
+                                <a href='{link}'><i class='flaticon-left-arrow'></i></a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='prev disabled'><a><i class='fa fa-angle-left'></i></a></li>");
+                builder.Append("<li class='prev disabled'><a><i class='flaticon-left-arrow'></i></a></li>");
             }
 
             int min = 1, max = this.MaxPageCount;
@@ -131,12 +131,12 @@ namespace Radisson.Application.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='next'>
-                                <a href='{link}'><i class='fa fa-angle-right'></i></a>
+                                <a href='{link}'><i class='flaticon-right-arrow'></i></a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='next disabled'><a><i class='fa fa-angle-right'></i></a></li>");
+                builder.Append("<li class='next disabled'><a><i class='flaticon-right-arrow'></i></a></li>");
             }
 
 
