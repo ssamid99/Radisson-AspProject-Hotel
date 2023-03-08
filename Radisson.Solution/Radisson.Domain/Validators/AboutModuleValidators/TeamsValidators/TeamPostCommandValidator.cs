@@ -20,7 +20,7 @@ namespace Radisson.Domain.Validators.AboutModuleValidators.TeamsValidators
             RuleFor(entity => entity.Text)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
-            RuleFor(entity => entity.ImagePath)
+            RuleFor(entity => entity.Image)
                .NotEmpty()
                .WithMessage("Şəkil seçilməyib!");
         }

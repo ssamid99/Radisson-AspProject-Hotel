@@ -6,29 +6,29 @@
         <form method="post" action="#" class="filter-content clearfix">
             <div class="single-item">
                 <div class="form-group">
-                    <label>Arrival date</label>
+                    <label>Giriş Tarixi</label>
                     <i class="fa fa-angle-down"></i>
                     <input type="text"
                            name="date1"
-                           placeholder="Arrival date"
+                           placeholder="Giriş Tarixi"
                            id="datepicker" 
                            autocomplete="off" />
                 </div>
             </div>
             <div class="single-item">
                 <div class="form-group">
-                    <label>Departure date</label>
+                    <label>Çıxış Tarixi</label>
                     <i class="fa fa-angle-down"></i>
                     <input type="text"
                            name="date2"
-                           placeholder="Departure date"
+                           placeholder="Çıxış Tarixi"
                            id="datepicker_1" 
                            autocomplete="off"/>
                 </div>
             </div>
             <div class="single-item">
                 <div class="form-group select-box" >
-                    <label>Rooms</label>
+                    <label>Otaqlar</label>
                     <select name="RoomTypeId" class="select2">
                         @if (ViewBag.RoomTypes != null)
                         {
@@ -43,7 +43,7 @@
             </div>
             <div class="single-item">
                 <div class="form-group">
-                    <label>Price</label>
+                    <label>Qiymət</label>
                     <input name="Price"
                            readonly />
                 </div>
@@ -51,7 +51,9 @@
             <div class="single-item">
                 <div class="form-group">
                     <div class="link">
-                        <a id="goToLink" href="" class="btn btn-primary">Book Now</a>
+                        <button class="theme-btn">
+                            <a id="goToLink" href="" style="font-size:18px; color:#0f3a4a;">Rezerv Et</a>
+                        </button>
                     </div>
                 </div>
             </div>

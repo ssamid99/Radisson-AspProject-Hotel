@@ -32,11 +32,11 @@
             <ul class="tab-title clearfix">
                 @foreach (var item in Model.ServicesHeaders)
                 {
-                    <li class="@(item == Model.ServicesHeaders.First() ? "active" : "")">
+                    <li class="@((item == Model.ServicesHeaders.First()) ? "active" : "")">
                         <div class="single-btn">
                             <div class="text">
-                            <a class="@(item == Model.ServicesHeaders.First() ? "active" : "")" data-toggle="tab" href="#@item.Id">
-                                @item.Title
+                                <a class="js-tab-link @(item == Model.ServicesHeaders.First() ? "active" : "")" data-toggle="tab" href="#@item.Id">
+                                    @item.Title
                                 </a>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                 }
             </ul>
         </div>
+        <div class="tab-details-content">
             @foreach (var header in Model.ServicesHeaders)
             {
-        <div class="tab-details-content">
                 <div id="@header.Id" class="tab-pane @(header == Model.ServicesHeaders.First() ? "active" : "fade")">
-                        @foreach (var item in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
-                        {
-                    <div class="single-tab-content">
+                    @foreach (var item in Model.ServicesBodies.Where(b => b.ServicesHeaderId == header.Id))
+                    {
+                        <div class="single-tab-content">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="img-box">
@@ -68,11 +68,11 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                        }
+                        </div>
+                    }
                 </div>
-        </div>
             }
+        </div>
     </div>
 </section>
 <!-- service-section end -->

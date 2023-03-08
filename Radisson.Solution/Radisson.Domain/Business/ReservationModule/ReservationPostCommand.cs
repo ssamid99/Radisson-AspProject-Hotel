@@ -26,6 +26,7 @@ namespace Radisson.Domain.Business.ReservationModule
         public int P1 { get; set; }
         public int P2 { get; set; }
         public int P3 { get; set; }
+        public int RoomPrice { get; set; }
         public class ReservationPostCommandHandler : IRequestHandler<ReservationPostCommand, JsonResponse>
         {
             private readonly RadissonDbContext db;

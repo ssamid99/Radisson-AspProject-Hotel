@@ -1,68 +1,10 @@
-/* Css For Panola */
 
-/************ TABLE OF CONTENTS ***************
-1. Fonts
-2. Reset
-3. Global
-4. Main Header
-5. Main Slider 
-6. Filter Section
-7. About Section
-9. Room Section
-8. Service Section
-10. Gallery Section
-11. Testimonial Section
-12. video Section
-14. News Section
-15. Google Map Section
-16. Main Footer
-19. Footer Bottom
-20. Header Style Two
-21. Slider Style Two
-22. About Style Two
-23. Service Style Two
-24. Video Style Two
-25. Discover Section
-26. Page Title
-27. Room Grid Page
-28. Room List Page
-29. Room Details Page
-30. About Page
-31. Fact Counter
-32. Gallery Page
-33. Place Section
-34. Service Page
-35. Service Style Three
-36. Resturent Page
-37. Populer Dishes
-38. Resturent Menu
-39. Spa Page
-40. Spa Section
-41. Testimonial Page
-42. Offer Page
-43. Offers Section
-44. Staffs Page
-45. Staff Section
-46. Error Page
-47. Error Section
-48. Blog Page
-49. Blog Classic
-50. Blog Details Page
-51. Contact Page
-52. Contact Info
-53. Contact Section
-54. Google Map
-
-
-**********************************************/
-
-/* use font link */
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,400i,700,700i,900,900i");
 
-/* use style sheet */
+
 
 @import url(font-awesome.css);
 @import url(flaticon.css);
@@ -72,13 +14,7 @@
 @import url(animate.css);
 @import url(jquery-ui.css);
 
-/*** 
 
-====================================================================
-  Reset
-====================================================================
-
- ***/
 * {
   margin: 0px;
   padding: 0px;
@@ -86,13 +22,7 @@
   outline: none;
 }
 
-/*** 
 
-====================================================================
-  Global Settings
-====================================================================
-
- ***/
 
 body {
   font-size: 16px;
@@ -261,7 +191,7 @@ figure {
   margin: 0px;
 }
 
-/** button **/
+
 
 .theme-btn {
   position: relative;
@@ -2258,7 +2188,7 @@ button.theme-btn {
 .room-details .room-details-content .content-style-two table .table-text {
   position: relative;
   display: inline-block;
-  font-size: 18px;
+  font-size: 17px;
   margin-left: 14px;
 }
 .room-details .room-details-content .content-style-two h3 {
@@ -3356,20 +3286,76 @@ button.theme-btn {
   padding: 13px 50px 11px 51px;
 }
 
-/** google-map **/
-
-.google-map-section {
-  position: relative;
-}
-#contact-google-map {
-  position: relative;
-  width: 100%;
-  height: 500px;
-}
 
 .fix-a{
     margin-right: 50px;
 }
 .fix-logo{
     margin-left: 50px;
+}
+
+.testimonial-section {
+    position: relative;
+    padding-bottom: 90px;
+}
+
+    .testimonial-section .owl-theme .owl-controls {
+        display: none;
+    }
+
+    .testimonial-section .testimonial-content {
+        position: relative;
+        display: block;
+        border: 1px solid #e1e6eb;
+        padding: 50px 15px 32px 15px;
+        margin: 0px 0px 30px 0px;
+        transition: all 500ms ease;
+    }
+
+        .testimonial-section .testimonial-content:hover {
+            border: 1px solid #cda274;
+        }
+
+.testimonial-page .testimonial-content:hover {
+    box-shadow: 0 15px 30px #e1e6eb;
+    border: 1px solid #e1e6eb;
+}
+
+.testimonial-section .testimonial-content .thumb-box {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50px;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 47px;
+}
+
+.testimonial-section .testimonial-content .author:before {
+    position: absolute;
+    content: "";
+    background: url(../images/resource/1.png);
+    width: 60px;
+    height: 5px;
+    left: 50%;
+    margin-left: -30px;
+    top: -26px;
+}
+
+.testimonial-section .testimonial-content .thumb-box img {
+    width: 100%;
+}
+
+.testimonial-section .testimonial-content .author {
+    position: relative;
+    font-size: 22px;
+    line-height: 30px;
+    font-family: "Open Sans", sans-serif;
+    color: #0d2933;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.testimonial-section .testimonial-content .title {
+    margin-bottom: 12px;
 }

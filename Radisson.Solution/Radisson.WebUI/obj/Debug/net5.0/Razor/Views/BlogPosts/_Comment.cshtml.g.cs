@@ -68,8 +68,22 @@ using Radisson.Domain.Business.ContactPostModule;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.ReservationModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dc68d8d32f6395cc27e76235f7b891de67309cca", @"/Views/BlogPosts/_Comment.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db020c4ea8268d2ba41afd3af98399e171049207", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a5fb34eed3bad4767b66906a407557398e05c23", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_BlogPosts__Comment : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogPostComment>
     #nullable disable

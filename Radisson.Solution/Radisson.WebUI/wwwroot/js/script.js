@@ -47,10 +47,11 @@
             select.change(function () {
                 var selectedOption = select.find(":selected");
                 var roomId = selectedOption.val();
-			var href = '/admin/roomtypes/details/' + roomId
+			var href = '/roomtypes/details/' + roomId
 			goToLink.attr("href", href);
             });
-        });
+		});
+	
 
 	// dropdown menu
 	var mobileWidth = 992;

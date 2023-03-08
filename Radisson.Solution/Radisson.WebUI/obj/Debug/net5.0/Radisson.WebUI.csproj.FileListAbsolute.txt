@@ -389,14 +389,8 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\RoomTypes\Details.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\RoomTypes\Index.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Abouts\Create.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Abouts\Delete.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Abouts\Details.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Abouts\Edit.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Abouts\Index.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\RadissonHotel\Default.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Home\Test.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\ServiceHeaderBody\Default.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\ReservationFilter\Default.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\BlogPosts\Details.cshtml.g.cs
@@ -406,3 +400,11 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\RecentPosts\Default.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ResetPassword.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\RoomTypes\_ReservationForm.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\RecentRooms\Default.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\IndexLastPosts\Default.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\_NewsLetter.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Home\SubscribeApprove.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\TeamsGrid\Default.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
+D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ResetPasswordConfirmation.cshtml.g.cs

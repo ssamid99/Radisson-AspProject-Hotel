@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RoomType>
+
+<section class="room-section overlay-style-one gray-bg sec-pad">
+    <div class="container">
+        <div class="top-title">
+            <div class="sec-title">Otaqlar</div>
+            <div class="title-text">Ən çox tələb görən otaqlar</div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+           {   
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="single-item inner-box">
+                    <figure class="image-box">
+                            <img src="~/uploads/images/@item.ImagePath" alt="" class="fix-img" />
+                        <!--Overlay Box-->
+                        <div class="overlay-box">
+                            <div class="overlay-inner">
+                                <div class="content">
+                                        <a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug class="link">
+                                        <i class="icon fa fa-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="lower-content">
+                            <div class="price">₼@item.Price<span>Günlük</span></div>
+                            <h3><a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug>@item.Name</a></h3>
+                      
+                        <ul class="info-box">
+                            <li class="link">
+                                    <a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug class="theme-btn-three">Rezerv Et</a>
+                            </li>
+                            <li><i class="flaticon-television"></i></li>
+                            <li>
+                                <i class="flaticon-wifi-connection-signal-symbol"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           }
+        </div>
+    </div>
+</section>

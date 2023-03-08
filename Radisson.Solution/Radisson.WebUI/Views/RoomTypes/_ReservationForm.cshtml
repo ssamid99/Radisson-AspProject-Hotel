@@ -1,0 +1,93 @@
+﻿@model ReservationPostCommand
+
+
+<div class="single-item">
+    <div class="form-group">
+        <label>Ad</label>
+        <input type="text" asp-for="Name" placeholder="Ad" value="@ViewBag.Name">
+        <span asp-validation-for="Name"></span>
+    </div>
+</div>
+<div class="single-item">
+    <div class="form-group">
+        <label>Soyad</label>
+        <input type="text" asp-for="Surname" placeholder="Soyad" value="@ViewBag.Surname">
+        <span asp-validation-for="Surname"></span>
+    </div>
+</div>
+<div class="single-item">
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" asp-for="Email" placeholder="Email" value="@ViewBag.Email">
+        <span asp-validation-for="Email"></span>
+    </div>
+</div>
+<div class="single-item">
+    <div class="form-group">
+        <label asp-for="CheckIn">Giriş Tarixi</label>
+        <i class="fa fa-angle-down"></i>
+        <input type="text" name="CheckIn" placeholder="Giriş Tarixi" id="datepicker" autocomplete="off">
+        <span asp-validation-for="CheckIn"></span>
+    </div>
+</div>
+<div class="single-item">
+    <div class="form-group">
+        <label asp-for="CheckOut">Çıxış Tarixi</label>
+        <i class="fa fa-angle-down"></i>
+        <input type="text" name="CheckOut" placeholder="Çıxış Tarixi" id="datepicker_1" autocomplete="off">
+        <span asp-validation-for="CheckOut"></span>
+    </div>
+</div>
+
+<div class="single-item">
+    <div class="form-group select-box">
+        <input hidden type="text" name="RoomTypeId" value="@Model.RoomTypeId" data-price="@Model.RoomPrice">
+    </div>
+</div>
+@if (ViewBag.People != null)
+{
+    <div class="single-item">
+        <div class="form-group select-box">
+            <label>Əlavə Qonaqlar</label>
+            <select id="p1" name="P1" class="custom-select-box">
+                @foreach (var people in ViewBag.People)
+                {
+                    <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                }
+            </select>
+            <span asp-validation-for="P1" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="single-item">
+        <div class="form-group select-box">
+            <label>Əlavə Qonaqlar</label>
+            <select id="p2" name="P2" class="custom-select-box">
+
+                @foreach (var people in ViewBag.People)
+                {
+                    <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                }
+            </select>
+            <span asp-validation-for="P2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="single-item">
+        <div class="form-group select-box">
+            <label>Əlavə Qonaqlar</label>
+            <select id="p3" name="P3" class="custom-select-box">
+                @foreach (var people in ViewBag.People)
+                {
+                    <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                }
+            </select>
+            <span asp-validation-for="P3" class="text-danger"></span>
+        </div>
+    </div>
+}
+<div class="single-item">
+    <div class="form-group">
+    <label>Toplam Qiymət:</label>
+    <input name="Price" readonly />
+    <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+</div>

@@ -40,10 +40,10 @@
                             <li class="current">
                                 <a asp-controller="home" asp-action="index">Ana Səhifə</a>
                             </li>
+                            <li><a asp-controller="home" asp-action="about">Otel Haqqında</a></li>
                             <li>
                                 <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                             </li>
-                            <li><a asp-controller="home" asp-action="about">Otel Haqqında</a></li>
                             <li class="dropdown">
                                 <a href="#">Xidmətlər</a>
                                 <ul>
@@ -62,7 +62,7 @@
                     </div>
                 </nav>
                 <div class="link">
-                    <a asp-controller="account" asp-action="signin" class="fix-a">Daxil Ol</a>
+                    <a asp-controller="account" asp-action="signin" class="fix-a" style="font-size:17px; color:#0f3a4a;">Daxil Ol</a>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="sticky-header">
             <div class="container clearfix">
                 <figure class="logo-box">
-                    <a href="index.html"><img src="~/images/small-logo.png" alt="" /></a>
+                    <a asp-controller="home" asp-action="index"><img src="~/images/small-logo.png" alt="" /></a>
                 </figure>
                 <div class="menu-area">
                     <nav class="main-menu navbar-expand-lg">
@@ -91,10 +91,10 @@
                                 <li class="current">
                                     <a asp-controller="home" asp-action="index">Ana səhifə</a>
                                 </li>
+                                <li><a asp-controller="home" asp-action="about">Otel Haqqında</a></li>
                                 <li>
                                     <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                                 </li>
-                                <li><a asp-controller="abouts" asp-action="index">Otel Haqqında</a></li>
                                 <li class="dropdown">
                                     <a href="#">Xidmətlər</a>
                                     <ul>
@@ -130,12 +130,10 @@
                         </figure>
                         <div class="text">
                             <p>
-                                Lorem ipsum dolor amet consecte tur adi pisicing elit sed
-                                eiusm tempor incididunt
+                                
                             </p>
                             <p>
-                                labore dolore magna aliqua enim ad minim veniam quis.nostrud
-                                exercita.
+                                
                             </p>
                         </div>
                     </div>
@@ -147,12 +145,12 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 footer-widget">
                             <div class="contact-widget footer-widget">
-                                <div class="footer-title">Contact Info</div>
+                                <div class="footer-title">Əlaqə Məlumatı</div>
                                 <div class="text">
-                                    Flat 20, Reynolds Neck, North Helenaville, FV77
+                                    street 255, Ahmad Rajabli, Baku 1075
                                 </div>
-                                <div class="phone">+2(305) 587-3407</div>
-                                <div class="mail">info@panola.com</div>
+                                <div class="phone">+994 55 505 50 55</div>
+                                <div class="mail">info@radisson.com</div>
                                 <ul class="footer-social">
                                     <li>
                                         <a href="#"><i class="fa fa-facebook"></i></a>
@@ -168,25 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
-                    <div class="newsletter-widget footer-widget">
-                        <div class="footer-title">Newsletter</div>
-                        <div class="text">
-                            Eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <div class="subscribe-form">
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <input type="email"
-                                           name="email"
-                                           placeholder="Email"
-                                           required="" />
-                                    <button type="submit">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_Newsletter" />
             </div>
         </div>
     </footer>
@@ -195,12 +175,11 @@
         <div class="left-content">
             <ul class="content-box">
                 <li>
-                    <a href="#"><i class="fa fa-envelope"></i>Support@example.com</a>
+                    <a href="#"><i class="fa fa-envelope"></i>Support@radissonhotel.com</a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-globe"></i>Kleine Pierboulevard 8-6 2249 KV
-                        Vries
+                        <i class="fa fa-globe"></i>street 255, Ahmad Rajabli, Baku 1075
                     </a>
                 </li>
             </ul>
@@ -231,7 +210,6 @@
     </button>
 
     <script src="~/js/jquery.js"></script>
-@*<script src="~/lib/jquery/jquery.min.js"></script>*@
     <script src="~/js/bootstrap.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/js/wow.js"></script>
@@ -241,8 +219,7 @@
     <script src="~/js/map-helper.js"></script>
     <script src="~/js/isotope.js"></script>
     <script src="~/js/jquery-ui.js"></script>
-@*    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
-*@    <script src="~/js/script.js"></script>
+    <script src="~/js/script.js"></script>
     <script type="text/javascript" src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="~/lib/modernizr/modernizr.min.js"></script>
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
@@ -275,23 +252,23 @@
                     }
                 }
             });
-            $('#softLogin').submit(function (e) {
-                e.preventDefault();
-                var formData = new FormData(e.currentTarget);
-                $.ajax({
-                    url: '/signin.html',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        console.log(response);
-                        if (response.error == false) {
-                            $('#flipFlop').modal('hide');
-                        }
-                    }
-                });
-            });
+            //$('#softLogin').submit(function (e) {
+            //    e.preventDefault();
+            //    var formData = new FormData(e.currentTarget);
+            //    $.ajax({
+            //        url: '/signin.html',
+            //        type: 'POST',
+            //        data: formData,
+            //        processData: false,
+            //        contentType: false,
+            //        success: function (response) {
+            //            console.log(response);
+            //            if (response.error == false) {
+            //                $('#flipFlop').modal('hide');
+            //            }
+            //        }
+            //    });
+            //});
         });
     </script>
 
@@ -300,9 +277,34 @@
     $('.removeable').remove();
     });
     </script>
+
+    <script>
+        $('#newsletter-s1').submit(function (ev) {
+            ev.preventDefault();
+            let fd = new FormData(ev.currentTarget);
+            $.ajax({
+                url: '@Url.Action("Subscribe","Home")',
+                type: 'post',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.error == true) {
+                        toastr.error(response.message, 'Problem!');
+                        return;
+                    }
+                    toastr.success(response.message, 'Success!');
+                    ev.currentTarget.reset();
+                },
+                error: function (errorResponse) {
+                    console.log(errorResponse, 'Error');
+                }
+            });
+        });
+    </script>
+
     @RenderSection("addjs", required: false)
-    @RenderSection("MySection", required: false)
-    <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -355,6 +357,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 </body>
 </html>

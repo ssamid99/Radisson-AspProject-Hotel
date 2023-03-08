@@ -30,7 +30,7 @@ namespace Radisson.Domain.Business.SubscribeModule
                 {
                     return null;
                 }
-                data.DeletedDate = DateTime.UtcNow.AddHours(4);
+                db.Subscribes.Remove(data);
                 await db.SaveChangesAsync(cancellationToken);
                 return data;
             }

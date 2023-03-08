@@ -25,7 +25,7 @@
                     <li>paylaşıldı: <a>@item.CreatedByUser?.Name</a></li>
                         <li>tarix: <span>@item.PublishedDate?.ToString("MMM dd, yyyy")</span></li>
                 </ul>
-                <div class="text ellipse">@item.Body</div>
+                <div class="text ellipse">@Html.Raw(item.Body)</div>
                     <div class="link"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug" class="theme-btn-three">Ətraflı Oxu</a></div>
             </div>
         </div>
