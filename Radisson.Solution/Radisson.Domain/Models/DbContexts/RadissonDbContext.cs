@@ -26,6 +26,7 @@ namespace Radisson.Domain.Models.DbContexts
         public DbSet<ServicesBody> ServicesBodies { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

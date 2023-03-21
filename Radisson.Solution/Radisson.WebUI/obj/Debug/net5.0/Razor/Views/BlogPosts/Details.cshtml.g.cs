@@ -77,13 +77,20 @@ using Radisson.Domain.Business.ReservationModule;
 #nullable disable
 #nullable restore
 #line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.PaymentModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
 using Radisson.Domain.Models.Entities.Membership;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2df621e82e8ce59316fb60238ccfae68e2abb31a", @"/Views/BlogPosts/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a5fb34eed3bad4767b66906a407557398e05c23", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"70094c4823455c9d12675f0d0711cd4d732d2d76", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_BlogPosts_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogPost>
     #nullable disable
@@ -160,7 +167,7 @@ using Radisson.Domain.Models.Entities.Membership;
                 <div class=""blog-details-content"">
                     <div class=""content-style-one"">
                         <figure class=""img-box"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2df621e82e8ce59316fb60238ccfae68e2abb31a7549", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2df621e82e8ce59316fb60238ccfae68e2abb31a7765", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -373,7 +380,7 @@ WriteAttributeValue("", 4043, subComment.ParentId, 4043, 20, false);
 #line hidden
 #nullable disable
             WriteLiteral("                        </div>\r\n                    </div>\r\n                    <div class=\"comment-form\">\r\n                        <h3>Rəy Bildir</h3>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2df621e82e8ce59316fb60238ccfae68e2abb31a18138", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2df621e82e8ce59316fb60238ccfae68e2abb31a18354", async() => {
                 WriteLiteral("\r\n                            <div id=\"replyToComment\"></div>\r\n                            <input type=\"hidden\" name=\"PostId\"");
                 BeginWriteAttribute("value", " value=\"", 4854, "\"", 4871, 1);
 #nullable restore

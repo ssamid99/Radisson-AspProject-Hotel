@@ -77,13 +77,20 @@ using Radisson.Domain.Business.ReservationModule;
 #nullable disable
 #nullable restore
 #line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.PaymentModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
 using Radisson.Domain.Models.Entities.Membership;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"15b356ee4c3037280f8754fb1094986fb26db580", @"/Views/Shared/Components/IndexLastPosts/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a5fb34eed3bad4767b66906a407557398e05c23", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"70094c4823455c9d12675f0d0711cd4d732d2d76", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_IndexLastPosts_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<BlogPost>>
     #nullable disable
@@ -120,7 +127,7 @@ using Radisson.Domain.Models.Entities.Membership;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n<section class=\"news-section sec-pad\">\r\n    <div class=\"container\">\r\n        <div class=\"top-title clearfix\">\r\n            <div class=\"sec-title\">Son Postlar</div>\r\n            <div class=\"top-link\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db5807350", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db5807566", async() => {
                 WriteLiteral("Daha Çox Post");
             }
             );
@@ -146,7 +153,7 @@ using Radisson.Domain.Models.Entities.Membership;
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"col-lg-4 col-md-6 col-sm-12 news-column\">\r\n                <div class=\"single-item\">\r\n                    <div class=\"image\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "15b356ee4c3037280f8754fb1094986fb26db5809234", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "15b356ee4c3037280f8754fb1094986fb26db5809450", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -170,7 +177,7 @@ AddHtmlAttributeValue("", 596, item.ImagePath, 596, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        <div class=\"overlay\">\r\n                            <div class=\"overlay-content\">\r\n                                <div class=\"content\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58011054", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58011270", async() => {
                 WriteLiteral("\r\n                                        <i class=\"fa fa-link\"></i>\r\n                                    ");
             }
             );
@@ -215,7 +222,7 @@ AddHtmlAttributeValue("", 596, item.ImagePath, 596, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"lower-content\">\r\n                        <h3>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58014805", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58015021", async() => {
 #nullable restore
 #line 27 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\Shared\Components\IndexLastPosts\Default.cshtml"
                                                                                                                                   Write(item.Title);
@@ -289,7 +296,7 @@ AddHtmlAttributeValue("", 596, item.ImagePath, 596, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                        </div>\r\n                        <div class=\"link\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58019748", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15b356ee4c3037280f8754fb1094986fb26db58019964", async() => {
                 WriteLiteral("Ətraflı Oxu");
             }
             );

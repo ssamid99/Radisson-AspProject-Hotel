@@ -27,6 +27,12 @@ namespace Radisson.Domain.Business.ReservationModule
         public int P2 { get; set; }
         public int P3 { get; set; }
         public int RoomPrice { get; set; }
+        public int ReservationId { get; set; }
+        public int Amout { get; set; }
+        public string NameonCard { get; set; }
+        public string Number { get; set; }
+        public DateTime Expiration { get; set; }
+        public int Cvv { get; set; }
         public class ReservationPostCommandHandler : IRequestHandler<ReservationPostCommand, JsonResponse>
         {
             private readonly RadissonDbContext db;
@@ -65,6 +71,17 @@ namespace Radisson.Domain.Business.ReservationModule
                 else
                 {
                     await db.Reservations.AddAsync(data, cancellationToken);
+                    await db.SaveChangesAsync(cancellationToken);
+
+                    var pay = new Payment();
+                    pay.ReservationId = data.Id;
+                    pay.Amount = data.Price;
+                    pay.NameonCard = request.NameonCard;
+                    pay.Number = request.Number;
+                    pay.Expiration = request.Expiration;
+                    pay.Cvv = request.Cvv;
+
+                    await db.Payments.AddAsync(pay, cancellationToken);
                     await db.SaveChangesAsync(cancellationToken);
                     return new JsonResponse
                     {

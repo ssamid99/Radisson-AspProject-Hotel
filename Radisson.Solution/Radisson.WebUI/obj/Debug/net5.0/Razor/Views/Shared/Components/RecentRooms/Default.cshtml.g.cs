@@ -77,13 +77,20 @@ using Radisson.Domain.Business.ReservationModule;
 #nullable disable
 #nullable restore
 #line 11 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
+using Radisson.Domain.Business.PaymentModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\_ViewImports.cshtml"
 using Radisson.Domain.Models.Entities.Membership;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d4665bbd9dd6eb33f8481c487f53f3a0ac267aa8", @"/Views/Shared/Components/RecentRooms/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a5fb34eed3bad4767b66906a407557398e05c23", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"70094c4823455c9d12675f0d0711cd4d732d2d76", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_RecentRooms_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<RoomType>>
     #nullable disable
@@ -137,7 +144,7 @@ using Radisson.Domain.Models.Entities.Membership;
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"col-lg-4 col-md-6 col-sm-12\">\r\n                <div class=\"single-item inner-box\">\r\n                    <figure class=\"image-box\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa87941", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa88157", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -162,7 +169,7 @@ AddHtmlAttributeValue("", 591, item.ImagePath, 591, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        <!--Overlay Box-->\r\n                        <div class=\"overlay-box\">\r\n                            <div class=\"overlay-inner\">\r\n                                <div class=\"content\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa89889", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa810105", async() => {
                 WriteLiteral("\r\n                                        <i class=\"icon fa fa-link\"></i>\r\n                                    ");
             }
             );
@@ -215,7 +222,7 @@ AddHtmlAttributeValue("", 591, item.ImagePath, 591, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("<span>Günlük</span></div>\r\n                            <h3>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa813941", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa814158", async() => {
 #nullable restore
 #line 29 "D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\Views\Shared\Components\RecentRooms\Default.cshtml"
                                                                                                                                 Write(item.Name);
@@ -265,7 +272,7 @@ AddHtmlAttributeValue("", 591, item.ImagePath, 591, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h3>\r\n                      \r\n                        <ul class=\"info-box\">\r\n                            <li class=\"link\">\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa817654", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4665bbd9dd6eb33f8481c487f53f3a0ac267aa817871", async() => {
                 WriteLiteral("Rezerv Et");
             }
             );

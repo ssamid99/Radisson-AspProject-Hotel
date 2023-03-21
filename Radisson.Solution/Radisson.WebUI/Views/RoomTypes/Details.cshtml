@@ -102,11 +102,7 @@
                         <form asp-controller="roomtypes" asp-action="createreservation" method="post" class="content">
                             <div asp-validation-summary="All"></div>
                             @await Html.PartialAsync("_ReservationForm", new ReservationPostCommand{ RoomTypeId = Model.Id, RoomPrice = Model.Price })
-                            <div class="single-item">
-                                <div class="form-group">
-                                    <div class="link"><button type="submit" class="theme-btn">Rezerv Et</button></div>
-                                </div>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -140,4 +136,21 @@
             });
         });
     </script>
+    <script src="~/js/main/payment.js"></script>
+}
+@section addcss{
+<style>
+    .modal-header{
+        background-color : antiquewhite;
+    }
+    .fixcolor{
+        color : #cda274;
+    }
+    #cc-name,
+    #cc-number,
+    #cc-expiration,
+    #cc-cvv{
+        border : 1px, solid, #cda274;
+    }
+</style>
 }

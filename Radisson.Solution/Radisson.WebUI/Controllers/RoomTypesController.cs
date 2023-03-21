@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Radisson.Application.AppCode.Extensions;
+using Radisson.Domain.Business.PaymentModule;
 using Radisson.Domain.Business.ReservationModule;
 using Radisson.Domain.Business.RoomTypeModule;
 using Radisson.Domain.Models.DbContexts;
@@ -99,6 +100,7 @@ namespace Radisson.WebUI.Controllers
             ViewBag.People = db.Peoples.Where(p => p.DeletedDate == null).ToList();
             return View("_ReservationForm", command);
         }
+
 
         public int GetPrice(int id)
         {
