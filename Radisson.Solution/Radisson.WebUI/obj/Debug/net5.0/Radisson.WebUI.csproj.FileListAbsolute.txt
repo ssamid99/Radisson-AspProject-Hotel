@@ -408,8 +408,4 @@ D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\R
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\TeamsGrid\Default.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Views\Account\ResetPasswordConfirmation.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Payments\Create.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Payments\Delete.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Payments\Details.cshtml.g.cs
-D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Payments\Edit.cshtml.g.cs
 D:\Radisson-AspProject-Hotel\Radisson.Solution\Radisson.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Payments\Index.cshtml.g.cs

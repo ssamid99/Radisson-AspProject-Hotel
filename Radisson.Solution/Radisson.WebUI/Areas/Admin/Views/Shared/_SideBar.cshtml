@@ -57,6 +57,17 @@
                     </a>
                 </li>
             }
+            @if (User.HasAccess("admin.payments.index"))
+            {
+                <li>
+                    <a asp-controller="payments" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-credit-card"></i>
+                        </span>
+                        <span class="pcoded-mtext">Ödənişlər</span>
+                    </a>
+                </li>
+            }
             @if (User.HasAccess("admin.people.index"))
             {
                 <li>

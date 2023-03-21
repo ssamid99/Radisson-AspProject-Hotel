@@ -1,83 +1,130 @@
-﻿@model IEnumerable<Radisson.Domain.Models.Entities.Payment>
+﻿@model PagedViewModel<Payment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ödəniş";
 }
 
-<h1>Index</h1>
+<h1>Ödənişlər</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Reservation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NameonCard)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Expiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cvv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedByUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeletedDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reservation.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameonCard)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Expiration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cvv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedByUser.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeletedDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@section addcss{
+    <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css">
 }
-    </tbody>
-</table>
+
+
+    <div class="page-wrapper">
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                            </li>
+
+                            <li class="breadcrumb-item" style="float: left;">
+                                <span>Ödənişlər</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="card">
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Rezervasiya Nömrəsi
+                                    </th>
+                                    <th>
+                                        Məbləğ
+                                    </th>
+                                    <th>
+                                        Ödəyən
+                                    </th>
+                                    <th>
+                                        Kart Nömrəsi
+                                    </th>
+                                    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td class="ellipse">
+                                        @item.ReservationId
+                                    </td>
+                                    <td class="ellipse">
+                                        @item.Amount AZN
+                                    </td>
+                                    <td class="ellipse">
+                                        @item.NameonCard
+                                    </td>
+                                    <td class="ellipse">
+                                        @item.Number?.Substring(item.Number.Length - 4)
+                                    </td>
+                                    <td class="operations table-imaged">
+                                        
+                                        @if (User.HasAccess("admin.reservations.delete"))
+                                        {
+                                            <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.NameonCard')"><i class="fa-solid fa-trash-can"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Model.GetPager(Url, "Index", "Admin")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+</div>
+@section addjs{
+
+    <script class="removeable">
+        function removeEntity(id, name) {
+            swal(`Are you sure you want to delete ${name}?`, {
+                title: "Diqqet!",
+                text: `Silmək istədiyinizdən əminsiniz ${name}?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ["No", "Yes"]
+            })
+                .then((value) => {
+                    if (value == true) {
+                        let vToken = $('[name=__RequestVerificationToken]').val();
+                        let formData = new FormData();
+                        formData.set('__RequestVerificationToken', vToken);
+                        formData.set('id', id);
+                        $.ajax({
+                            url: `@Url.Action("Delete")`,
+                            type: 'POST',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                console.log(response)
+                                if (response.error == true) {
+                                    toaster.error(response.message, "Xəta");
+                                    return;
+                                }
+                                location.reload();
+                            },
+                            error: function (errorResponse) {
+                                console.error(errorResponse);
+                            }
+                        });
+                    }
+                });
+        }
+
+    </script>
+    }
+

@@ -73,16 +73,20 @@ namespace Radisson.Domain.Business.ReservationModule
                     await db.Reservations.AddAsync(data, cancellationToken);
                     await db.SaveChangesAsync(cancellationToken);
 
-                    var pay = new Payment();
-                    pay.ReservationId = data.Id;
-                    pay.Amount = data.Price;
-                    pay.NameonCard = request.NameonCard;
-                    pay.Number = request.Number;
-                    pay.Expiration = request.Expiration;
-                    pay.Cvv = request.Cvv;
+                    if ((request.NameonCard != null) && (request.Number != null) && (request.Cvv != 000))
+                    {
+                        var pay = new Payment();
+                        pay.ReservationId = data.Id;
+                        pay.Amount = data.Price;
+                        pay.NameonCard = request.NameonCard;
+                        pay.Number = request.Number;
+                        pay.Expiration = request.Expiration;
+                        pay.Cvv = request.Cvv;
 
-                    await db.Payments.AddAsync(pay, cancellationToken);
-                    await db.SaveChangesAsync(cancellationToken);
+                        await db.Payments.AddAsync(pay, cancellationToken);
+                        await db.SaveChangesAsync(cancellationToken);
+                    }
+
                     return new JsonResponse
                     {
                         Error = false,
