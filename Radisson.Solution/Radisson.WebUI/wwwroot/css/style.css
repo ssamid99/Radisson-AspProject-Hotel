@@ -75,14 +75,14 @@ a {
   line-height: 24px;
   font-weight: 400;
   cursor: pointer;
-  color: black;
+  color: white;
   transition: all 500ms ease;
 }
 
 a:hover {
   text-decoration: none;
   outline: none;
-  color: #cda274;
+  color: gray;
 }
 
 input,
@@ -199,9 +199,9 @@ figure {
   font-size: 17px;
   font-family: "Open Sans", sans-serif;
   padding: 13px 55px 13px 55px;
-  background: #cda274;
+  background: white;
   font-weight: 600;
-  color: #ffffff;
+  color: gray;
   border-radius: 30px;
   text-transform: capitalize;
   transition: all 300ms ease;
@@ -210,8 +210,8 @@ figure {
   z-index: 1;
 }
 .theme-btn:hover {
-  background: #cc9152;
-  color: #ffffff;
+  background: black;
+  color: white;
 }
 .theme-btn-two {
   position: relative;
@@ -221,9 +221,9 @@ figure {
   font-family: "Open Sans", sans-serif;
   padding: 18px 57px 16px 57px;
   font-weight: 600;
-  color: #cda274;
+  color: gray;
   text-transform: capitalize;
-  background: transparent;
+  background: white;
   border: 1px solid #e1e6eb;
   border-radius: 30px;
   transition: all 500ms ease;
@@ -440,7 +440,7 @@ figure {
   top: 0px;
   z-index: 999;
   width: 100%;
-  background: #ffffff;
+  background: yellow;
   box-shadow: 0 10px 10px rgba(13, 41, 51, 0.3);
   transition: all 500ms ease;
   -moz-transition: all 500ms ease;
@@ -449,20 +449,20 @@ figure {
   -o-transition: all 500ms ease;
 }
 .sticky-header {
-  position: fixed;
-  opacity: 0;
-  visibility: hidden;
-  background: antiquewhite;
-  left: 0px;
-  top: 0px;
-  border-bottom: 1px solid #e0e0e0;
-  width: 100%;
-  z-index: 0;
-  transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
-  -webkit-transition: all 500ms ease;
-  -ms-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    background: #0d2933;
+    left: 0px;
+    top: 0px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    z-index: 0;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
 }
 
 .fixed-header .sticky-header {
@@ -550,9 +550,9 @@ figure {
 /** header-bottom **/
 
 .header-bottom {
-  position: relative;
-  background: antiquewhite;
-  padding: -1px 100px 0px 50px;
+    position: relative;
+    background: #0d2933;
+    padding: -1px 100px 0px 50px;
 }
 .main-header .logo-box {
   position: relative;
@@ -605,7 +605,7 @@ figure {
   display: block;
   font-size: 17px;
   font-family: "Open Sans", sans-serif;
-  color: #0f3a4a;
+  color: white;
   line-height: 30px;
   font-weight: 600;
   opacity: 1;
@@ -619,7 +619,11 @@ figure {
 }
 .main-menu .navigation > li.current > a,
 .main-menu .navigation > li > a:hover {
-  color: #cda274;
+  color: gray;
+}
+
+.h-em:hover{
+    color:gray;
 }
 
 .main-menu .navigation > li > ul {
@@ -670,7 +674,7 @@ figure {
   color: #fff;
 }
 .main-menu .navigation > li > ul > li:hover {
-  background: #cda274;
+  background: gray;
 }
 
 .main-menu .navigation > li.dropdown:hover > ul {
@@ -706,8 +710,8 @@ figure {
 }
 .sticky-header .main-menu .navigation > li.current > a,
 .sticky-header .main-menu .navigation > li:hover > a {
-  background: #cda274;
-  color: #ffffff;
+  background: transparent;
+  color: gray;
 }
 .sticky-header .logo-box {
   margin-top: 11px;
@@ -838,15 +842,15 @@ figure {
 .filter-section {
   position: relative;
 }
-.filter-section .filter-content {
-  position: relative;
-  background: antiquewhite;
-  border-radius: 5px;
-  padding: 27px 40px 34px 40px;
-  box-shadow: 0 15px 30px rgba(225, 230, 235, 0.5);
-  margin-top: -80px;
-  z-index: 1;
-}
+    .filter-section .filter-content {
+        position: relative;
+        background: #0d2933;
+        border-radius: 5px;
+        padding: 27px 40px 34px 40px;
+        box-shadow: 0 15px 30px rgba(225, 230, 235, 0.5);
+        margin-top: -80px;
+        z-index: 1;
+    }
 .filter-section .filter-content .single-item {
   position: relative;
   display: inline-block;
@@ -860,7 +864,7 @@ figure {
 .filter-section .filter-content .single-item .form-group label {
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
-  color: #0d2933;
+  color: white;
   line-height: 26px;
   font-weight: 600;
   margin-bottom: 13px;
@@ -1486,10 +1490,10 @@ figure {
 .header-style-two .header-top .right-content .social-box li a {
   color: #0f3a4a;
 }
-.header-style-two .header-top .left-content li a:hover,
-.header-style-two .header-top .right-content .social-box li a:hover {
-  color: #cda274;
-}
+    .header-style-two .header-top .left-content li a:hover,
+    .header-style-two .header-top .right-content .social-box li a:hover {
+        color: #0f3a4a;
+    }
 .header-style-two .header-top .right-content .social-box li:last-child a {
   margin-right: 0px;
 }
@@ -1503,16 +1507,16 @@ figure {
 .header-style-two .main-menu .navigation > li > a {
   color: #ffffff;
 }
-.header-style-two .main-menu .navigation > li.current > a,
-.header-style-two .main-menu .navigation > li > a:hover {
-  color: #cda274;
-}
+    .header-style-two .main-menu .navigation > li.current > a,
+    .header-style-two .main-menu .navigation > li > a:hover {
+        color: #0f3a4a;
+    }
 .header-style-two .sticky-header .main-menu .navigation > li > a {
-  color: #0f3a4a;
+  color: white;
 }
 .header-style-two .sticky-header .main-menu .navigation > li.current > a,
 .header-style-two .sticky-header .main-menu .navigation > li > a:hover {
-  color: #ffffff;
+  color: gray;
 }
 
 /** slider-style-two **/
@@ -2608,7 +2612,7 @@ button.theme-btn {
   color: #0f3a4a;
 }
 .resturent-menu .single-menu-content .link a:hover {
-  color: #cda274;
+  color: gray;
 }
 .resturent-menu .single-menu-content .price {
   position: relative;

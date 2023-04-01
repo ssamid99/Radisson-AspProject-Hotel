@@ -81,7 +81,7 @@ namespace Radisson.WebUI
 
                 cfg.LoginPath = "/signin.html";
                 cfg.AccessDeniedPath = "/accessdenied.html";
-                cfg.ExpireTimeSpan = new TimeSpan(0, 15, 0);
+                cfg.ExpireTimeSpan = new TimeSpan(0, 40, 0);
                 cfg.Cookie.Name = "Radisson";
             });
 
@@ -186,7 +186,7 @@ namespace Radisson.WebUI
                         action = "register"
                     });
 
-                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=dashboard}/{action=index}/{id?}");
+                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=reservations}/{action=index}/{id?}");
                 cfg.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
             });
         }

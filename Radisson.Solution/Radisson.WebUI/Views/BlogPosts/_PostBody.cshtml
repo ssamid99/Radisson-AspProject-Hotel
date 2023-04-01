@@ -8,7 +8,7 @@
     <div class="col-lg-4 col-md-6 col-sm-12 news-column">
         <div class="single-item">
             <div class="image">
-                    <img src="~/uploads/images/@item.ImagePath" alt="">
+                    <img style="width:370px; height:220px;" src="~/uploads/images/@item.ImagePath" alt="">
                 <div class="overlay">
                     <div class="overlay-content">
                         <div class="content">
@@ -25,8 +25,8 @@
                     <li>paylaşıldı: <a>@item.CreatedByUser?.Name</a></li>
                         <li>tarix: <span>@item.PublishedDate?.ToString("MMM dd, yyyy")</span></li>
                 </ul>
-                <div class="text ellipse">@Html.Raw(item.Body)</div>
-                    <div class="link"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug" class="theme-btn-three">Ətraflı Oxu</a></div>
+                
+                    <div class="link"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug" class="theme-btn-three">Oxu</a></div>
             </div>
         </div>
     </div>

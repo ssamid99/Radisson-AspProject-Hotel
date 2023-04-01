@@ -25,7 +25,7 @@ namespace Radisson.Domain.Business.BlogPostModule
                     request.PageSize = 6;
                 }
                 var query = db.BlogPosts
-                    .Where(bp => bp.DeletedDate == null)
+                    .Where(bp => bp.DeletedDate == null && bp.PublishedDate != null)
                     .AsQueryable();
                 if(query == null)
                 {

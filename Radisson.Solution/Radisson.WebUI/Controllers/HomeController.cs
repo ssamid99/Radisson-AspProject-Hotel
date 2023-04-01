@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Radisson.Application.AppCode.Extensions;
 using Radisson.Application.AppCode.Services;
@@ -16,6 +17,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Radisson.WebUI.Controllers
@@ -102,7 +104,16 @@ namespace Radisson.WebUI.Controllers
             }
         }
 
-        
+        public async Task<IActionResult> Services(AboutGetAllQuery query)
+        {
+            var response = await mediator.Send(query);
+            if (response == null)
+            {
+                return NotFound();
+            }
+            return View(response);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

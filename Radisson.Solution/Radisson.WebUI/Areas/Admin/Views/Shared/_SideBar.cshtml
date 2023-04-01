@@ -1,8 +1,8 @@
-﻿<nav class="pcoded-navbar">
-    <div class="pcoded-inner-navbar main-menu">
+﻿<nav class="pcoded-navbar" style="background-color:#0d2933;">
+    <div class="pcoded-inner-navbar main-menu" style="background-color:#0d2933">
         <div class="pcoded-navigatio-lavel">İdarəetmə</div>
         <ul class="pcoded-item pcoded-left-item">
-            @if (User.HasAccess("admin.dashboard.index"))
+            @*@if (User.HasAccess("admin.dashboard.index"))
             {
                 <li>
                     <a asp-controller="dashboard" asp-action="index">
@@ -12,7 +12,7 @@
                         <span class="pcoded-mtext">Ana səhifə</span>
                     </a>
                 </li>
-            }
+            }*@
             @if (User.HasAccess("admin.reservations.index"))
             {
                 <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
@@ -145,7 +145,7 @@
                                 </a>
                             </li>
                         }
-                        @if (User.HasAccess("admin.servicesheaders.index") || User.HasAccess("admin.servicesbody.index"))
+                        @*@if (User.HasAccess("admin.servicesheaders.index") || User.HasAccess("admin.servicesbody.index"))
                         {
                             <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                                 <a href="javascript:void(0)">
@@ -164,7 +164,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        }
+                        }*@
                     </ul>
                 </li>
             }

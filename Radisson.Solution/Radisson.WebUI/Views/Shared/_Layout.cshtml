@@ -21,7 +21,7 @@
     <header class="main-header">
         <div class="header-bottom clearfix">
             <figure class="logo-box">
-                <a asp-controller="home" asp-action="index" class="fix-logo"><img src="~/images/logo.png" alt="" /></a>
+                <a asp-controller="home" asp-action="index" class="fix-logo"><img src="~/images/logo11.png" alt="" /></a>
             </figure>
             <div class="menu-area">
                 <nav class="main-menu navbar-expand-lg">
@@ -45,14 +45,7 @@
                                 <a asp-controller="roomtypes" asp-action="index">Otaqlar</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#">Xidmətlər</a>
-                                <ul>
-                                    <li><a href="service.html">Our Services</a></li>
-                                    <li><a href="resturent.html">Resturent</a></li>
-                                    <li><a href="spa.html">Our Spa</a></li>
-                                    <li><a href="offer.html">Special Offers</a></li>
-                                    <li><a href="error.html">404 Page</a></li>
-                                </ul>
+                                <a asp-controller="home" asp-action="services">Xidmətlər</a>
                             </li>
                             <li>
                                 <a asp-controller="blogposts" asp-action="index">Forumlar</a>
@@ -62,7 +55,22 @@
                     </div>
                 </nav>
                 <div class="link">
-                    <a asp-controller="account" asp-action="signin" class="fix-a" style="font-size:17px; color:#0f3a4a;">Daxil Ol</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li >
+                        <i class="feateher icon-user"></i>
+                        <em class="h-em" style="margin-right:25px; color:white;">@User.GetPrincipalName()</em>
+                    </li>
+                    <li >
+                            <em class="h-em" style="margin-left:30px;"><a style="color:white;" asp-controller="account" asp-action="logout">Çıxış</a></em>
+                    </li>
+                }
+                else
+                {
+
+                        <a asp-controller="account" asp-action="signin" class="fix-a" style="font-size:17px; color:white;">Daxil Ol</a>
+                    
+                }
                 </div>
             </div>
         </div>
@@ -71,7 +79,7 @@
         <div class="sticky-header">
             <div class="container clearfix">
                 <figure class="logo-box">
-                    <a asp-controller="home" asp-action="index"><img src="~/images/small-logo.png" alt="" /></a>
+                    <a asp-controller="home" asp-action="index"><img src="~/images/logo11.png" alt="" /></a>
                 </figure>
                 <div class="menu-area">
                     <nav class="main-menu navbar-expand-lg">
@@ -98,11 +106,8 @@
                                 <li class="dropdown">
                                     <a href="#">Xidmətlər</a>
                                     <ul>
-                                        <li><a href="service.html">Our Services</a></li>
-                                        <li><a href="resturent.html">Resturent</a></li>
-                                        <li><a href="spa.html">Our Spa</a></li>
-                                        <li><a href="offer.html">Special Offers</a></li>
-                                        <li><a href="error.html">404 Page</a></li>
+                                        <li><a asp-controller="home" asp-action="services">Xidmətlərimiz</a></li>
+                                        <li><a asp-controller="home" asp-action="restaurantreserv">Restaurant</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -125,7 +130,7 @@
                     <div class="logo-widget footer-widget">
                         <figure class="footer-logo">
                             <a href="index.html">
-                                <img src="~/images/footer-logo.png" alt="" />
+                                <img src="~/images/logo11.png" alt="" />
                             </a>
                         </figure>
                         <div class="text">

@@ -18,7 +18,7 @@ namespace Radisson.Domain.Validators.RoomTypeValidators
             RuleFor(entity => entity.Price)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
-            RuleFor(entity => entity.ImagePath)
+            RuleFor(entity => entity.Image)
                .NotEmpty()
                .WithMessage("Boş buraxıla bilməz!");
         }

@@ -21,7 +21,7 @@ namespace Radisson.WebUI.Areas.Admin.Controllers
         }
 
         [Authorize("admin.blogposts.index")]
-        public async Task<IActionResult> Index(BlogPostGetAllQuery query)
+        public async Task<IActionResult> Index(BlogPostAdminGetAllQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);

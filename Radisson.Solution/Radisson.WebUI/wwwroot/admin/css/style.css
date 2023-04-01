@@ -3712,6 +3712,18 @@ a[data-toggle="lightbox"] .img-fluid {
     margin-left: 91.666667%;
   }
 }
+.preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 999999;
+    background-color: #ffffff;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../images/icons/preloader.gif);
+}
 @media (min-width: 992px) {
   .col-lg {
     -ms-flex-preferred-size: 0;

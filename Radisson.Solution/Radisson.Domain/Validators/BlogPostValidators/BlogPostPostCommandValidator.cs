@@ -19,7 +19,7 @@ namespace Radisson.Domain.Validators.BlogPostValidators
                 .MinimumLength(120)
                 .WithMessage("Bu hissənin uzunluğu minimum 120 olmalıdır!");
 
-            RuleFor(entity => entity.ImagePath)
+            RuleFor(entity => entity.Image)
                 .NotEmpty()
                 .WithMessage("Şəkil seçilməyib!");
         }
