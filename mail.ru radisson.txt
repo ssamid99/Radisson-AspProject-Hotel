@@ -1,0 +1,2 @@
+mail:newhotel.radisson
+pass:samid123//
