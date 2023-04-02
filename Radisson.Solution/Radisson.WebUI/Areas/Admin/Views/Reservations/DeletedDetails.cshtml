@@ -109,17 +109,18 @@
                                     @ViewBag.GetRTName(Model.RoomTypeId)
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            @*<div class="form-group row">
                                 <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
                                 <div class="fix-row">
                                     <ul style="margin-top:1px">
+                                        @if (Model.PeopleCloud.Select(tc => tc.People) != null)
                                         @foreach (var item in Model.PeopleCloud.Select(tc => tc.People))
                                         {
                                             <li class="fix-row">@item.Text</li>
                                         }
                                     </ul>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form-group row ">
                                 <label asp-for="Price" class="col-sm-2 col-form-label"></label>
                                 <div class="fix-row">
