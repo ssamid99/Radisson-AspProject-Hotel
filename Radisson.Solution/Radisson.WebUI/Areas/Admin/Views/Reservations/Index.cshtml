@@ -1,0 +1,150 @@
+﻿@model PagedViewModel<Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rezervasiyalar</h1>
+
+@section addcss{
+    <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css">
+}
+
+
+    <div class="page-wrapper">
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                            </li>
+
+                            <li class="breadcrumb-item" style="float: left;">
+                                <span>Rezervasiyalar</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="card">
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Qonaqlar
+                                    </th>
+                                    <th>
+                                        Giriş Tarixi
+                                    </th>
+                                    <th>
+                                        Çıxış Tarixi
+                                    </th>
+                                    <th class="operations">
+                                    @if (User.HasAccess("admin.reservations.create"))
+                                    {
+                                        <a asp-action="Create" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td class="ellipse">
+                                        @item.Name  @item.Surname
+                                    </td>
+                                    <td class="ellipse">
+                                        @item.CheckIn
+                                    </td>
+                                    <td class="ellipse">
+                                        @item.CheckOut
+                                    </td>
+                                    <td class="operations table-imaged">
+                                        @if (item.RoomId == null)
+                                        {
+                                            @if (User.HasAccess("admin.reservations.confirm"))
+                                            {
+                                                <a asp-action="Confirm" asp-route-id="@item.Id" class="btn btn-sm btn-primary"><i class="fa-solid fa-house-circle-check"></i></a>
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (User.HasAccess("admin.reservations.changeroom"))
+                                            {
+                                                <a asp-action="changeroom" asp-route-id="@item.Id" class="btn btn-sm btn-secondary"><i class="fa-solid fa-tent-arrow-turn-left"></i></a>
+                                            }
+                                        }
+                                        @if (User.HasAccess("admin.reservations.details"))
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
+
+                                        @if (User.HasAccess("admin.reservations.delete"))
+                                        {
+                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Name')"><i class="fa-solid fa-trash-can"></i></a>                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Model.GetPager(Url, "Index", "Admin")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+</div>
+@section addjs{
+
+    <script class="removeable">
+        function removeEntity(id, name) {
+            swal(`Are you sure you want to delete ${name}?`, {
+                title: "Diqqet!",
+                text: `Silmək istədiyinizdən əminsiniz ${name}?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ["No", "Yes"]
+            })
+                .then((value) => {
+                    if (value == true) {
+                        let vToken = $('[name=__RequestVerificationToken]').val();
+                        let formData = new FormData();
+                        formData.set('__RequestVerificationToken', vToken);
+                        formData.set('id', id);
+                        $.ajax({
+                            url: `@Url.Action("Delete")`,
+                            type: 'POST',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                console.log(response)
+                                if (response.error == true) {
+                                    toaster.error(response.message, "Xəta");
+                                    return;
+                                }
+                                location.reload();
+                            },
+                            error: function (errorResponse) {
+                                console.error(errorResponse);
+                            }
+                        });
+                    }
+                });
+        }
+
+    </script>
+    }
+

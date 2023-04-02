@@ -1,0 +1,119 @@
+﻿<!-- Main slider -->
+<section class="main-slider slider-style-one">
+    <div class="container-fluid">
+        <ul class="main-slider-carousel owl-carousel owl-theme slide-nav">
+            <li class="slider-wrapper">
+                <div class="image">
+                    <img src="images/main-slider/1.jpg" alt="" />
+                </div>
+                <div class="slider-caption">
+                    <div class="container">
+                        <div class="tp-title"><br />RADISSON HOTEL RESORT & SPA</div>
+                        <div class="text">
+                            YERLƏŞMƏ TƏKLİFLƏRİMİZİ KƏŞF EDİN
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-overlay"></div>
+            </li>
+            <li class="slider-wrapper">
+                <div class="image">
+                    <img src="images/main-slider/2.jpg" alt="" />
+                </div>
+                <div class="slider-caption">
+                    <div class="container">
+                        <div class="tp-title"><br />RADISSON HOTEL RESORT & SPA</div>
+                        <div class="text">
+                            YERLƏŞMƏ TƏKLİFLƏRİMİZİ KƏŞF EDİN
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-overlay"></div>
+            </li>
+            <li class="slider-wrapper">
+                <div class="image">
+                    <img src="images/main-slider/3.jpg" alt="" />
+                </div>
+                <div class="slider-caption">
+                    <div class="container">
+                        <div class="tp-title"><br />RADISSON HOTEL RESORT & SPA</div>
+                        <div class="text">
+                            YERLƏŞMƏ TƏKLİFLƏRİMİZİ KƏŞF EDİN
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-overlay"></div>
+            </li>
+            <li class="slider-wrapper">
+                <div class="image">
+                    <img src="images/main-slider/4.jpg" alt="" />
+                </div>
+                <div class="slider-caption">
+                    <div class="container">
+                        <div class="tp-title"><br />RADISSON HOTEL RESORT & SPA</div>
+                        <div class="text">
+                            YERLƏŞMƏ TƏKLİFLƏRİMİZİ KƏŞF EDİN
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-overlay"></div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- main-slider end -->
+@await Component.InvokeAsync("ReservationFilter")
+
+@await Component.InvokeAsync("RadissonHotel")
+
+@await Component.InvokeAsync("RecentRooms")
+
+@await Component.InvokeAsync("TeamsGrid")
+
+@await Component.InvokeAsync("IndexLastPosts")
+
+@section addcss{
+    <style>
+        .fix-img {
+            width: 100%;
+            height: 205px;
+        }
+        .r-img{
+            width:335px;
+            height:490px;
+        }
+        .rm-img{
+            width:370px;
+            height:230px;
+        }
+        .index-img{
+            width:370px;
+            height:220px;
+        }
+    </style>
+}
+
+@section addjs{
+    <script>
+    $(function () {
+        $(".js-tab-link").on("click", function (e) {
+            e.preventDefault();
+
+            // Get the tab-pane element ID to activate
+            var target = $(this).attr("href");
+
+            // Remove "active" class from all tab-pane elements
+            $(".tab-pane").removeClass("active");
+
+            // Add "active" class to the selected tab-pane element
+            $(target).addClass("active");
+
+            // Remove "active" class from all service header links
+            $(".js-tab-link").removeClass("active");
+
+            // Add "active" class to the selected service header link
+            $(this).addClass("active");
+        });
+    });
+</script>
+}

@@ -1,0 +1,71 @@
+﻿@model UserModel
+
+@{
+    ViewData["Title"] = "Daxil Ol";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+<div class="overlay">
+    <form method="post" autocomplete="off">
+        <div asp-validation-summary="All"></div>
+        <div class="con">
+            <header class="head-form">
+                <h2>Giriş</h2>
+            </header>
+            <br />
+            <div class="field-set">
+                <input class="form-input"
+                       id="txt-input"
+                       type="text"
+                       placeholder="  Email"
+                       asp-for="Username"
+                       required />
+
+                <br />
+
+                <span class="input-item">
+                </span>
+                <input class="form-input"
+                       type="password"
+                       placeholder="Şifrə"
+                       id="pwd"
+                       asp-for="Password"
+                       required />
+
+                <span>
+                    <i class="fa fa-eye"
+                       aria-hidden="true"
+                       type="button"
+                       id="eye"></i>
+                </span>
+
+                <br />
+                <button class="log-in">Daxil Ol</button>
+            </div>
+
+            <div class="other">
+                <button class="btn submits frgt-pass"><a asp-controller="account" asp-action="forgotpassword">Forgot Password</a></button>
+                <button class="btn submits sign-up">
+                        <a asp-controller="account" asp-action="Register">Qeydiyyat</a>
+                    <i aria-hidden="true"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+    <script src="~/js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+﻿@model Reservation
+
+@{
+    ViewData["Title"] = "Details";
+
+
+}
+
+<h1>Detallı</h1>
+
+<h4>Rezervasiyalar</h4>
+<hr />
+
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="row align-items-end">
+            <div class="col-lg-12">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                        </li>
+                        @if (User.HasAccess("admin.reservations.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">Rezervasiyalar</a>
+                            </li>
+                        }
+                        <li class="breadcrumb-item" style="float: left;">
+                            <span>Detallı</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    
+                    <div class="card-block">
+                        <h4 class="sub-title">Reservasiya Haqqınnda Məlumat</h4>
+
+                        <div>
+                            <div class="form-group row ">
+                                <label asp-for="Name" class="col-sm-2 col-form-label">Ad</label>
+                                <div class="fix-row">
+                                    @Model.Name
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label asp-for="Surname" class="col-sm-2 col-form-label">Soyad</label>
+                                <div class="fix-row">
+                                    @Model.Surname
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                                <div class="fix-row">
+                                    @Html.Raw(Model.Email)
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label asp-for="CheckIn" class="col-sm-2 col-form-label">Giriş Tarixi</label>
+                                <div class="fix-row">
+                                    @Model.CheckIn
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label asp-for="CheckOut" class="col-sm-2 col-form-label">Çıxış Tarixi</label>
+                                <div class="fix-row">
+                                    @Model.CheckOut
+                                </div>
+                            </div>
+                            @if (Model.RoomId != null)
+                            {
+                                <div class="form-group row ">
+                                    <label asp-for="RoomId" class="col-sm-2 col-form-label">Otaq Nömrəsi</label>
+                                    <div class="fix-row">
+                                        Nömrə @ViewBag.GetRNumber(Convert.ToInt32(Model.RoomId))
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.RoomTypeId != 0)
+                            {
+                                <div class="form-group row ">
+                                    <label asp-for="RoomTypeId" class="col-sm-2 col-form-label">Otaq Növü</label>
+                                    <div class="fix-row">
+                                        @ViewBag.GetRTName(Model.RoomTypeId)
+                                    </div>
+                                </div>
+                            }
+                            @foreach(var item in Model.PeopleCloud.Where(p=>p.ReservationId == Model.Id)){
+                                <div class="form-group row">
+                                <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
+                                <div class="fix-row">
+                                    <div class="fix-row">
+                                        @ViewBag.GetPName(item.PeopleFirst)
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="form-group row">
+                                    <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
+                                    <div class="fix-row">
+                                        <div class="fix-row">
+                                            @ViewBag.GetPName(item.PeopleSecond)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="PeopleCloud" class="col-sm-2 col-form-label">Əlavə Qonaqlar </label>
+                                    <div class="fix-row">
+                                        <div class="fix-row">
+                                            @ViewBag.GetPName(item.PeopleThird)
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-group row ">
+                                <label asp-for="Price" class="col-sm-2 col-form-label">Qiymət</label>
+                                <div class="fix-row">
+                                    @Model.Price AZN
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    @if (User.HasAccess("admin.reservations.edit"))
+                                    {
+                                        <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2 fix-btn">Redaktə Et</a>
+                                    }
+                                    @if (User.HasAccess("admin.reservations.index"))
+                                    {
+                                        <a asp-action="index" class="btn btn-info">Geri</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,126 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Change Room";
+}
+
+<h1>Otaq Redaktəsi</h1>
+
+<h4>Rezervasiyalar</h4>
+<hr />
+
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="row align-items-end">
+            <div class="col-lg-12">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                        </li>
+                        @if (User.HasAccess("admin.reservations.index"))
+                        {
+                            <li class="breadcrumb-item" style="float: left;">
+                                <a asp-action="index">Rezervasiyalar</a>
+                            </li>
+                        }
+                        <li class="breadcrumb-item" style="float: left;">
+                            <span>Otaq Redaktəsi</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-block">
+                        <div>
+                            <form asp-action="changeroom" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group row ">
+                                    <label asp-for="CheckIn" class="col-sm-2 col-form-label">Giriş Tarixi</label>
+                                    <div class="fix-row">
+                                        @Model.CheckIn
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label asp-for="CheckOut" class="col-sm-2 col-form-label">Çıxış Tarixi</label>
+                                    <div class="fix-row">
+                                        @Model.CheckOut
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label asp-for="Price" class="col-sm-2 col-form-label">Qiymət</label>
+                                    <div class="fix-row">
+                                        @Model.Price AZN
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label asp-for="RoomTypeId" class="control-label">Otaq Növü</label>
+                                    <select asp-for="RoomTypeId" id="RoomType" class="form-control select2">
+                                        <option selected disabled>---Secin---</option>
+                                    </select>
+                                    <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="RoomId" class="control-label">Otaq Nömrəsi</label>
+                                    <select asp-for="RoomId" id="Room" class="form-control select2">
+                                        <option selected disabled>---Secin---</option>
+                                    </select>
+                                    <span asp-validation-for="RoomId" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <input type="submit" value="Yadda Saxla" class="btn btn-warning fix-btn" />
+                                        @if (User.HasAccess("admin.reservations.index"))
+                                        {
+                                            <a asp-action="index" class="btn btn-info">Geri</a>
+                                        }
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addjs{
+    <script>
+        $(document).ready(function () {
+            GetRoomType();
+            $('#Room').attr('disabled', true);
+            $('#RoomType').change(function () {
+                $('#Room').attr('disabled', false);
+                var id = $(this).val();
+                $('#Room').empty();
+                $('#Room').append('<Option>---Sechin---</Option>');
+                $.ajax({
+                    url: '@Url.Action("Room", "Reservations")' + "?id=" + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Room').append('<Option value = ' + data.id + '>' + data.number + '</Option>');
+                        });
+                    }
+                });
+            })
+        });
+
+        function GetRoomType() {
+            $.ajax({
+                url: '@Url.Action("RoomType", "Reservations")',
+                success: function (result) {
+                    $.each(result, function (i, data) {
+                        $('#RoomType').append('<Option value = ' + data.id + '>' + data.name + '</Option>');
+                    });
+                }
+            });
+        }
+    </script>
+}

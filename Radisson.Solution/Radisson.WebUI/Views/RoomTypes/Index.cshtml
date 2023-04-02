@@ -1,0 +1,62 @@
+﻿@model PagedViewModel<RoomType>
+
+@{
+    ViewData["Title"] = "Otaqlar";
+}
+
+<!-- page-title -->
+<section class="page-title centred" style="background-image: url(/images/background/page-title.jpg);">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">Otaqlar</div>
+            <ul class="bread-crumb">
+                <li><a href="index.html">Ana səhifə</a></li>
+                <li>Otaqlar</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="room-section room-grid overlay-style-one sec-pad-2">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="single-item inner-box">
+                        <figure class="image-box">
+                            <img class="fix-img" src="~/uploads/images/@item.ImagePath" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug class="link"><i class="icon fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="lower-content">
+                            <div class="price">₼@item.Price<span>Gecəlik</span></div>
+                            <h3><a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug>@item.Name</a></h3>
+                            <ul class="info-box">
+                                <li class="link"><a asp-controller="roomtypes" asp-action="details" asp-route-id="@item.Id" asp-route-slug=@item.Slug class="theme-btn-three">Rezerv Et</a></li>
+                                <li><i class="flaticon-television"></i></li>
+                                <li><i class="flaticon-wifi-connection-signal-symbol"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @Model.GetPager(Url, "Index")
+    </div>
+</section>
+@section addcss{
+    <style>
+        .fix-img{
+
+        width:100%;
+        height:205px;
+
+        }
+    </style>
+}

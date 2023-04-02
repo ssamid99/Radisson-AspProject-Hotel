@@ -1,0 +1,158 @@
+﻿@model ReservationPostCommand
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Ad</label>
+                <input asp-for="Name" class="form-control" value="@ViewBag.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label">Soyad</label>
+                <input asp-for="Surname" class="form-control" value="@ViewBag.Surname" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" value="@ViewBag.Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckIn" class="control-label">Giriş Tarixi</label>
+                <input name="CheckIn" class="form-control"
+                       size="16"
+                       type="date"
+                       value=""
+                       placeholder="Giriş tarixi"
+                       data-date-format="yyyy.mm.dd"
+                       data-date-start-date="0d"
+                       data-date-end-date="2023.09.15"
+                       data-date-week-start="1"
+                       data-date-autoclose="true"
+                       data-date-today-highlight="true"
+                       data-date-min-date="1" />
+                <span asp-validation-for="CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckOut" class="control-label">Çıxış Tarixi</label>
+                <input name="CheckOut" class="form-control"
+                       size="16"
+                       type="date"
+                       value=""
+                       placeholder="Çıxış tarixi"
+                       data-date-format="yyyy.mm.dd"
+                       xdata-date-start-date="0d"
+                       data-date-end-date="2024.09.15"
+                       data-date-week-start="1"
+                       data-date-autoclose="true"
+                       data-date-today-highlight="true"
+                       data-date-min-date="1" />
+                <span asp-validation-for="CheckOut" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RoomTypeId" class="control-label">Otaq Növü</label>
+                <select name="RoomTypeId" class="form-control select2">
+                    <option selected disable>---Seçin---</option>
+                    @if(ViewBag.RoomTypes != null){
+                    @foreach (var roomType in ViewBag.RoomTypes)
+                    {
+                        <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+                    }
+                    }
+                </select>
+                <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+            </div>
+            @if (ViewBag.People != null)
+            {
+                <div class="form-group">
+                    <label>Əlavə Qonaqlar</label>
+                    <select id="p1" name="P1" class="form-control select2">
+                        @foreach (var people in ViewBag.People)
+                        {
+                            <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                        }
+                    </select>
+                    <span asp-validation-for="P1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Əlavə Qonaqlar</label>
+                    <select id="p2" name="P2" class="form-control select2">
+
+                        @foreach (var people in ViewBag.People)
+                        {
+                            <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                        }
+                    </select>
+                    <span asp-validation-for="P2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Əlavə Qonaqlar</label>
+                    <select id="p3" name="P3" class="form-control select2">
+                        @foreach (var people in ViewBag.People)
+                        {
+                            <option value="@people.Id" data-price="@people.Price">@people.Text - @people.Price AZN</option>
+                        }
+                    </select>
+                <span asp-validation-for="P3" class="text-danger"></span>
+            </div>
+            }
+            <div class="form-group">
+                <label>Toplam Qiymət:</label>
+                <input name="Price" class="form-control" readonly />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Yaratmaq" class="btn btn-warning fix-btn" />
+                @if (User.HasAccess("admin.reservations.index"))
+                {
+                    <a asp-action="index" class="btn btn-info">Geri</a>
+                }
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section addjs{
+    <script class="removeable" src="~/lib/select2/js/select2.full.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("input[name='CheckIn']").change(function () {
+                $("input[name='CheckOut']").attr("min", $(this).val());
+            });
+            $("select[name='RoomTypeId'], select[name='P1'], select[name='P2'], select[name='P3']").change(function () {
+                var checkIn = new Date($("input[name='CheckIn']").val());
+                var checkOut = new Date($("input[name='CheckOut']").val());
+                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                var selectedPrice = $("option:selected", $("select[name='RoomTypeId']")).data("price");
+                var multipliedPrice = diffDays * selectedPrice;
+                var additionalPerson1 = $("option:selected", $("select[id='p1']")).data("price");
+                var additionalPerson2 = $("option:selected", $("select[id='p2']")).data("price");
+                var additionalPerson3 = $("option:selected", $("select[id='p3']")).data("price");
+                var totalPrice = multipliedPrice + parseInt(additionalPerson1) + parseInt(additionalPerson2) + parseInt(additionalPerson3);
+
+                $("#displayPrice").text(totalPrice + "AZN");
+                $('input[name="Price"]').val(totalPrice);
+
+            });
+        });
+    </script>
+
+    <script>
+        $('.select2').select2();
+    </script>
+}
+    @section addcss{
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
+}

@@ -1,0 +1,192 @@
+﻿@model BlogPost
+
+@{
+    ViewData["Title"] = "Forum";
+
+    IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
+    {
+        if (parent.ParentId != null)
+        {
+            yield return parent;
+        }
+        foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
+        {
+            yield return item;
+        }
+    }
+
+}
+
+<section class="page-title sec-pad centred" style="background-image: url(/images/background/page-title.jpg);">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">Forum</div>
+            <ul class="bread-crumb">
+                <li><a href="index.html">Ana Səhifə</a></li>
+                <li>Forum</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- page-title end -->
+<!-- news-section -->
+<section class="blog-details sec-pad-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                <div class="blog-details-content">
+                    <div class="content-style-one">
+                        <figure class="img-box"><img src="~/uploads/images/@Model.ImagePath" alt=""></figure>
+                        <div class="text">
+                            <p>@Html.Raw(Model.Body)</p>
+                        </div>
+                    </div>
+                    <div class="post-share">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="comment-area">
+                        <h3>Rəylər (@Model.Comments.Count())</h3>
+                        <div class="commentall">
+                            @foreach (var comment in Model.Comments.Where(c => c.ParentId == null))
+                            {
+                                <div class="single-comment comment" id="c-@comment.Id" data-comment-id="@comment.Id">
+                                    <figure class="thumb-box"><img src="images/resource/comment-1.jpg" alt=""></figure>
+                                    <div class="content-box">
+                                        <div class="comment-title">@($"{comment.CreatedByUser?.Name} {comment.CreatedByUser?.Surname}")</div>
+                                        <div class="comment-time">@comment.CreatedDate.ToString("MMMM d,yyyy HH:mm")</div>
+                                        <div class="text">
+                                            @comment.Text.ToPlainText();
+                                        </div>
+                                        <div class="replay">
+                                            <a class="btn-comment-reply">Rəy Bildir</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @foreach (var subComment in GetComments(comment))
+                                {
+                                    <div class="single-comment replay comment" id="c-@subComment.Id" data-comment-id="@subComment.Id">
+                                        <figure class="thumb-box"><img src="images/resource/comment-2.jpg" alt=""></figure>
+                                        <div class="content-box">
+                                            <div class="comment-title">@($"{subComment.CreatedByUser?.Name} {subComment.CreatedByUser?.Surname}")</div>
+                                            <div class="comment-time">@subComment.CreatedDate.ToString("MMMM d,yyyy HH:mm")</div>
+                                            <div class="text">
+                                                <a href="#c-@subComment.ParentId">@@@subComment.Parent.CreatedByUser?.Name</a>
+                                                @subComment.Text.ToPlainText();
+                                            </div>
+                                            <div class="replay"><a class="btn-comment-reply">Rəy Bildir</a></div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="comment-form">
+                        <h3>Rəy Bildir</h3>
+                        <form method="post" id="replyForm">
+                            <div id="replyToComment"></div>
+                            <input type="hidden" name="PostId" value="@Model.Id" />
+                            <div class="row">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <textarea placeholder="Mesaj" name="Comment" required=""></textarea>
+                                </div>
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <button type="submit" class="theme-btn">Mesajı Göndər</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                <div class="sidebar default-sidebar-content gray-bg">
+                    <div class="sidebar-post sidebar-widget">
+                        <div class="sidebar-title"><h3>Son Postlar</h3></div>
+                        @await Component.InvokeAsync("RecentPosts")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section addcss{
+    <style>
+        #replyToComment{
+            position:relative;
+        }
+        #replyToComment .remove-reply-selected{
+            position:absolute;
+            color: black;
+            font-size: 2rem;
+            left: 660px;
+            top: 33px;
+        }
+    </style>
+}
+    @section addjs{
+    <script>
+        function rebindReply() {
+            $('.btn-comment-reply').unbind('click').click(function (e) {
+                e.preventDefault();
+
+                $('#replyToComment').html('<a href="javascript:removeReplySelected()" class="remove-reply-selected">&times;<i class="fa fa-x"></i></a>').append($(e.currentTarget).closest('.comment').clone());
+            });
+        }
+        $(document).ready(function () {
+            rebindReply();
+
+            $('#replyForm').submit(function (e) {
+                e.preventDefault();
+
+                let formData = new FormData(e.currentTarget);
+
+                let toCommentId = $('#replyToComment div.comment').data('comment-id');
+                console.log($('#replyToComment div.comment').data('comment-id'));
+                if (toCommentId != undefined) {
+                    formData.set("commentId", toCommentId);
+                    console.log(formData);
+                }
+                $.ajax({
+                    url: `@Url.Action("Add")`,
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+
+                        if (response.statusText == "parsererror") {
+                            if (toCommentId != undefined) {
+
+                                $(response.responseText).insertAfter($(`#c-${toCommentId}`));
+
+                                $('#replyToComment').html('')
+                                e.currentTarget.reset();
+                            }
+                            else {
+                                $('div.commentall').append($(response.responseText));
+                                $('#replyToComment').html('')
+                                e.currentTarget.reset();
+                                rebindReply();
+                            }
+                        }
+                        console.warn(response);
+                    }
+                });
+            });
+        });
+        function removeReplySelected() {
+            $('#replyToComment').html('');
+        }
+    </script>
+}

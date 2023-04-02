@@ -1,0 +1,22 @@
+﻿@model BlogPostComment
+@{
+    Layout = null;
+}
+ <div class="single-comment comment @(Model.ParentId !=null?"replay":"")" id="c-@Model.Id" data-comment-id="@Model.Id">
+        <figure class="thumb-box"><img src="images/resource/comment-1.jpg" alt=""></figure>
+        <div class="content-box">
+        <div class="comment-title">@($"{Model.CreatedByUser?.Name} {Model.CreatedByUser?.Surname}")</div>
+        <div class="comment-time">@Model.CreatedDate.ToString("MMMM d,yyyy HH:mm")</div>
+            <div class="text">
+            @if (Model.ParentId != null)
+            {
+                <a href="#c-@Model.ParentId">@@@Model.Parent.CreatedByUser?.Name</a>
+            }
+            @Model.Text.ToPlainText();
+            </div>
+            <div class="replay">
+                <a class="btn-comment-reply">Reply</a>
+
+            </div>
+        </div>
+    </div>

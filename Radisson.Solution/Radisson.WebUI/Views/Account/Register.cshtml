@@ -1,0 +1,80 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Qeydiyyat";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qeydiyyat</title>
+
+    <link href="~/css/signup.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="overlay">
+        <form method="post" autocomplete="off">
+            <div class="con">
+                <header class="head-form">
+                    <h2>Qeydiyyat</h2>
+                </header>
+                <br />
+                <div class="field-set">
+                    <input class="form-input"
+                           id="txt-input"
+                           type="text"
+                           placeholder="  Ad"
+                           asp-for="Name"
+                           required />
+
+                    <input class="form-input"
+                           id="txt-input"
+                           type="text"
+                           placeholder="  Soyad"
+                           asp-for="Surname"
+                           required />
+
+                    <input class="form-input"
+                           id="txt-input"
+                           type="text"
+                           placeholder="  Email"
+                           asp-for="Email"
+                           required />
+
+                    <br />
+
+
+                    <span class="input-item">
+                    </span>
+                    <input class="form-input"
+                           type="password"
+                           placeholder="Şifrə"
+                           id="pwd"
+                           asp-for="Password"
+                           required />
+
+                    <input class="confirm-input"
+                           type="password"
+                           placeholder="  Şifrəni Təsdiqlə"
+                           id="pwd"
+                           asp-for="ConfirmPassword"
+                           required />
+
+
+                    <br />
+                    <button class="log-in">Qeydiyyatı Tamamla</button>
+                </div>
+
+
+            </div>
+
+        </form>
+    </div>
+
+    <script src="~/js/login.js"></script>
+</body>
+
+</html>

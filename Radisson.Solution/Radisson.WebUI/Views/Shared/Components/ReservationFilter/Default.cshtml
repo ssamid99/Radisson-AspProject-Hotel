@@ -1,0 +1,62 @@
+﻿@model Reservation
+
+
+<section class="filter-section">
+    <div class="container">
+        <form method="post" action="#" class="filter-content clearfix">
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Giriş Tarixi</label>
+                    <i class="fa fa-angle-down"></i>
+                    <input type="text"
+                           name="date1"
+                           placeholder="Giriş Tarixi"
+                           id="datepicker" 
+                           autocomplete="off" />
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Çıxış Tarixi</label>
+                    <i class="fa fa-angle-down"></i>
+                    <input type="text"
+                           name="date2"
+                           placeholder="Çıxış Tarixi"
+                           id="datepicker_1" 
+                           autocomplete="off"/>
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group select-box" >
+                    <label>Otaqlar</label>
+                    <select name="RoomTypeId" class="select2">
+                        @if (ViewBag.RoomTypes != null)
+                        {
+                            <option selected disable>---Seçin---</option>
+                            @foreach (var roomType in ViewBag.RoomTypes)
+                            {
+                                <option value="@roomType.Id" data-price="@roomType.Price">@roomType.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <label>Qiymət</label>
+                    <input name="Price"
+                           readonly />
+                </div>
+            </div>
+            <div class="single-item">
+                <div class="form-group">
+                    <div class="link">
+                        <button class="theme-btn">
+                            <a id="goToLink" href="" style="font-size:18px; color:#0f3a4a;">Rezerv Et</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+﻿@model PagedViewModel<BlogPost>
+
+
+
+<div class="row">
+@foreach (var item in Model.Items)
+{
+    <div class="col-lg-4 col-md-6 col-sm-12 news-column">
+        <div class="single-item">
+            <div class="image">
+                    <img style="width:370px; height:220px;" src="~/uploads/images/@item.ImagePath" alt="">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <div class="content">
+                                <a class="link-btn" asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">
+                                <i class="fa fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-content">
+                    <h3><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">@item.Title</a></h3>
+                <ul class="meta-content">
+                    <li>paylaşıldı: <a>@item.CreatedByUser?.Name</a></li>
+                        <li>tarix: <span>@item.PublishedDate?.ToString("MMM dd, yyyy")</span></li>
+                </ul>
+                
+                    <div class="link"><a asp-controller="blogposts" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug" class="theme-btn-three">Oxu</a></div>
+            </div>
+        </div>
+    </div>
+}
+</div>
+<ul class="pagination centred clearfix">
+    @Model.GetPager(Url, "Index", paginateFunction: "goPage")
+</ul>

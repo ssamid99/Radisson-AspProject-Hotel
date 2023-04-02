@@ -1,0 +1,156 @@
+﻿@model RoomType
+
+@{
+    ViewData["Title"] = "Otaqlar Detallı";
+}
+
+<!-- page-title -->
+<section class="page-title centred" style="background-image: url(/images/background/page-title.jpg);">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">Otaqlar</div>
+            <ul class="bread-crumb">
+                <li><a href="index.html">Ana Səhifə</a></li>
+                <li>Otaq @Model.Name</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- page-title end -->
+<!-- room-details -->
+<section class="room-details gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 column">
+                <div class="room-details-content">
+                    <div class="contnt-style-one">
+                        <h2>@Model.Name</h2>
+                        <div class="single-item">
+                            <figure class="img-box"><img style="width:100%" src="~/uploads/images/@Model.ImagePath" alt=""></figure>
+                        </div>
+                        @*<div class="single-item-carousel">
+                            <figure class="img-box"><img src="images/resource/room-details.jpg" alt=""></figure>
+                            <figure class="img-box"><img src="images/resource/room-details.jpg" alt=""></figure>
+                            <figure class="img-box"><img src="images/resource/room-details.jpg" alt=""></figure>
+                        </div>*@
+                        @*<ul class="img-list clearfix">
+                            <li class="img-box"><figure><img src="images/resource/10.png" alt=""></figure></li>
+                            <li class="img-box"><figure><img src="images/resource/11.png" alt=""></figure></li>
+                            <li class="img-box"><figure><img src="images/resource/12.png" alt=""></figure></li>
+                            <li class="img-box"><figure><img src="images/resource/13.png" alt=""></figure></li>
+                            <li class="img-box"><figure><img src="images/resource/14.png" alt=""></figure></li>
+                            <li class="img-box"><figure><img src="images/resource/15.png" alt=""></figure></li>
+                        </ul>*@
+                        <div class="text">
+                            <p>@Html.Raw(Model.Description)</p>
+                        </div>
+                    </div>
+                    <div class="content-style-two">
+                        <h3>Otaq Şəraiti</h3>
+                        <div class="text">
+                            @Html.Raw(Model.PriceInclude)
+                        </div>
+                        <div class="table-outer">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-television"></i></div>
+                                            <div class="table-text">Televizor</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-wifi-connection-signal-symbol"></i></div>
+                                            <div class="table-text">Wifi</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-mug"></i></div>
+                                            <div class="table-text">Səhər Yeməyi</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-bathtub"></i></div>
+                                            <div class="table-text">Vanna</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-journal"></i></div>
+                                            <div class="table-text">Günlük Qəzet</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-spa"></i></div>
+                                            <div class="table-text">Spa</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-cocktail"></i></div>
+                                            <div class="table-text">Mini bar</div>
+                                        </td>
+                                        <td>
+                                            <div class="icon-box"><i class="flaticon-gym"></i></div>
+                                            <div class="table-text">İdman Zalı</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 column">
+                <div class="room-sidebar">
+                    <div class="filter-content">
+                        <div class="title"><h3>Otağınızı Rezerv Edin</h3></div>
+                        <form asp-controller="roomtypes" asp-action="createreservation" method="post" class="content">
+                            <div asp-validation-summary="All"></div>
+                            @await Html.PartialAsync("_ReservationForm", new ReservationPostCommand{ RoomTypeId = Model.Id, RoomPrice = Model.Price })
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section addjs{
+    <script>
+        $(document).ready(function () {
+            $("input[name='CheckIn']").change(function () {
+                $("input[name='CheckOut']").attr("min", $(this).val());
+            });
+            $("input[name='RoomTypeId'], select[name='P1'], select[name='P2'], select[name='P3']").change(function () {
+                var checkIn = new Date($("input[name='CheckIn']").val());
+                var checkOut = new Date($("input[name='CheckOut']").val());
+                var diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                var inputPrice = $("input[name='RoomTypeId']").data("price");
+                var multipliedPrice = diffDays * inputPrice;
+                var additionalPerson1 = $("option:selected", $("select[id='p1']")).data("price");
+                var additionalPerson2 = $("option:selected", $("select[id='p2']")).data("price");
+                var additionalPerson3 = $("option:selected", $("select[id='p3']")).data("price");
+                var totalPrice = multipliedPrice + parseInt(additionalPerson1) + parseInt(additionalPerson2) + parseInt(additionalPerson3);
+
+                $('input[name="Price"]').val(multipliedPrice);
+                console.log(multipliedPrice)
+                $("#displayPrice").text(totalPrice + "AZN");
+                $('input[name="Price"]').val(totalPrice);
+
+            });
+        });
+    </script>
+    <script src="~/js/main/payment.js"></script>
+}
+@section addcss{
+<style>
+    .modal-header{
+        background-color : antiquewhite;
+    }
+    .fixcolor{
+        color : #cda274;
+    }
+    #cc-name,
+    #cc-number,
+    #cc-expiration,
+    #cc-cvv{
+        border : 1px, solid, #cda274;
+    }
+</style>
+}
